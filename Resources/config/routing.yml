@@ -1,0 +1,4 @@
+qwer_lotto_frontend_country:
+    resource: "@QwerLottoFrontendBundle/Resources/config/routing/country_country.xml"
+    prefix:   /country
+
