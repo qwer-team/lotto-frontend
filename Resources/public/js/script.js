@@ -16,7 +16,7 @@ $(document).ready(function(){
 	$('#tirazh-1').selectbox();
 	$('.multiples-select td select').selectbox();
 	var instanceOne = new ImageFlow();
-	instanceOne.init({ ImageFlowID: 'flag_slider', reflectionPNG: true });
+	instanceOne.init({ ImageFlowID: 'flag_slider', reflectionPNG: true }); 
 	if($('.ir-lotery').length){
 		$('.ir-lotery .block').eq(1).addClass('dis');
 		$('.ir-lotery .block .title').on('click', function(){

@@ -19,10 +19,11 @@ class CountryService extends ContainerAware
      */
     public function getCountries()
     {
-//      $em = $this->container->get('doctrine');
+        /*$this->em = $this->container->get("doctrine.orm.entity_manager");
         $countries = $this->em->getRepository('QwerLottoFrontendBundle:Country\Country')->findAll();
+       
         
-        return $countries;
+        return $countries;*/
     }
 
 
