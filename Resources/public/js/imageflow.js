@@ -151,7 +151,7 @@ function ImageFlow ()
 				if(my.reflections === true)
 				{
 					if(my.imagePath === "") {
-				        src = my.imagePath+node.getAttribute('src',2);
+				        src = my.imagePath+node.getAttribute('src',2);           
 				        src = src+my.reflectionGET;
 				    } else {
 				        var imagePath = node.getAttribute('src',2);

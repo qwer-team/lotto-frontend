@@ -18,7 +18,7 @@ class FrontEndPageController extends Controller
         
         $em = $this->getDoctrine()->getEntityManager();
         $countries = $em->getRepository('QwerLottoFrontendBundle:Country\Country')
-                    ->findAll();
+                    ->findAllOrderedByName();
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:index.html.twig', array(
             'countries' => $countries,
         ));
