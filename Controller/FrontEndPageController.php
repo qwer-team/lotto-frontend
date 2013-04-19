@@ -5,9 +5,13 @@ namespace Qwer\LottoFrontendBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Pagerfanta\Pagerfanta;
+use Pagerfanta\Adapter\ArrayAdapter;
+use Pagerfanta\View\TwitterBootstrapView;
 
 class FrontEndPageController extends Controller
 {
+
     /**
      * @Route("/hello/lotto/bundle")
      * @Template()
@@ -18,35 +22,34 @@ class FrontEndPageController extends Controller
         $message = $tr->trans('time.parameter');
         $em = $this->getDoctrine()->getManager();
         $lottery = $em->getRepository('QwerLottoBundle:Type')
-                    ->findAllOrderedByName();
+                ->findAllOrderedByName();
         $timeExpire = $em->getRepository('QwerLottoBundle:Draw')
-                    ->getNearestDraws();
+                ->getNearestDraws();
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:index.html.twig', array(
-            'lottery' => $lottery, 'timeExpire' => $timeExpire, 'message' => $message,
-        ));
+                    'lottery' => $lottery, 'timeExpire' => $timeExpire, 'message' => $message,
+                ));
     }
-    
-    
+
     public function leftMenuAction()
     {
-       $em = $this->getDoctrine()->getManager();
-       $countries = $em->getRepository('QwerLottoFrontendBundle:Country')
-                    ->findAllOrderedByName();
+        $em = $this->getDoctrine()->getManager();
+        $countries = $em->getRepository('QwerLottoFrontendBundle:Country')
+                ->findAllOrderedByName();
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:leftMenu.html.twig', array(
-            'countries' => $countries,
-        ));
+                    'countries' => $countries,
+                ));
     }
-    
+
     public function nextLottoDrawsAction()
     {
         $em = $this->getDoctrine()->getManager();
         $nextDraws = $em->getRepository('QwerLottoBundle:Draw')
-                    ->findNextLottoDraws(4);
+                ->findNextLottoDraws(4);
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:nextLottoDraws.html.twig', array(
-            'nextDraws' => $nextDraws,
-        ));
+                    'nextDraws' => $nextDraws,
+                ));
     }
-    
+
     /**
      * @Route("/hello/lotto/bundle/schedule")
      * @Template()
@@ -55,20 +58,58 @@ class FrontEndPageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $countries = $em->getRepository('QwerLottoFrontendBundle:Country')
-                    ->getFullSchedule();     
+                ->getFullSchedule();
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:fullSchedule.html.twig', array(
-            'countries' => $countries,
-        ));
+                    'countries' => $countries,
+                ));
     }
-    
-    
-    public function  lastResultsAction()
+
+    public function lastResultsAction()
     {
         $em = $this->getDoctrine()->getManager();
         $lastResults = $em->getRepository('QwerLottoBundle:Result')
-                    ->getLastResults(4);
+                ->getLastResults(4);
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:lastResults.html.twig', array(
-            'lastResults' => $lastResults,
-        ));
+                    'lastResults' => $lastResults,
+                ));
     }
+
+    /**
+     * @Route("/hello/lotto/bundle/fullres/{page}",
+     *         name="fullres",
+     *         requirements={"page" = "\d+"},
+     *         defaults={"page" = "1"}
+     * )
+     * @Template()
+     * @param int $page
+     */
+    public function fullResultsAction($page)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $adapter = $em->getRepository('QwerLottoBundle:Result')
+                ->getFullResults();
+        $pagerfanta = new Pagerfanta($adapter);
+        $pagerfanta->setMaxPerPage(1);
+
+
+        $routeGenerator = array($this, 'routeGenerator');
+
+        $view = new TwitterBootstrapView();
+        $html = $view->render($pagerfanta, $routeGenerator, array(
+            "prev_message" => "&laquo;", 
+            "next_message" => "&raquo;", 
+            "css_active_class" => " ", 
+            "css_disabled_class" => " "
+        ));
+        return $this->render('QwerLottoFrontendBundle:FrontEndPage:fullResults.html.twig', array(
+                    'fullResults' => $pagerfanta,
+                    'paginator' => $html
+                ));
+    }
+
+    public function routeGenerator($page)
+    {
+        return $this->generateUrl("fullres", array("page" => $page));
+    }
+
 }
