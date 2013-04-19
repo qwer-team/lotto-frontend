@@ -1,6 +1,6 @@
 <?php
 
-namespace Qwer\LottoFrontendBundle\Entity\Country;
+namespace Qwer\LottoFrontendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -8,13 +8,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * 
- * @ORM\Entity(repositoryClass="Qwer\LottoFrontendBundle\Repository\CountryRepository")
- * @ORM\Table("country")
  * @Vich\Uploadable
  */
 class Country
 {
+
     /**
      * @var integer
      */
@@ -24,7 +22,13 @@ class Country
      * @var string
      */
     protected $name;
-        /**
+    
+    /**
+     * @var string
+     */
+    protected $title;
+
+    /**
      * @Assert\File(
      *     maxSize="1M",
      *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
@@ -34,12 +38,18 @@ class Country
      * @var File $image
      */
     protected $image;
-    
+
     /**
      *
      * @var string $imageName
      */
     protected $imageName;
+    
+    /**
+     *
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    protected $lottoTypes;
 
     /**
      * Get id
@@ -60,7 +70,7 @@ class Country
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
@@ -73,6 +83,17 @@ class Country
     {
         return $this->name;
     }
+    
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+    
     public function getImage()
     {
         return $this->image;
@@ -93,5 +114,19 @@ class Country
         $this->imageName = $imageName;
     }
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+    
+    public function getLottoTypes()
+    {
+        return $this->lottoTypes;
+    }
+
+    public function setLottoTypes($lottoTypes)
+    {
+        $this->lottoTypes = $lottoTypes;
+    }
 
 }

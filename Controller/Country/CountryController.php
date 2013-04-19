@@ -5,32 +5,32 @@ namespace Qwer\LottoFrontendBundle\Controller\Country;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Qwer\LottoFrontendBundle\Entity\Country\Country;
+use Qwer\LottoFrontendBundle\Entity\Country;
 use Qwer\LottoFrontendBundle\Form\Country\CountryType;
 
 /**
- * Country\Country controller.
+ * Country controller.
  *
  */
 class CountryController extends Controller
 {
     /**
-     * Lists all Country\Country entities.
+     * Lists all Country entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('QwerLottoFrontendBundle:Country\Country')->findAll();
+        $entities = $em->getRepository('QwerLottoFrontendBundle:Country')->findAll();
 
-        return $this->render('QwerLottoFrontendBundle:Country/Country:index.html.twig', array(
+        return $this->render('QwerLottoFrontendBundle:Country\Country:index.html.twig', array(
             'entities' => $entities,
         ));
     }
 
     /**
-     * Creates a new Country\Country entity.
+     * Creates a new Country entity.
      *
      */
     public function createAction(Request $request)
@@ -47,14 +47,14 @@ class CountryController extends Controller
             return $this->redirect($this->generateUrl('country_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('QwerLottoFrontendBundle:Country/Country:new.html.twig', array(
+        return $this->render('QwerLottoFrontendBundle:Country\Country:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Displays a form to create a new Country\Country entity.
+     * Displays a form to create a new Country entity.
      *
      */
     public function newAction()
@@ -62,51 +62,51 @@ class CountryController extends Controller
         $entity = new Country();
         $form   = $this->createForm(new CountryType(), $entity);
 
-        return $this->render('QwerLottoFrontendBundle:Country/Country:new.html.twig', array(
+        return $this->render('QwerLottoFrontendBundle:Country\Country:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a Country\Country entity.
+     * Finds and displays a Country entity.
      *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('QwerLottoFrontendBundle:Country\Country')->find($id);
+        $entity = $em->getRepository('QwerLottoFrontendBundle:Country')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Country\Country entity.');
+            throw $this->createNotFoundException('Unable to find Country entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('QwerLottoFrontendBundle:Country/Country:show.html.twig', array(
+        return $this->render('QwerLottoFrontendBundle:Country\Country:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
 
     /**
-     * Displays a form to edit an existing Country\Country entity.
+     * Displays a form to edit an existing Country entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('QwerLottoFrontendBundle:Country\Country')->find($id);
+        $entity = $em->getRepository('QwerLottoFrontendBundle:Country')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Country\Country entity.');
+            throw $this->createNotFoundException('Unable to find Country entity.');
         }
 
         $editForm = $this->createForm(new CountryType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('QwerLottoFrontendBundle:Country/Country:edit.html.twig', array(
+        return $this->render('QwerLottoFrontendBundle:Country\Country:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -114,17 +114,17 @@ class CountryController extends Controller
     }
 
     /**
-     * Edits an existing Country\Country entity.
+     * Edits an existing Country entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('QwerLottoFrontendBundle:Country\Country')->find($id);
+        $entity = $em->getRepository('QwerLottoFrontendBundle:Country')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Country\Country entity.');
+            throw $this->createNotFoundException('Unable to find Country entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -138,7 +138,7 @@ class CountryController extends Controller
             return $this->redirect($this->generateUrl('country_edit', array('id' => $id)));
         }
 
-        return $this->render('QwerLottoFrontendBundle:Country/Country:edit.html.twig', array(
+        return $this->render('QwerLottoFrontendBundle:Country\Country:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -146,7 +146,7 @@ class CountryController extends Controller
     }
 
     /**
-     * Deletes a Country\Country entity.
+     * Deletes a Country entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -156,10 +156,10 @@ class CountryController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('QwerLottoFrontendBundle:Country\Country')->find($id);
+            $entity = $em->getRepository('QwerLottoFrontendBundle:Country')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Country\Country entity.');
+                throw $this->createNotFoundException('Unable to find Country entity.');
             }
 
             $em->remove($entity);
@@ -170,7 +170,7 @@ class CountryController extends Controller
     }
 
     /**
-     * Creates a form to delete a Country\Country entity by id.
+     * Creates a form to delete a Country entity by id.
      *
      * @param mixed $id The entity id
      *

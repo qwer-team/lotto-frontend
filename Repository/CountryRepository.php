@@ -13,8 +13,29 @@ class CountryRepository extends EntityRepository
 {
     public function findAllOrderedByName()
     {
-         return $this->getEntityManager()
-            ->createQuery('SELECT p FROM QwerLottoFrontendBundle:Country\Country p ORDER BY p.name ASC')
-            ->getResult();
+        $qb = $this->createQueryBuilder("country");
+        $qb->select("country, types");
+        $qb->innerJoin("country.lottoTypes", "types")
+           ->orderBy("country.name");
+          
+        
+
+        $set = $qb->getQuery()->execute();
+        return $set;
     }
+    
+    public function getFullSchedule()
+    {
+        $qb = $this->createQueryBuilder("country");
+        $qb->select("country, types, times");
+        $qb->innerJoin("country.lottoTypes", "types")
+           ->innerJoin("types.lottoTimes", "times")
+           ->orderBy("country.name");
+          
+        
+
+        $set = $qb->getQuery()->execute();
+        return $set;
+    }
+    
 }

@@ -12,6 +12,7 @@ class CountryType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('title')
             ->add('image', 'file')
         ;
     }
@@ -19,7 +20,7 @@ class CountryType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Qwer\LottoFrontendBundle\Entity\Country\Country'
+            'data_class' => 'Qwer\LottoFrontendBundle\Entity\Country'
         ));
     }
 
