@@ -114,6 +114,10 @@ class FrontEndPageController extends Controller
         return $this->generateUrl("fullres", array("page" => $page));
     }
     
+     /**
+       * @Route("/changeSelectData/{count}", name="reload_select" ,defaults={"count" = 0})
+       * @Template()
+       */
     public function BetTypeAction($count)
     {
         $name = $this->container->get("frontend.nametype_service");
