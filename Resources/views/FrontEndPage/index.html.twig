@@ -8,96 +8,57 @@
     </style>
     <div class="top">
         <div>
-        <table id="formula_table" style="display:none">
-        {% for formula in formules %}
-         <tr type="{{ formula.betTypeId }}" number="{{ formula.ballsNumber }}">
-          <td class="count_bets">{{ formula.betNumber }}</td>
-          <td class="formula">{{ formula.formula }}</td>
-         </tr>
-        {% endfor %}
-        </table>
+        {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:FormulaBlock')) }}
         </div>
         <div class="col-content">
                         {% block slider %}
-                <div class="slide-block">
-                    <div class="slide-controll">
-                        <span>Свернуть</span>
-                        <a href="#"></a>
-                    </div>
-                    <div class="gallery-wrap">
-                        <ul id="carousel-icons">
-                            <li class="view-label">
-                                Change View
-                            </li>
-                            <li class="selected">
-                                <a href="#" class="scrollicon" title="Scrolling Image View"></a>
-                            </li>
-                            <li>
-                                <a href="#" class="scrollicon gridview" title="Image Grid View"></a>
-                            </li>
-                            <li>
-                                <a href="#" class="scrollicon listview" title="Text List View"></a>
-                            </li>
-                        </ul>
-                        <div id="flag_slider" class="imageflow">
-                                            {% for county in countries %}
-                                <img src="{{ vich_uploader_asset(county, 'image') }}"  longdesc="URL_{{ loop.index }}" width="205" height="210" alt="Осталось: 5 day 2 hour: 1 min"/>
-                                                {#<img src="{{ asset( "bundles/qwerlottofrontendcontent/flag1.png") }}" longdesc="URL_1" width="205" height="210" alt="Осталось: 5 day 2 hour: 1 min" />#}
+                                <div class="slide-block">
+                                        <div class="slide-controll">
+                                                <span>Свернуть</span>
+                                                <a href="#"></a>
+                                        </div>
+                                        <div class="gallery-wrap">
+                                        <ul id="carousel-icons">
+                                                <li class="view-label">
+                                                        Change View
+                                                </li>
+                                                <li class="selected">
+                                                        <a href="#" class="scrollicon" title="Scrolling Image View"></a>
+                                                </li>
+                                                <li>
+                                                        <a href="#" class="scrollicon gridview" title="Image Grid View"></a>
+                                                </li>
+                                                <li>
+                                                        <a href="#" class="scrollicon listview" title="Text List View"></a>
+                                                </li>
+                                        </ul>
+                                        <div id="flag_slider" class="imageflow">
+                                            {% for lotto in lottery %}
+                                                {% if vich_uploader_asset(lotto, 'image') %}
+                                                    <img src="{{ vich_uploader_asset(lotto, 'image') }}"  longdesc="URL_{{ loop.index }}" width="205" height="210"
+                                                         alt="
+                                                        {% trans %}Left{% endtrans %}
+                                                        {% if timeExpire[lotto.id].d > 0 %}
+                                                            {% trans with {'%days%': timeExpire[lotto.id].d} %}days{% endtrans %}
+                                                        {% endif %}
+                                                        {% if timeExpire[lotto.id].h > 0 %}
+                                                            {% trans with {'%hours%': timeExpire[lotto.id].h} %}hours{% endtrans %}
+                                                        {% endif %}
+                                                        {% trans with {'%minutes%': timeExpire[lotto.id].i} %}minutes{% endtrans %}
+                                                    "/>
+                                                {% else %}
+                                                    <img src="{{ vich_uploader_asset(lotto.country, 'image') }}"  longdesc="URL_{{ loop.index }}" width="205" height="210" alt="{{ timeExpire[lotto.id]|date }}"/>
+                                                {% endif %}    
+                                                {#<img src="{{ asset( "bundles/qwerlottofrontendcontent/flag1.png") }}" lotto="{{ lotto.title }}" longdesc="URL_1" width="205" height="210" alt="Осталось: 5 day 2 hour: 1 min" />#}
                                             {% endfor %}
-                                                {#<img src="{{ asset( "bundles/qwerlottofrontendcontent/flag2.png") }}" longdesc="URL_2" width="205" height="210" alt="Осталось: 1 day 2 hour: 1 min" />
-                                                <img src="{{ asset( "bundles/qwerlottofrontendcontent/flag3.png") }}" longdesc="URL_3" width="205" height="210" alt="Осталось: 0 day 2 hour: 1 min" />
-                                                <img src="{{ asset( "bundles/qwerlottofrontendcontent/flag4.png") }}" longdesc="URL_1" width="205" height="210" alt="Осталось: 5 day 2 hour: 1 min" />
-                                                <img src="{{ asset( "bundles/qwerlottofrontendcontent/flag5.png") }}" longdesc="URL_2" width="205" height="210" alt="Осталось: 1 day 2 hour: 1 min" />
-                                                <img src="{{ asset( "bundles/qwerlottofrontendcontent/flag6.png") }}" longdesc="URL_3" width="205" height="210" alt="Осталось: 0 day 2 hour: 1 min" />
-                                                <img src="{{ asset( "bundles/qwerlottofrontendcontent/flag7.png") }}" longdesc="URL_1" width="205" height="210" alt="Осталось: 5 day 2 hour: 1 min" />
-                                                <img src="{{ asset( "bundles/qwerlottofrontendcontent/flag8.png") }}" longdesc="URL_2" width="205" height="210" alt="Осталось: 1 day 2 hour: 1 min" />
-                                                <img src="{{ asset( "bundles/qwerlottofrontendcontent/flag9.png") }}" longdesc="URL_3" width="205" height="210" alt="Осталось: 0 day 2 hour: 1 min" />#}
-                            </div>
-                        </div>
-                    </div>
+                                                </div>
+                                        </div>
+                                </div>
                                {% endblock %}
-                               {% block futures %}
-                    <div class="loto-draws block-loto block-blue">
-                        <div class="block-header">
-                            <div class="title-left">
-                                <h2>Wednesday Lotto Draws</h2>
-                                <a href="#">Full Schedule »</a>
-                            </div>
-                            <i></i>
-                        </div>
-                        <div class="block-cotent">
-                            <ul>
-                                <li>(13:18)  <b>Main Draw</b> (Spain)</li>
-                                <li>(17:25)  <b>Lotto +1</b> (Canada)</li>
-                                <li>(18:05)  <b>Lotto +2</b> (USA)</li>
-                                <li>(19:45)  <b>Lotto +12</b> (Italy)</li>
-                            </ul>
-                            <div class="day">
-                                Wednesday
-                            </div>
-                        </div>
-                    </div>
-                                {% endblock %}
-                                {% block result %}
-                    <div class="loto-draws2 block-loto block-red">
-                        <div class="block-header">
-                            <div class="title-left">
-                                <h2>Результаты прошлых тиражей</h2>
-                                <a href="#">Посмотреть более подробно »</a>
-                            </div>
-                            <i></i>
-                        </div>
-                        <div class="block-cotent">
-                            <ul>
-                                <li>(13:18)  <b>Main Draw</b> (Spain)</li>
-                                <li>(17:25)  <b>Lotto +1</b> (Canada)</li>
-                                <li>(18:05)  <b>Lotto +2</b> (USA)</li>
-                                <li>(19:45)  <b>Lotto +12</b> (Italy)</li>
-                            </ul>
-                        </div>
-                    </div>
-                                  {% endblock %}
-                    <div class="clear"></div>
+                               {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:nextLottoDraws')) }}
+                               {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:lastResults')) }}
+                                
+						<div class="clear"></div>
                                                 {% block lottery %}
                     <h2>Irish Lottery</h2>
                     <div class="ir-lotery">

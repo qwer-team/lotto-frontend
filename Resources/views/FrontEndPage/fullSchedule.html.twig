@@ -1,0 +1,149 @@
+{% extends 'QwerLottoFrontendBundle::layout.html.twig' %}
+{% block body %}
+{% block content %}
+<div class="main-col"><!-- main-col -->
+				<div class="top">
+					<div class="col-content">
+						<div class="banner">
+                                                    <img src="{{ asset( "bundles/qwerlottofrontend/content/banner.png") }}" alt="">
+							<div class="banner-text">
+								<div>РАСПИСАНИЕ ТИРАЖЕЙ</div>
+								<div>не пропусти свою лотерею</div>
+							</div>
+						</div>
+						<p>
+							Наша лотерея Расписание объединяет все ничьи, мы предлагаем на рынке, включая ирландские лотереи, Великобритания, 49, в Euro Millions и многое другое, все под одной крышей! Наша лотерея Расписание объединяет все ничьи, мы предлагаем на рынке, включая ирландские лотереи, Великобритания, 49, в Euro Millions и многое другое, все под одной крышей!
+						</p>
+						<p>
+							Благодаря даты и вне раза за ничью каждой лотерее, вы сможете получить ваши ставки на времени, каждый раз, когда на qqqqq.com!
+						</p>
+						<div class="schedule-wrap">
+							<table class="schedule">
+								<thead>
+									<tr>
+										<td colspan="2">Страна / Лотерея</td>
+										<td>Пн</td>
+										<td>Вт</td>
+										<td>Ср</td>
+										<td>Чт</td>
+										<td>Пт</td>
+										<td>Сб</td>
+										<td>Вс</td>
+									</tr>
+								</thead>
+                                                                
+                                                                {% for country in countries %}
+								<tbody>
+                                                                    {% set foo = 1 %}
+                                                                    {% for type in country.lottoTypes %}
+									<tr>
+                                                                            {% if foo %}
+										<td rowspan="{{ country.lottoTypes | length }}"> 
+											<a class="country" href="#">
+												<img src="content/canada.png" width="18" height="18" alt="">
+												<span>{{ country.name }}</span>
+											</a> 
+										</td>
+                                                                                {% set foo = 0 %}
+                                                                            {% endif %}
+                                                                                
+										<td>{{ type.title }}</td>
+                                                                                {% for i in range(1,7) %}
+                                                                                 <td>
+                                                                                    {% for time in type.lottoTimes %}
+                                                                                        {% if i in time.days %}
+                                                                                            {{time.time|date("H:i")}}<br>
+                                                                                        {% else %}
+                                                                                            <br />
+                                                                                        {% endif %}
+                                                                                    {% endfor %}
+                                                                                 </td>
+                                                                                {% endfor %}										   
+									</tr>
+                                                                       
+                                                                                {% endfor %}
+									
+								</tbody>
+                                                                {% endfor %}
+								{#<tbody>
+									<tr>
+										<td rowspan="2">
+											<a class="country" href="#">
+												<img src="content/canada.png" width="18" height="18" alt="">
+												<span>Канада</span>
+											</a> 
+										</td>
+										<td>Лотерея №1</td>
+										<td></td>
+										<td>12:45</td>
+										<td></td>
+										<td>12:45</td>
+										<td>12:45</td>
+										<td></td>
+										<td>1-я 12:45 <br> 2-я 22:31</td>
+									</tr>
+									<tr>
+										<td>Лотерея №2</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td>12:45</td>
+										<td></td>
+										<td></td>
+										<td>1-я 12:45 <br> 2-я 22:31</td>
+									</tr>
+								</tbody>
+								<tbody>
+									<tr>
+										<td>
+											<a class="country" href="#">
+												<img src="content/canada.png" width="18" height="18" alt="">
+												<span>Канада</span>
+											</a> 
+										</td>
+										<td>Лотерея №1</td>
+										<td></td>
+										<td>12:45</td>
+										<td></td>
+										<td></td>
+										<td>12:45</td>
+										<td></td>
+										<td>1-я 12:45 <br> 2-я 22:31</td>
+									</tr>
+								</tbody>
+								<tbody>
+									<tr>
+										<td rowspan="2">
+											<a class="country" href="#">
+												<img src="content/canada.png" width="18" height="18" alt="">
+												<span>Канада</span>
+											</a> 
+										</td>
+										<td>Лотерея №1</td>
+										<td></td>
+										<td>12:45</td>
+										<td></td>
+										<td>12:45</td>
+										<td>12:45</td>
+										<td></td>
+										<td>1-я 12:45 <br> 2-я 22:31</td>
+									</tr>
+									<tr>
+										<td>Лотерея №2</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td>12:45</td>
+										<td></td>
+										<td></td>
+										<td>1-я 12:45 <br> 2-я 22:31</td>
+									</tr>
+								</tbody>#}
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="bottom"></div>
+			</div><!-- .main-col -->
+{% endblock %}
+{% endblock %}

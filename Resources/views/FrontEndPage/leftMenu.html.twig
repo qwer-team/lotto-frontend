@@ -1,0 +1,182 @@
+{% block menu %}
+			<div class="left-sidebar"><!-- left-sidebar -->
+				<div class="serv-bl">
+					<h2><span>Сервисы</span></h2>
+					<ul class="serv-list">
+						<li class="">
+							<a href="#" title="О нас">
+								<span>О нас</span>
+							</a>
+						</li>
+						<li class="sub">
+							<a href="#" title="Правила">
+								<span>Правила</span>
+							</a>
+							<ul>
+								<li class="">
+									<a href="#" title="Правила приема ставок">
+										<span>Правила приема ставок</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="sub">
+							<a href="#" title="Помощь">
+								<span>Помощь</span>
+							</a>
+							<ul>
+								<li class="">
+									<a href="#" title="Регистрация">
+										<span>Регистрация</span>
+									</a>
+								</li>
+								<li class="">
+									<a href="#)" title="Счет">
+										<span>Счет</span>
+									</a>
+								</li>
+								<li class="">
+									<a href="#" title="Безопасность">
+										<span>Безопасность</span>
+									</a>
+								</li>
+								<li class="">
+									<a href="#" title="Платежи">
+										<span>Платежи</span>
+									</a>
+								</li>
+								<li class="">
+									<a href="#" title="FAVBET TV">
+										<span>FAVBET TV</span>
+									</a>
+								</li>
+								<li class="">
+									<a href="#" title="Калькулятор систем">
+										<span>Калькулятор систем</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="sub">
+							<a href="#" title="Методы платежей">
+								<span>Методы платежей</span>
+							</a>
+							<ul>
+								<li class="">
+									<a href="#" title="Депозиты">
+										<span>Депозиты</span>
+									</a>
+								</li>
+								<li class="">
+									<a href="#" title="Снятие">
+										<span>Снятие</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="sub">
+							<a href="#" title="Методы платежей">
+								<span>Лотереи</span>
+							</a>
+							<ul>
+                                                        {% for country in countries %}
+                                                                <li class="sub">
+									<a href="#" title="Депозиты">
+										<span><i class="{{ country.title|lower }}"></i>{{ country.name }}</span>
+									</a>
+									<ul>
+                                                                        {% for type in country.lottoTypes %}
+										<li>
+											<a href="#"><span>{{ type.title }}</span></a>
+										</li>
+                                                                         {% endfor %}
+									</ul>
+								</li>
+                                                                {% endfor %}
+								{#<li class="sub">
+									<a href="#" title="Депозиты">
+										<span><i class="canada"></i>Канада</span>
+									</a>
+									<ul>
+										<li>
+											<a href="#"><span>Название лотереи №1</span></a>
+										</li>
+										<li>
+											<a href="#"><span>Название лотереи №2</span></a>
+										</li>
+									</ul>
+								</li>
+								<li class="sub">
+									<a href="#" title="Снятие">
+										<span><i class="germaby"></i>Германия</span>
+									</a>
+									<ul>
+										<li>
+											<a href="#"><span>Название лотереи №1</span></a>
+										</li>
+										<li>
+											<a href="#"><span>Название лотереи №2</span></a>
+										</li>
+										<li>
+											<a href="#"><span>Название лотереи №3</span></a>
+										</li>
+									</ul>
+								</li>
+								<li class="">
+									<a href="#" title="Снятие">
+										<span><i class="france"></i>Франция</span>
+									</a>
+								</li>
+								<li class="">
+									<a href="#" title="Снятие">
+										<span><i class="italy"></i>Италия</span>
+									</a>
+								</li>
+								<li class="">
+									<a href="#" title="Снятие">
+										<span><i class="usa"></i>США</span>
+									</a>
+								</li>#}
+							</ul>
+						</li>
+                                                <li class="">
+							<a href="#" title="Результаты">
+								<span>Результаты</span>
+							</a>
+						</li>
+                                                <li class="">
+							<a href="#" title="Расписание">
+								<span>Расписание</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#" title="Контакты">
+								<span>Контакты</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#" title="Лицензия">
+								<span>Лицензия</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#" title="Работа">
+								<span>Работа</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#" title="Партнерская программа">
+								<span>Партнерская программа</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#" title="Аффилиэйт программа">
+								<span>Аффилиэйт программа</span>
+							</a>
+						</li>
+					</ul>
+					<div class="down"></div>
+				</div>
+			</div><!-- .left-sidebar -->
+{% endblock %}
+

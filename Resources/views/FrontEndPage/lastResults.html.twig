@@ -1,0 +1,18 @@
+{% block result %}
+						<div class="loto-draws2 block-loto block-red">
+							<div class="block-header">
+								<div class="title-left">
+									<h2>Результаты прошлых тиражей</h2>
+									<a href="#">Посмотреть более подробно »</a>
+								</div>
+								<i></i>
+							</div>
+							<div class="block-cotent">
+								<ul>
+                                                                {% for lastResult in lastResults %}
+                                                                    <li>({{ lastResult.date|date("H:i") }})  <b>{{ lastResult.title }}</b> ({{ lastResult.name }})</li>
+                                                                {% endfor %}
+								</ul>
+							</div>
+						</div>
+{% endblock %}

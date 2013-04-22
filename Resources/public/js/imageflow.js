@@ -137,6 +137,7 @@ function ImageFlow ()
 	{
 		/* Create images div container */
 		var imagesDiv = my.Helper.createDocumentElement('div','images');
+                
 
 		/* Shift all images into the images div */
 		var node, version, src, imageNode;
@@ -150,16 +151,16 @@ function ImageFlow ()
 				if(my.reflections === true)
 				{
 					if(my.imagePath === "") {
-				        src = my.imagePath+node.getAttribute('src',2);
-				        src = my.reflectPath+'reflect'+version+'.php?img='+src+my.reflectionGET;
+				        src = my.imagePath+node.getAttribute('src',2);           
+				        src = src+my.reflectionGET;
 				    } else {
 				        var imagePath = node.getAttribute('src',2);
 				        var slash = "/";
 				        var lastOccurence = imagePath.lastIndexOf(slash);
 				        var withoutPath = imagePath.substring(lastOccurence, imagePath.length);
 				        src = my.imagePath+withoutPath;
-				        src = my.reflectPath+'reflect'+version+'.php?img='+src+my.reflectionGET;
-				    }
+				        src = src+my.reflectionGET;      
+                                }
 				    node.setAttribute('src',src);
 				}
 

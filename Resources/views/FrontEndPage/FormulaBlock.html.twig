@@ -1,5 +1,8 @@
-{% for formula in formules %}
-   {{ formula.formula }}
-   {{ formula.betNumber }}
-   {{ formula.balls_number }}
-{% endfor %}
+<table id="formula_table" style="display:none">
+        {% for formula in formules %}
+         <tr type="{{ formula.betTypeId }}" number="{{ formula.ballsNumber }}">
+          <td class="count_bets">{{ formula.betNumber }}</td>
+          <td class="formula">{{ formula.formula }}</td>
+         </tr>
+        {% endfor %}
+</table>

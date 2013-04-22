@@ -1,0 +1,11 @@
+## YAML Template.
+Left: Осталось
+days: %days% дней
+hours: %hours% часов
+minutes: %minutes% минут
+invalid:
+   parameter:
+      token: Token parameter is not valid!
+items:
+   result:
+      empty: Couldn't get items!
