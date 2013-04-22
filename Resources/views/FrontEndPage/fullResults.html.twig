@@ -58,13 +58,13 @@
 							<div class="results-title">
 								<div>Результаты тиражей</div>
 								<div><span>Ирландия</span> лото 6 из 45</div>
-								<img src="content/fl.png" alt="">
+								<img src="{{ asset( "bundles/qwerlottofrontend/content/fl.png") }}" alt="">
 							</div>
 							<div class="results-tabble-wrap">
 								<table class="results-tabble">
 									<thead>
 										<tr>
-											<td>id тиража</td>
+											<td>Название</td>
 											<td>Дата / Время</td>
 											<td>Выпавшие шары</td>
 											<td>Дополнительные шары</td>
@@ -73,20 +73,24 @@
 									<tbody>
                                                                         {% for res in fullResults %}
 										<tr>
-											<td>{{ res.id }}</td>
-											<td>12.12.2012   21:00:00</td>
+											<td>{{ res.lottoDraw.lottoTime.title }}</td>
+											<td>{{ res.lottoDraw.date|date }}</td>
 											<td>
 												<div class="ball-line-wrap">
-							    					<div class="ball-item-line">1</div>
-							    					<div class="ball-item-line">2</div>
+                                                                                                {% for ball in res.result %}
+							    					<div class="ball-item-line">{{ ball }}</div>
+                                                                                                {% endfor %}
+							    					{#<div class="ball-item-line">2</div>
 							    					<div class="ball-item-line">3</div>
 							    					<div class="ball-item-line">4</div>
-							    					<div class="ball-item-line">5</div>
+							    					<div class="ball-item-line">5</div>#}
 							    				</div>
 											</td>
 											<td>
 												<div class="ball-line-wrap">
-							    					<div class="ball-item-line">1</div>
+                                                                                                {% for bonus_ball in res.bonusResult %}
+							    					<div class="ball-item-line">{{ bonus_ball }}</div>
+                                                                                                {% endfor %}
 							    				</div>
 											</td>
 										</tr>

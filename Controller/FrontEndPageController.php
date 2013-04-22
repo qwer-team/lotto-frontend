@@ -90,6 +90,8 @@ class FrontEndPageController extends Controller
                 ->getFullResults();
         $pagerfanta = new Pagerfanta($adapter);
         $pagerfanta->setMaxPerPage(1);
+        $pagerfanta->setCurrentPage($page);
+        $currentPageResults = $pagerfanta->getCurrentPageResults();
 
 
         $routeGenerator = array($this, 'routeGenerator');
@@ -102,7 +104,7 @@ class FrontEndPageController extends Controller
             "css_disabled_class" => " "
         ));
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:fullResults.html.twig', array(
-                    'fullResults' => $pagerfanta,
+                    'fullResults' => $currentPageResults,
                     'paginator' => $html
                 ));
     }
