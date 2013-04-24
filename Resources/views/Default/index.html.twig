@@ -1,1 +1,31 @@
-Hello {{ name }}!
+<!DOCTYPE html>
+<html>
+<head>
+    {% block title %}
+	<meta charset="UTF-8">
+	<title>Document</title>
+    {% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="{{ asset( "bundles/qwerlottofrontend/css/jquery-ui-1.10.2.custom.css") }}" media="all">
+        <link rel="stylesheet" href="{{ asset( "bundles/qwerlottofrontend/css/imageflow.packed.css") }}">
+        <link rel="stylesheet" href="{{ asset( "bundles/qwerlottofrontend/css/jquery.selectbox.css") }}" media="all">
+        <link rel="stylesheet" href="{{ asset( "bundles/qwerlottofrontend/css/style.css") }}" media="all">
+    {% endblock %}
+    {% block javascript %}
+	<script src="{{ asset( "bundles/qwerlottofrontend/js/jquery-1.9.1.js") }}"></script>
+	<script src="{{ asset( "bundles/qwerlottofrontend/js/imageflow.packed.js") }}"></script>
+        <script src="{{ asset( "bundles/qwerlottofrontend/js/imageflow.js") }}"></script>
+	<script src="{{ asset( "bundles/qwerlottofrontend/js/jquery-ui-1.10.2.custom.min.js") }}"></script>
+	<script src="{{ asset( "bundles/qwerlottofrontend/js/jquery.selectbox-0.2.js") }}"></script>
+	<script src="{{ asset( "bundles/qwerlottofrontend/js/script.js") }}"></script>
+     {% endblock %}
+</head>
+
+<body>
+    
+	<div id="header">
+		<img src="{{ asset( "bundles/qwerlottofrontend/images/header.png") }}" alt="">
+	</div>
+<iframe href="http://lotto/hello/lotto/bundle"></iframe>
+</body>
+</html>

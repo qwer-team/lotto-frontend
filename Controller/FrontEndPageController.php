@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\ArrayAdapter;
 use Pagerfanta\View\TwitterBootstrapView;
+use Symfony\Component\HttpFoundation\Request;
 
 class FrontEndPageController extends Controller
 {
@@ -16,8 +17,14 @@ class FrontEndPageController extends Controller
      * @Route("/hello/lotto/bundle")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+
+        $token = $request->get("token");
+        if($token != "") {
+            $session = $request->getSession();
+            $session->set("token", $token);
+        }
         $tr = $this->get('translator');
         $message = $tr->trans('time.parameter');
         $em = $this->getDoctrine()->getManager();
@@ -98,11 +105,11 @@ class FrontEndPageController extends Controller
 
         $view = new TwitterBootstrapView();
         $html = $view->render($pagerfanta, $routeGenerator, array(
-            "prev_message" => "&laquo;", 
-            "next_message" => "&raquo;", 
-            "css_active_class" => " ", 
+            "prev_message" => "&laquo;",
+            "next_message" => "&raquo;",
+            "css_active_class" => " ",
             "css_disabled_class" => " "
-        ));
+                ));
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:fullResults.html.twig', array(
                     'fullResults' => $currentPageResults,
                     'paginator' => $html
