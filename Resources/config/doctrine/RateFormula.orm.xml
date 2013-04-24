@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" 
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Qwer\LottoFrontendBundle\Entity\RateFormula" table="lotto_rate_formula">
+        <id name="betTypeId" type="integer" column="bet_type_id">
+            <generator strategy="NONE" />
+        </id>
+        <id name="ballsNumber" type="integer" column="balls_number" >
+            <generator strategy="NONE" />
+        </id>
+        <many-to-one field="betType" target-entity="\Qwer\LottoBundle\Entity\BetType">
+            <join-columns>
+                <join-column name="bet_type_id" referenced-column-name="id"
+                             on-update="CASCADE" on-delete="CASCADE" nullable="false"/>
+            </join-columns>
+        </many-to-one>
+        <field name="betNumber" type="integer" column="betNumber"/>
+        <field name="formula" type="string" column="formula" length="255"/>
+    </entity>
+</doctrine-mapping>

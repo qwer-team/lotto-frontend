@@ -4,13 +4,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
-    <parameters>
-        <parameter key="qwer_lotto_frontend.example.class">Qwer\LottoFrontendBundle\Example</parameter>
-    </parameters>
-    -->
     <services>
-        <service id="client.country_service" class="Qwer\LottoFrontendBundle\Service\CountryService" />
+        <service id="frontend.nametype_service" class="Qwer\LottoFrontendBundle\Service\BetTypeService" >
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+        <service id="frontend.generator_service" class="Qwer\LottoFrontendBundle\Service\GenerateRateFormulaService" >
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
     </services>
   
 </container>
