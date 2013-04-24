@@ -34,7 +34,7 @@ class FrontEndPageController extends Controller
                 ->getNearestDraws();
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:index.html.twig', array(
                     'lottery' => $lottery, 'timeExpire' => $timeExpire, 'message' => $message,
-                ));
+        ));
     }
 
     public function leftMenuAction()
@@ -44,7 +44,7 @@ class FrontEndPageController extends Controller
                 ->findAllOrderedByName();
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:leftMenu.html.twig', array(
                     'countries' => $countries,
-                ));
+        ));
     }
 
     public function nextLottoDrawsAction()
@@ -54,7 +54,7 @@ class FrontEndPageController extends Controller
                 ->findNextLottoDraws(4);
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:nextLottoDraws.html.twig', array(
                     'nextDraws' => $nextDraws,
-                ));
+        ));
     }
 
     /**
@@ -68,7 +68,7 @@ class FrontEndPageController extends Controller
                 ->getFullSchedule();
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:fullSchedule.html.twig', array(
                     'countries' => $countries,
-                ));
+        ));
     }
 
     public function lastResultsAction()
@@ -78,7 +78,7 @@ class FrontEndPageController extends Controller
                 ->getLastResults(4);
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:lastResults.html.twig', array(
                     'lastResults' => $lastResults,
-                ));
+        ));
     }
 
     /**
@@ -113,12 +113,56 @@ class FrontEndPageController extends Controller
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:fullResults.html.twig', array(
                     'fullResults' => $currentPageResults,
                     'paginator' => $html
-                ));
+        ));
     }
 
     public function routeGenerator($page)
     {
         return $this->generateUrl("fullres", array("page" => $page));
+    }
+
+    /**
+     * @Route("/changeSelectData/{count}",
+     *         name="reload_select" ,
+     *         defaults={"count" = 0})
+     * @Template()
+     */
+    public function BetTypeAction($count)
+    {
+        $name = $this->container->get("frontend.nametype_service");
+        $type = $name->getNameType($count);
+
+        return array(
+            'betType' => $type
+        );
+    }
+
+    public function FormulaBlockAction()
+    {
+        $em = $this->container->get('doctrine');
+        $rateFormules = $em->getRepository("QwerLottoFrontendBundle:RateFormula")->findAll();
+        return $this->render('QwerLottoFrontendBundle:FrontEndPage:FormulaBlock.html.twig', array(
+                    'formules' => $rateFormules,
+        ));
+    }
+
+    /**
+     * @Route("/lotto/{id}",
+     *         name="lotto_page" ,
+     *         defaults={"id" = 1})
+     * @Template()
+     */
+    public function LottoPageAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+       // $currentLotto = $em->getRepository('QwerLottoBundle:Type')->find($id);
+        //$rate = $em->getRepository('QwerLottoBundle:Type')->findOneBy($client);
+
+        return $this->render('QwerLottoFrontendBundle:FrontEndPage:LottoPage.html.twig', array(
+                    'currentLotto' => $currentLotto="",
+                    'rate' => $rate="",
+        ));
     }
 
 }

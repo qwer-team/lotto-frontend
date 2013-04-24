@@ -1,0 +1,220 @@
+
+                               {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:nextLottoDraws')) }}
+                               {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:lastResults')) }}
+                                
+						<div class="clear"></div>
+{% block lottery %}
+                    <h2>Irish Lottery</h2>
+                    <div class="ir-lotery">
+                        <div class="block">
+                            <div class="block-header">
+                                <div class="title">
+                                    <span class="radio-bt"></span>
+                                    С учетом бонусного шара
+                                </div>
+                            </div>
+                            <div class="block-content">
+                                <div class="block-overlay"></div>
+                                <ul>
+                                    <li>Choose 1 number(s), get 1 correct 6 x Stake</li>
+                                    <li>Choose 2 number(s), get 2 correct 39 x Stake</li>
+                                    <li>Choose 3 number(s), get 3 correct 330 x Stake</li>
+                                    <li>Choose 4 number(s), get 4 correct 4501 x Stake</li>
+                                    <li>Choose 5 number(s), get 5 correct 50001 x Stake</li>
+                                </ul>
+                            </div>
+                            <div class="block-footer"></div>
+                        </div>
+                        <div class="block">
+                            <div class="block-header">
+                                <div class="title">
+                                    <span class="radio-bt without_bonus"></span>
+                                    Без учета бонусного шара
+                                </div>
+                            </div>
+                            <div class="block-content">
+                                <div class="block-overlay"></div>
+                                <ul>
+                                    <li>Choose 1 number(s), get 1 correct 6 x Stake</li>
+                                    <li>Choose 2 number(s), get 2 correct 39 x Stake</li>
+                                    <li>Choose 3 number(s), get 3 correct 330 x Stake</li>
+                                    <li>Choose 4 number(s), get 4 correct 4501 x Stake</li>
+                                    <li>Choose 5 number(s), get 5 correct 50001 x Stake</li>
+                                </ul>
+                            </div>
+                            <div class="block-footer"></div>
+                        </div>
+                    </div>
+
+                    <div class="rates"><!-- rates -->
+                        <div id="lucky-dips" class="blue-block">
+                            <div class="title">
+                                <div>{% trans %}Lucky Dips{% endtrans %}</div>
+                            </div>
+                            <div class="block-content">
+                                <div class="balls-g1 balls-3" param="3"></div>
+                                <div class="balls-g1 balls-4" param="4"></div>
+                                <div class="balls-g1 balls-5" param="5"></div>
+                                <a href="#" class="green-bt" id="clear-all">
+                                    Clear all
+                                </a>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div id="select-you-balls" class="blue-block"><!-- select-you-balls -->
+                            <div class="title">
+                                <div>Select your Balls</div>
+                            </div>
+                            <div class="block-content">
+                                <div class="balls-container" id="lottery_balls"><!-- balls-container -->
+                                                                            {% for v in 1..45 %}
+                                        <a class="ball-item ball" id="ball-{{ v }}" ball = '{{ v }}'>{{ v }}</a>
+                                                                            {% endfor %}
+                                    </div><!-- .balls-container -->
+                                    <div class="clear"></div>
+                                </div>
+                            </div><!-- .select-you-balls -->
+                            <div class="clear"></div>
+                            <div id="showErrorLottery"></div>
+                            <div id="tabs">
+                                <ul>
+                                    <li><a href="#tabs-straight">Straight Bets</a></li>
+                                    <li><a href="#tabs-multiples">Multiples</a></li>
+                                </ul>
+                                <div id="tabs-straight">
+                                    <table class="straight-table lot-table" style="color: white;">
+                                        <thead>
+                                            <tr>
+                                                <td>Line</td>
+                                                <td>Selections</td>
+                                                <td>Stake</td>
+                                                <td>Posible Win</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <div id="cfLottery" class="hidden">
+                                                <div id="lottery_bet_form">
+                                                    <input name="withBonus" type="hidden" value="0"/>
+                                                </div>
+                                                <input type="hidden" name="b1" value="7">
+                                                <input type="hidden" name="b2" value="54">
+                                                <input type="hidden" name="b3" value="601">
+                                                <input type="hidden" name="b4" value="8001">
+                                                <input type="hidden" name="b5" value="150001">
+                                                <input type="hidden" name="b1b" value="12">
+                                                <input type="hidden" name="b2b" value="132">
+                                                <input type="hidden" name="b3b" value="1322">
+                                                <input type="hidden" name="b4b" value="12341">
+                                                <input type="hidden" name="b5b" value="131231">
+                                            </div>
+                      {% for i in range(0, 7) %}
+                                                <tr>
+                                                    <td>
+                                                        <span class="title4">
+                                                            <a class="basket_line"><input type="radio" name ='selectionLine' class="styled" value="{{i}}" /></a>
+                                                            <label class="radio-label">Line {{i+1}}</label>
+                                                            <em style="display: none;">
+                                                            </em>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="circle ball-item-line" param="bets_{{i}}_0" position="0"></div>
+                                                        <div class="circle ball-item-line" param="bets_{{i}}_1" position="1"></div>
+                                                        <div class="circle ball-item-line" param="bets_{{i}}_2" position="2"></div>
+                                                        <div class="circle ball-item-line" param="bets_{{i}}_3" position="3"></div>
+                                                        <div class="circle ball-item-line" param="bets_{{i}}_4" position="4"></div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form_data_lottery">
+                                                            <input type="hidden" name="bets[{{i}}][0]" id="bets_{{i}}_0" class="bets" value=""/>
+                                                            <input type="hidden" name="bets[{{i}}][1]" id="bets_{{i}}_1" class="bets" value=""/>
+                                                            <input type="hidden" name="bets[{{i}}][2]" id="bets_{{i}}_2" class="bets" value=""/>
+                                                            <input type="hidden" name="bets[{{i}}][3]" id="bets_{{i}}_3" class="bets" value=""/>
+                                                            <input type="hidden" name="bets[{{i}}][4]" id="bets_{{i}}_4" class="bets" value=""/>
+                                                            <input type="text" name="betsSums[{{i}}]" theme="{{i}}"  class="stake_line gray" readonly="true"/>
+                                                        </div>
+                                                    </td>
+                                                    <td><div><input type="text" name="posible_win" readonly="true" class="gray"/></div></td>
+                                                </tr>
+                        {% endfor %}
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div id="tabs-multiples">
+                                        <table class="multiples-select">
+                                            <thead>
+                                                <tr>
+                                                    <td>Selections</td>
+                                                    <td>Bet Type</td>
+                                                    <td>Stake</td>
+                                                    <td>Bets</td>
+                                                    <td>Total Stake</td>
+                                                    <td>Return</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                            {% for i in range(0, 7) %}
+                                                {% set class %}
+                                                    {% if i==7 %}
+                                                        class="multiplice_last"
+                                                    {% else %}
+                                                    {% endif %}
+                                                {% endset %}
+                                                <tr {{ class }}>
+                                                    <td>
+                                                        {% for j in range(0, i) %}
+                                                            <div class="circle ball-item-line" param="bets_{{i}}_{{j}}" for="{{ j }}" position="{{ j }}"></div>
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td id="td_select_{{ i }}" url="{{ path('reload_select') }}">
+                                                        <select name="" id="">
+                                                            <option value="0"></option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form_data_lottery">
+                                                          {% for j in range(0, i) %}
+                                                            <input type="hidden" name="bets[{{i}}][{{j}}]" id="bets_{{ i }}_{{j}}" class="bets" value=""/>
+                                                           {% endfor %} 
+                                                            <input type="text" name="betsSums[{{i}}]"  class="stake_line gray" readonly="true"/>
+                                                        </div>
+                                                    </td>
+                                                    <td class="count_bets">
+                                                        
+                                                    </td>
+                                                    <td>
+                                                        <div><input type="text" name="total_stake" readonly="true" class="gray total_stake"/></div>
+                                                    </td>
+                                                    <td class="bet_return">
+                                                        <div><input type="text" name="posible_win" readonly="true" class="gray posible_win"/></div>
+                                                    </td>
+                                                </tr>
+                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-bottom">
+                                    <div class="select-fl">
+                                        <label for="">For the Next</label>
+                                        <select name="" id="cntDrawLottery">
+                                            <option value="1">1 Тираж(а)</option>
+                                            <option value="2">2 Тираж(а)</option>
+                                            <option value="3">3 Тираж(а)</option>
+                                            <option value="4">4 Тираж(а)</option>
+                                            <option value="5">5 Тираж(а)</option>
+                                        </select>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="tx-fl">
+                                        <label for="">Total Stake</label>
+                                        <input type="text" name="" readonly id="totalStakeLottery" value="">
+                                    </div>
+                                    <div class="form-subm">
+                                        <input type="submit" value="Сделать ставку">
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div><!-- .rates -->
+			{% endblock %}
