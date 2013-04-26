@@ -4,9 +4,12 @@
                                 
 						<div class="clear"></div>
 {% block lottery %}
+<script>
+    var formToken = '{{ form._token.vars['value'] }}';
+ </script>
                     <h2>Irish Lottery</h2>
-                    <div class="ir-lotery">
-                        <div class="block">
+                    <div class="ir-lotery" id="withbonus">
+                        <div class="block" name="add">
                             <div class="block-header">
                                 <div class="title">
                                     <span class="radio-bt"></span>
@@ -25,7 +28,7 @@
                             </div>
                             <div class="block-footer"></div>
                         </div>
-                        <div class="block">
+                        <div class="block" name="delete">
                             <div class="block-header">
                                 <div class="title">
                                     <span class="radio-bt without_bonus"></span>
@@ -94,18 +97,18 @@
                                         <tbody>
                                             <div id="cfLottery" class="hidden">
                                                 <div id="lottery_bet_form">
-                                                    <input name="withBonus" type="hidden" value="0"/>
+                                                    <input name="withBonus" type="hidden" value="1"/>
                                                 </div>
-                                                <input type="hidden" name="b1" value="7">
-                                                <input type="hidden" name="b2" value="54">
-                                                <input type="hidden" name="b3" value="601">
-                                                <input type="hidden" name="b4" value="8001">
-                                                <input type="hidden" name="b5" value="150001">
-                                                <input type="hidden" name="b1b" value="12">
-                                                <input type="hidden" name="b2b" value="132">
-                                                <input type="hidden" name="b3b" value="1322">
-                                                <input type="hidden" name="b4b" value="12341">
-                                                <input type="hidden" name="b5b" value="131231">
+                                                <input type="hidden" name="b1" value="{{ lotto.b1 }}">
+                                                <input type="hidden" name="b2" value="{{ lotto.b2 }}">
+                                                <input type="hidden" name="b3" value="{{ lotto.b3 }}">
+                                                <input type="hidden" name="b4" value="{{ lotto.b4 }}">
+                                                <input type="hidden" name="b5" value="{{ lotto.b5 }}">
+                                                <input type="hidden" name="b1b" value="{{ lotto.b1b }}">
+                                                <input type="hidden" name="b2b" value="{{ lotto.b2b }}">
+                                                <input type="hidden" name="b3b" value="{{ lotto.b3b }}">
+                                                <input type="hidden" name="b4b" value="{{ lotto.b4b }}">
+                                                <input type="hidden" name="b5b" value="{{ lotto.b5b }}">
                                             </div>
                       {% for i in range(0, 7) %}
                                                 <tr>
@@ -118,11 +121,11 @@
                                                         </span>
                                                     </td>
                                                     <td>
-                                                        <div class="circle ball-item-line" param="bets_{{i}}_0" position="0"></div>
-                                                        <div class="circle ball-item-line" param="bets_{{i}}_1" position="1"></div>
-                                                        <div class="circle ball-item-line" param="bets_{{i}}_2" position="2"></div>
-                                                        <div class="circle ball-item-line" param="bets_{{i}}_3" position="3"></div>
-                                                        <div class="circle ball-item-line" param="bets_{{i}}_4" position="4"></div>
+                                                        <div class="circle ball-item-line" param="bets_{{i}}_0" id="bets_{{i}}_0" position="0"></div>
+                                                        <div class="circle ball-item-line" param="bets_{{i}}_1" id="bets_{{i}}_1" position="1"></div>
+                                                        <div class="circle ball-item-line" param="bets_{{i}}_2" id="bets_{{i}}_2" position="2"></div>
+                                                        <div class="circle ball-item-line" param="bets_{{i}}_3" id="bets_{{i}}_3" position="3"></div>
+                                                        <div class="circle ball-item-line" param="bets_{{i}}_4" id="bets_{{i}}_4" position="4"></div>
                                                     </td>
                                                     <td>
                                                         <div class="form_data_lottery">
@@ -131,7 +134,7 @@
                                                             <input type="hidden" name="bets[{{i}}][2]" id="bets_{{i}}_2" class="bets" value=""/>
                                                             <input type="hidden" name="bets[{{i}}][3]" id="bets_{{i}}_3" class="bets" value=""/>
                                                             <input type="hidden" name="bets[{{i}}][4]" id="bets_{{i}}_4" class="bets" value=""/>
-                                                            <input type="text" name="betsSums[{{i}}]" theme="{{i}}"  class="stake_line gray" readonly="true"/>
+                                                            <input type="text" name="betsSums[{{i}}]" id="betsSums_{{i}}" theme="{{i}}"  class="stake_line gray" readonly="true"/>
                                                         </div>
                                                     </td>
                                                     <td><div><input type="text" name="posible_win" readonly="true" class="gray"/></div></td>
@@ -164,7 +167,7 @@
                                                 <tr {{ class }}>
                                                     <td>
                                                         {% for j in range(0, i) %}
-                                                            <div class="circle ball-item-line" param="bets_{{i}}_{{j}}" for="{{ j }}" position="{{ j }}"></div>
+                                                            <div class="circle ball-item-line" param="bets_{{i}}_{{j}}" id="mult_bets_{{i}}_{{j}}" for="{{ j }}" position="{{ j }}"></div>
                                                         {% endfor %}
                                                     </td>
                                                     <td id="td_select_{{ i }}" url="{{ path('reload_select') }}">
@@ -177,7 +180,7 @@
                                                           {% for j in range(0, i) %}
                                                             <input type="hidden" name="bets[{{i}}][{{j}}]" id="bets_{{ i }}_{{j}}" class="bets" value=""/>
                                                            {% endfor %} 
-                                                            <input type="text" name="betsSums[{{i}}]"  class="stake_line gray" readonly="true"/>
+                                                            <input type="text" name="betsSums[{{i}}]" id="betsSums_mult_{{i}}" class="stake_line gray" readonly="true"/>
                                                         </div>
                                                     </td>
                                                     <td class="count_bets">
@@ -195,6 +198,8 @@
                                         </table>
                                     </div>
                                 </div>
+                            <div>
+                            </div>
                                 <div class="form-bottom">
                                     <div class="select-fl">
                                         <label for="">For the Next</label>
@@ -211,7 +216,7 @@
                                         <label for="">Total Stake</label>
                                         <input type="text" name="" readonly id="totalStakeLottery" value="">
                                     </div>
-                                    <div class="form-subm">
+                                    <div  id="lottoform" token="" class="form-subm">
                                         <input type="submit" value="Сделать ставку">
                                     </div>
                                     <div class="clear"></div>

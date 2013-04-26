@@ -9,6 +9,8 @@ use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\ArrayAdapter;
 use Pagerfanta\View\TwitterBootstrapView;
 use Symfony\Component\HttpFoundation\Request;
+use Qwer\LottoDocumentsBundle\Form\BodyType;
+use Qwer\LottoDocumentsBundle\Entity\Request\Body;
 
 class FrontEndPageController extends Controller
 {
@@ -33,7 +35,9 @@ class FrontEndPageController extends Controller
         $timeExpire = $em->getRepository('QwerLottoBundle:Draw')
                 ->getNearestDraws();
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:index.html.twig', array(
-                    'lottery' => $lottery, 'timeExpire' => $timeExpire, 'message' => $message,
+                    'lottery' => $lottery,
+                    'timeExpire' => $timeExpire,
+                    'message' => $message,
         ));
     }
 
@@ -154,14 +158,16 @@ class FrontEndPageController extends Controller
      */
     public function LottoPageAction()
     {
+        $body = new Body();
+        $form = $this->createForm(new BodyType, $body);
         $em = $this->getDoctrine()->getManager();
 
-       // $currentLotto = $em->getRepository('QwerLottoBundle:Type')->find($id);
+        $currentLotto = $em->getRepository('QwerLottoBundle:Type')->find(1);
         //$rate = $em->getRepository('QwerLottoBundle:Type')->findOneBy($client);
 
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:LottoPage.html.twig', array(
-                    'currentLotto' => $currentLotto="",
-                    'rate' => $rate="",
+                    'lotto' => $currentLotto,
+                    'form' => $form->createView(),
         ));
     }
 

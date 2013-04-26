@@ -13,13 +13,7 @@ $(document).ready(function(){
             PIE.attach(this);
         });
     }
-    $(".radio-bt").on('click', function(){
-        if(!$(this).hasClass('without_bonus')){
-            $('input[name=withBonus]').val('0');
-        }else{
-            $('input[name=withBonus]').val('1');
-        }
-    })
+    
 	$('#tirazh-1').selectbox();
 	$('.multiples-select td select').selectbox();
 	var instanceOne = new ImageFlow();
@@ -27,17 +21,25 @@ $(document).ready(function(){
 	if($('.ir-lotery').length){
 		$('.ir-lotery .block').eq(1).addClass('dis');
 		$('.ir-lotery .block .title').on('click', function(){
-			var parent = $(this).parents('.block');
-			if($(parent).hasClass('dis')){
+                        
+			var parent = $(this).parents('.block');                     
+                        if($(parent).attr("name") == "add"){
+                            $('input[name=withBonus]').val('1');
+                        }else{
+                            $('input[name=withBonus]').val('0');
+                        }
+			if($(parent).hasClass('dis')){    
 				$('.ir-lotery .block').addClass('dis');
 				$(parent).removeClass('dis');
 			}
+                        $(".stake_line").each(calculateSumma);
 			return false;
 		});
 	}
 	$('#tabs').tabs();
-        $('#tabs li').on('click', function(){
+        $('#tabs li').on('click', function(){ 
             emptyBalls();
+            $(".stake_line").each(calculateSumma);
             if($("#tabs-straight").attr('aria-hidden')=="false"){
               $("#totalStakeLottery").val("");
               $(".lot-table input[name=selectionLine]:first").trigger("click");
@@ -73,14 +75,52 @@ $(document).ready(function(){
 	});
 	$('#clear-all').on('click', function(){
 		$('.balls-g1.active').removeClass('active');
+                $('.ball-item').removeClass('active');
+                $('.ball-item').removeClass('selected');          
+                for(i=0;i<8;i++){       
+                    $("#betsSums_"+i+"").val("");
+                    $("#betsSums_mult_"+i+"").val("");
+                    $("#td_select_"+i+" select").text("");
+                    $("#td_select_"+i+"").find("a").text("")
+                    for(j=0;j<8;j++){
+                          if($("[param=bets_"+i+"_"+j+"]").children().length > 0){
+                                
+                                $("[param=bets_"+i+"_"+j+"]").removeClass("active");
+                                $("[param=bets_"+i+"_"+j+"]").find('a').remove();
+                          }
+                    }
+                }
+                $(".stake_line").each(calculateSumma);
 		return false;
 	});
+        function ebota(obj, plus){
+            hideMessage();
+          if($("#tabs-straight").attr('aria-hidden')=="false"){
+                straighrBet(obj);
+              }
+          else{
+              BetTypeSelect(plus);             
+              makeMultiples(obj);           
+          }
+          $(".stake_line").each(calculateSumma);
+        }
+        /*$(".block-content #lottery_balls .ball").on("click", function(){
+            ebota($(this));
+      });*/
+      
 	$('.ball-item').on('click', function(){
-		if($(this).hasClass('active')){
-			$(this).removeClass('active');
-		}else{
-			$(this).addClass('active');
+            if($(this).hasClass('active')){
+                   plus = -1;
+		}else {
+                    plus = 1;     
 		}
+                ebota($(this), plus);
+		if($(this).hasClass('active')){
+                    $(this).removeClass('active');   
+		}else if($(this).hasClass('selected')){
+                    $(this).addClass('active');       
+		}
+                
 		return false;
 	});
         
@@ -128,29 +168,23 @@ $(document).ready(function(){
               par_obj.find(".circle:empty").each(function(){
                         par_obj.find("#"+$(this).attr("param")).val("");
           });
+          
       });    
         
-         $(".block-content #lottery_balls .ball").on("click", function(){
-             hideMessage();
-          if($("#tabs-straight").attr('aria-hidden')=="false"){
-                straighrBet($(this));
-              }
-          else{
-              BetTypeSelect();
-              makeMultiples($(this)); 
-          }
-      });
+         
       $(".lot-table .ball-item-line").on("click", function(){
           var number = $(this).text();
           var line = $(this).closest("tr").find("input[name=selectionLine]:checked").val();
           if(line){
                 $("#lottery_balls .ball").each(function(){
-                   if($(this).text() == number) $(this).trigger("click");
+                   if($(this).text() == number)  ebota($(this));//$(this).trigger("click");
                 });
+                
           }
           else{
               return;
           }
+          
       });
       $(".multiples-select .ball-item-line").on("click", function(){
           var number = $(this).text();
@@ -170,6 +204,7 @@ $(document).ready(function(){
           var balls = [];
           var table_balls = $(".block-content #lottery_balls");
           table_balls.find("a.active").each(function(){
+              
               $(this).removeClass("active");
               $(this).removeClass("selected");
           });
@@ -178,7 +213,7 @@ $(document).ready(function(){
           });
           table_balls.find("a.ball").each(function(){
               if($.inArray($(this).text(), balls) >= 0)
-                  $(this).addClass("active");
+                  $(this).addClass("active selected");
           });
       });
      $("#cntDrawLottery").on("change", function(){
@@ -188,14 +223,71 @@ $(document).ready(function(){
           else{
           }
       });
-        $(".stake_line").on("keyup", function(){
-          if($("#tabs-straight").attr('aria-hidden')=="false"){
+        $(".stake_line").on("keyup", calculateSumma );        
+        
+        $("#lottoform").on("click", function(){
+          
+          var rawBets = {};
+          var betType;
+          var summa;
+          var attrName;
+          var withBonus;
+          var drawNum;
+          var body = {};
+          for(i=0;i<8;i++){
+              var arr = {};
+              for(j=0;j<8;j++){
+                  if($("#mult_bets_"+i+"_"+j+"").children().length > 0){
+                      arr[j] = $("#mult_bets_"+i+"_"+j+"").find('a').text();
+                  }
+              }
+              betType = $("#td_select_"+i+"").find('select').val();
+              summa = $("#betsSums_mult_"+i+"").val();
+              if(betType && summa){
+                rawBets[i] = {"balls" :arr, "summa" : summa, "betType" : betType};  
+              } 
+          }
+          drawNum = $("#cntDrawLottery option:selected").val();
+          attrName = $("#withbonus").find(".dis").attr("name");  
+          withBonus = attrName == "add" ? 0 : 1;
+          
+          body["_token"] = formToken;
+          body["tokenStr"] = token;
+          body["lottoTime"] = 1;
+          body["withBonus"] = withBonus;
+          body["drawNum"] = drawNum;
+          body["rawBets"] = rawBets;
+          $.ajax({
+                                type: "POST",
+                                url: "http://lotto/lottodoc/betreq",
+                                data: {
+                                    body : body
+                                },
+                                dataType: "html",
+                                success: function(data){      
+                                    
+                                }
+                                });
+      });
+
+        
+        
+      
+});
+
+
+
+
+
+function calculateSumma(){ 
+          var attr = $(this).attr('theme');
+          if($("#tabs-straight").attr('aria-hidden')== "false" && typeof attr !== 'undefined' && attr !== false){
           var tableLines = $(this).parents("table");
           var cntDraw = parseInt($("#cntDrawLottery option:selected").val());
           
           var sum = 0; 
           var re = new RegExp("[0-9]{1}[\\d]*[\.]{0,1}[\\d]{0,2}");
-          var newVal = re.exec($(this).val());
+          var newVal = re.exec($(this).val());  
           if ($(this).val() != newVal ) 
               $(this).val(newVal);
           tableLines.find(".stake_line").each(function(){
@@ -208,12 +300,12 @@ $(document).ready(function(){
           $("#totalStakeLottery").val("");
           $("#totalStakeLottery").val(sum.toFixed(2));
           getPossibleLotteryWinSumm($(this).closest("tr"));
+         
           }
               else{
                     count($(this));
               }
-      });
-});
+      }
 function getPossibleLotteryWinSumm(obj){
     var cf = $("#cfLottery");
     var sum = obj.find(".stake_line").val();
@@ -251,6 +343,7 @@ function makeMultiples(obj){
                     if($(this).text() == obj.html()){
                         $(this).text("");
                         par_obj.find("#"+$(this).parent().attr("param")).val("");
+                       
                         par_obj.find("div[param="+$(this).parent().attr("param")+"]").removeClass("active");
                         
                         $(this).remove();
@@ -271,7 +364,8 @@ function makeMultiples(obj){
    }
     if (par_obj.find(".circle a").length > 1) par_obj.find(".stake_line").attr("readonly", false).removeClass("gray");
     if (cntBalls == 0) {
-                obj.removeClass("selected");  
+                obj.removeClass("selected");
+                
                 obj.removeClass("active");
                     $("#showErrorLottery").empty().html("<p>Нет свободного места в ячейке!</p>").show(); 
                     return;}
@@ -288,11 +382,13 @@ function straighrBet(obj){
           var par_obj = line.closest("tr");
           var cntBalls = par_obj.find(".circle:empty").length;
           if (obj.hasClass("selected")){
-                obj.removeClass("selected");  
+                obj.removeClass("selected");
+               
                 obj.removeClass("active");  
                 par_obj.find(".circle a").each(function(){
                     if($(this).text() == obj.html()){
                         par_obj.find("#"+$(this).parent().attr("param")).val("");
+                        
                         par_obj.find("div[param="+$(this).parent().attr("param")+"]").removeClass("active");
                         movementBalls(par_obj.find("div[param="+$(this).parent().attr("param")+"]"));
                         $(this).remove();
@@ -302,7 +398,8 @@ function straighrBet(obj){
           $(".lot-table .stake_line[theme="+line_val+"]").trigger("keyup");
           }else{
                 if (cntBalls == 0) {
-                obj.removeClass("selected");  
+                obj.removeClass("selected"); 
+                
                 obj.removeClass("active");
                     $("#showErrorLottery").empty().html("<p>Нет свободного места в ячейке!</p>").show(); 
                     return;}
@@ -319,11 +416,10 @@ function straighrBet(obj){
           else if (cntBalls == 4) par_obj.find(".stake_line").attr("readonly", false).removeClass("gray");
 }
 function movementBalls(obj){
-
+    
     if($("#tabs-straight").attr('aria-hidden')=="false"){
     var line = $(".lot-table input[name=selectionLine]:checked");
     var par_obj = line.closest("tr");
-    
     par_obj.find(".circle a").each(function(){
                     if(obj.attr("param") < $(this).parent().attr("param")){
                        var some = $(this).parent().attr("param");
@@ -336,6 +432,7 @@ function movementBalls(obj){
                         $(par_obj.find("div[param="+next+"]")).html(par_obj.find("div[param="+prev+"]").html());
                         $(par_obj.find("div[param="+next+"]")).addClass("active");
                         $(par_obj.find("div[param="+prev+"]")).html("");
+                        
                         $(par_obj.find("div[param="+prev+"]")).removeClass("active");
                         par_obj.find("#"+next).val($(this).text());
                         par_obj.find("#"+prev).val("");
@@ -356,6 +453,7 @@ function movementBalls(obj){
                         $(par_obj.find("div[param="+next+"]")).html(par_obj.find("div[param="+prev+"]").html());
                         $(par_obj.find("div[param="+next+"]")).addClass("active");
                         $(par_obj.find("div[param="+prev+"]")).html("");
+                       
                         $(par_obj.find("div[param="+prev+"]")).removeClass("active");
                         par_obj.find("#"+next).val($(this).text());
                         par_obj.find("#"+prev).val("");
@@ -366,6 +464,7 @@ function movementBalls(obj){
                       });
                     par_obj.find(".circle[position="+previous+"]").each(function(){
                         $(this).html("");
+                       
                         $(this).removeClass("active");
                         par_obj.find("#"+$(this).attr("param")).val("");
                       });
@@ -376,6 +475,7 @@ function movementBalls(obj){
 function emptyBalls(){
      var table_balls = $(".block-content #lottery_balls");
           table_balls.find("a.active").each(function(){
+            
               $(this).removeClass("active");
               $(this).removeClass("selected");
           });
@@ -383,25 +483,31 @@ function emptyBalls(){
 function hideMessage(){
     $("#showErrorLottery").empty(); 
 }
-function BetTypeSelect(){  
+function BetTypeSelect(plus){  
     $(".multiples-select tbody tr").each(function(){
                         var select = $(this).find("td select")
-                        var link = select.parent('td').attr('url');
+                        var link = select.parent('td').attr('url');   
                         var count = $(this).find(".circle a").length;
                         var total = $(this).find(".circle").length;
-                        if(count==total){}
-                        else{
-                            var count = count+1;
+                        var max = $(".multiples-select tbody tr:last .circle a").length;                 
+                        if(count >= max){
+                            count = count+plus;
+                        }     
+                        if(count <= total){
                                 $.ajax({
                                 type: "POST",
                                 url: link+"/"+count,
                                 dataType: "html",
-                                success: function(data){
+                                success: function(data){      
                                     select.parent('td').html(data);
+                                    $(".stake_line").each(calculateSumma);
+                                    $('.multiples-select td select').selectbox();
                                 }
                                 });
+                                
                         }
                 });
+                
 }
 function count(obj){
     var tr = obj.parents("tr");
@@ -424,10 +530,16 @@ function count(obj){
                 var name = withBonus == 1 ? "b"+i+"b" : "b"+i;
               var formula = formula.replace('%'+i+'%',$("input[name="+name+"]").val());
             }
-            
-            tr.find('.count_bets').text(countBet);
-            tr.find('.total_stake').val(countBet*summa);
-            tr.find('.posible_win').val(parseFloat(parseInt(eval(formula))*summa).toFixed(2));
+           
+            var count_bets = (!isNaN(countBet) ) ? 
+                      countBet : "";
+            var total_stake = (!isNaN(countBet*summa) ) ? 
+                      countBet*summa : "";
+            var posible_win = (!isNaN(parseFloat(parseInt(eval(formula))*summa).toFixed(2)) ) ? 
+                      parseFloat(parseInt(eval(formula))*summa).toFixed(2) : "";
+            tr.find('.count_bets').text(count_bets);
+            tr.find('.total_stake').val(total_stake);
+            tr.find('.posible_win').val(posible_win);
         table.find(".total_stake").each(function(){
              if ($(this).val() > 0){
                     sum += parseFloat($(this).val());
@@ -437,5 +549,7 @@ function count(obj){
           sum = sum * cntDraw ;
           $("#totalStakeLottery").val("");
           $("#totalStakeLottery").val(sum.toFixed(2));
+         
     }
+    
 }
