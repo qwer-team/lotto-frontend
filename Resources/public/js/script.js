@@ -216,65 +216,133 @@ $(document).ready(function(){
                   $(this).addClass("active selected");
           });
       });
-     $("#cntDrawLottery").on("change", function(){
-          if($("#tabs-straight").attr('aria-hidden')=="false"){
-                $(".lot-table .stake_line:first").trigger("keyup");
-              }
-          else{
-          }
+     $("#cntDrawLottery").on("click", function(){
+           $(".lot-table .stake_line:first").trigger("keyup");
       });
         $(".stake_line").on("keyup", calculateSumma );        
         
         $("#lottoform").on("click", function(){
-          
-          var rawBets = {};
-          var betType;
-          var summa;
-          var attrName;
-          var withBonus;
-          var drawNum;
-          var body = {};
-          for(i=0;i<8;i++){
-              var arr = {};
-              for(j=0;j<8;j++){
-                  if($("#mult_bets_"+i+"_"+j+"").children().length > 0){
-                      arr[j] = $("#mult_bets_"+i+"_"+j+"").find('a').text();
-                  }
-              }
-              betType = $("#td_select_"+i+"").find('select').val();
-              summa = $("#betsSums_mult_"+i+"").val();
-              if(betType && summa){
-                rawBets[i] = {"balls" :arr, "summa" : summa, "betType" : betType};  
-              } 
+          if(token == '') { alert("Зарегистрируйся"); return;}  
+          if($("#tabs-straight").attr('aria-hidden')!="false"){
+              makeBats("mult_");
+          } else {
+              makeBats("");
           }
-          drawNum = $("#cntDrawLottery option:selected").val();
-          attrName = $("#withbonus").find(".dis").attr("name");  
-          withBonus = attrName == "add" ? 0 : 1;
           
-          body["_token"] = formToken;
-          body["tokenStr"] = token;
-          body["lottoTime"] = 1;
-          body["withBonus"] = withBonus;
-          body["drawNum"] = drawNum;
-          body["rawBets"] = rawBets;
-          $.ajax({
-                                type: "POST",
-                                url: "http://lotto/lottodoc/betreq",
-                                data: {
-                                    body : body
-                                },
-                                dataType: "html",
-                                success: function(data){      
-                                    
-                                }
-                                });
       });
-
-        
-        
       
 });
 
+/*function makeStraightBets(){
+     var rawBets = {};
+    var betType;
+    var summa;
+    var attrName;
+    var withBonus;
+    var drawNum;
+    var body = {};
+    for(i=0;i<8;i++){
+        var arr = {};
+        for(j=0;j<5;j++){
+            if($("#bets_"+i+"_"+j+"").children().length > 0){
+                arr[j] = $("#bets_"+i+"_"+j+"").find('a').text();
+            }
+        }
+        betType = 2;
+        summa = $("#betsSums_"+i+"").val();
+        if(betType && summa){
+            rawBets[i] = {
+                "balls" :arr, 
+                "summa" : summa, 
+                "betType" : betType
+            };  
+        } 
+    }
+    drawNum = $("#cntDrawLottery option:selected").val();
+    attrName = $("#withbonus").find(".dis").attr("name");  
+    withBonus = attrName == "add" ? 0 : 1;
+          
+    body["_token"] = formToken;
+    body["tokenStr"] = token;
+    body["lottoTime"] = 1;
+    body["withBonus"] = withBonus;
+    body["drawNum"] = drawNum;
+    body["rawBets"] = rawBets;
+    $.ajax({
+        type: "POST",
+        url: "http://lotto/lottodoc/betreq",
+        data: {
+            body : body
+        },
+        dataType: "json",
+        success: function(data){      
+            if(data.result == 'fail'){
+                error = data.errorMessage;
+                $("#showErrorLottery").empty().html(error).show(); 
+            } else {
+                alert("Ставка прошла");
+                $('#clear-all').trigger("click");
+            }
+        }
+    });
+}*/
+function makeBats(mult){
+    var rawBets = {};
+    var betType;
+    var summa;
+    var attrName;
+    var withBonus;
+    var drawNum;
+    var body = {};
+    
+    for(i=0;i<8;i++){
+        var arr = {};
+        for(j=0;j<8;j++){
+            console.log("#"+mult+"bets_"+i+"_"+j+"");
+            if($("#"+mult+"bets_"+i+"_"+j+"").children().length > 0){
+                arr[j] = $("#"+mult+"bets_"+i+"_"+j+"").find('a').text();
+            }           
+        }
+        if(mult == "mult_"){
+            betType = $("#td_select_"+i+"").find('select').val();
+        } else betType = 2;
+        summa = $("#betsSums_"+mult+""+i+"").val();
+        if(betType && summa){
+            rawBets[i] = {
+                "balls" :arr, 
+                "summa" : summa, 
+                "betType" : betType
+            };  
+        } 
+    }
+    drawNum = $("#cntDrawLottery option:selected").val();
+    attrName = $("#withbonus").find(".dis").attr("name");  
+    withBonus = attrName == "add" ? 0 : 1;
+          
+    body["_token"] = formToken;
+    body["tokenStr"] = token;
+    body["lottoTime"] = 1;
+    body["withBonus"] = withBonus;
+    body["drawNum"] = drawNum;
+    body["rawBets"] = rawBets;
+    $.ajax({
+        type: "POST",
+        url: "http://lotto/lottodoc/betreq",
+        data: {
+            body : body
+        },
+        dataType: "json",
+        success: function(data){      
+            if(data.result == 'fail'){
+                error = data.errorMessage;
+                $("#showErrorLottery").empty().html(error).show(); 
+            } else {
+                alert("Ставка прошла");
+                $('#clear-all').trigger("click");
+            }
+        }
+    });
+}
 
 
 

@@ -15,17 +15,29 @@ use Qwer\LottoFrontendBundle\Form\Country\CountryType;
 class CountryController extends Controller
 {
     /**
+     *
+     * @var \Doctrine\ORM\EntityRepository 
+     */
+    private $repo;
+    /**
      * Lists all Country entities.
      *
      */
-    public function indexAction()
+    public function indexAction($page)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('QwerLottoFrontendBundle:Country')->findAll();
+        $this->repo = $em->getRepository('QwerLottoFrontendBundle:Country');
+        
+        $qb = $this->repo->createQueryBuilder("country");
+        $paginator = $this->get("qwer.pagination");
+        $url = $this->generateUrl("country");
+        $entities = $paginator->getIterator($qb, $url, $page, 10);
+        $html = $paginator->getHtml(); 
 
         return $this->render('QwerLottoFrontendBundle:Country\Country:index.html.twig', array(
             'entities' => $entities,
+            'pagination' => $html,
         ));
     }
 

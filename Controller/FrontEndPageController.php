@@ -16,17 +16,17 @@ class FrontEndPageController extends Controller
 {
 
     /**
-     * @Route("/hello/lotto/bundle")
+     * @Route("/{id}", name="index_lotto",
+     *         requirements={"id" = "\d+"},
+     *         defaults={"id" = "1"})
      * @Template()
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $id = 1)
     {
 
         $token = $request->get("token");
-        if($token != "") {
-            $session = $request->getSession();
-            $session->set("token", $token);
-        }
+        $session = $request->getSession();
+        $session->set("token", $token);
         $tr = $this->get('translator');
         $message = $tr->trans('time.parameter');
         $em = $this->getDoctrine()->getManager();
@@ -38,6 +38,7 @@ class FrontEndPageController extends Controller
                     'lottery' => $lottery,
                     'timeExpire' => $timeExpire,
                     'message' => $message,
+                    'id' => $id,
         ));
     }
 
@@ -113,7 +114,7 @@ class FrontEndPageController extends Controller
             "next_message" => "&raquo;",
             "css_active_class" => " ",
             "css_disabled_class" => " "
-                ));
+        ));
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:fullResults.html.twig', array(
                     'fullResults' => $currentPageResults,
                     'paginator' => $html
@@ -156,13 +157,13 @@ class FrontEndPageController extends Controller
      *         defaults={"id" = 1})
      * @Template()
      */
-    public function LottoPageAction()
+    public function LottoPageAction($id = 1)
     {
         $body = new Body();
         $form = $this->createForm(new BodyType, $body);
         $em = $this->getDoctrine()->getManager();
 
-        $currentLotto = $em->getRepository('QwerLottoBundle:Type')->find(1);
+        $currentLotto = $em->getRepository('QwerLottoBundle:Type')->find($id);
         //$rate = $em->getRepository('QwerLottoBundle:Type')->findOneBy($client);
 
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:LottoPage.html.twig', array(

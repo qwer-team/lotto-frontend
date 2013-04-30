@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>Country</h1>
 
-    <table class="record_properties">
+    <table class="record_properties table table-bordered table-hover table-striped">
         <tbody>
             <tr>
                 <th>Name</th>
@@ -23,19 +23,19 @@
         <ul class="record_actions">
     <li>
         <a href="{{ path('country') }}">
-            Back to the list
+           {% trans%}Back to the list{%endtrans%}
         </a>
     </li>
     <li>
         <a href="{{ path('country_edit', { 'id': entity.id }) }}">
-            Edit
+            {% trans%}Edit{%endtrans%}
         </a>
     </li>
     <li>
         <form action="{{ path('country_delete', { 'id': entity.id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button type="submit" class="btn btn-primary" data-loading-text="Loading...">{% trans%}Delete{%endtrans%}</button>
         </form>
     </li>
 </ul>

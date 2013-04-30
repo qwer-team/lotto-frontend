@@ -62,7 +62,7 @@
                                         </div>
                                 </div>
                                {% endblock %}
-                              {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:LottoPage')) }}
+                              {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:LottoPage', { 'id': id })) }}
                         </div>
                     </div>
 {% endblock %}

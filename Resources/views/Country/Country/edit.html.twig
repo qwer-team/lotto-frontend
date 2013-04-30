@@ -7,21 +7,21 @@
         <input type="hidden" name="_method" value="PUT" />
         {{ form_widget(edit_form) }}
         <p>
-            <button type="submit">Edit</button>
+            <button type="submit" class="btn btn-primary" data-loading-text="Loading...">{% trans%}Edit{%endtrans%}</button>
         </p>
     </form>
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('country') }}">
-            Back to the list
+            {% trans%}Back to the list{%endtrans%}
         </a>
     </li>
     <li>
         <form action="{{ path('country_delete', { 'id': entity.id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+           <button type="submit" class="btn btn-primary" data-loading-text="Loading...">{% trans%}Delete{%endtrans%}</button>
         </form>
     </li>
 </ul>

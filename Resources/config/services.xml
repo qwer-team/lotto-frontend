@@ -15,6 +15,11 @@
                 <argument type="service" id="service_container"/>
             </call>
         </service>
+        <service id="qwer.pagination" class="Qwer\LottoBundle\Service\Pagination">
+            <call method="setTranslator">
+                <argument type="service" id="translator"/>
+            </call>
+        </service>
     </services>
   
 </container>

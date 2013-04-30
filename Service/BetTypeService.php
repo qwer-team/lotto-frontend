@@ -20,7 +20,7 @@ class BetTypeService extends ContainerAware
         $currentType = "";
         $betType = $this->typeRepo->findAll();
         foreach ($betType as $type) {
-            if (in_array($count, $type->getAvailableBallsCount())) {
+            if (in_array($count, $type->getAvailableBallsCount()) && $type->getCode() != "straight") {
                 $currentType[] = $type;
             }
         }

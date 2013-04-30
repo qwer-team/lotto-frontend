@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>Country list</h1>
 
-    <table class="records_list">
+    <table class="records_list table table table-bordered table-hover table-striped">
         <thead>
             <tr>
                 <th>Name</th>
@@ -15,16 +15,16 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('country_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+                <td><a href="{{ path('type', { 'country': entity.id }) }}">{{ entity.name }}</a></td>
                 <td>{{ entity.imageName }}</td>
                 <td>{{ entity.id }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('country_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('country_show', { 'id': entity.id }) }}">{% trans%}show{%endtrans%}</a>
                     </li>
                     <li>
-                        <a href="{{ path('country_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('country_edit', { 'id': entity.id }) }}">{% trans%}edit{%endtrans%}</a>
                     </li>
                 </ul>
                 </td>
@@ -32,11 +32,11 @@
         {% endfor %}
         </tbody>
     </table>
-
+ {{pagination|raw}}
         <ul>
         <li>
             <a href="{{ path('country_new') }}">
-                Create a new entry
+                {% trans%}Create a new entry{%endtrans%}
             </a>
         </li>
     </ul>

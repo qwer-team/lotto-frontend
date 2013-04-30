@@ -87,7 +87,7 @@
 									<ul>
                                                                         {% for type in country.lottoTypes %}
 										<li>
-											<a href="#"><span>{{ type.title }}</span></a>
+											<a href="/{{ type.id }}?token={{ app.request.session.get('token') }}"><span>{{ type.title }}</span></a>
 										</li>
                                                                          {% endfor %}
 									</ul>
