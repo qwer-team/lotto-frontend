@@ -337,7 +337,10 @@
 				$("#sbSelector_" + inst.uid).text(text);
 			}
 			value = value.replace(/\'/g, "\\'");
+                        $(target).find("option").removeAttr("selected");
 			$(target).find("option[value='" + value + "']").attr("selected", TRUE);
+                        $(target).prev().attr("value", value);
+                        
 			if (inst && onChange) {
 				onChange.apply((inst.input ? inst.input[0] : null), [value, inst]);
 			} else if (inst && inst.input) {
