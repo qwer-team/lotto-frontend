@@ -21,7 +21,7 @@
         <form action="{{ path('country_delete', { 'id': entity.id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
-           <button type="submit" class="btn btn-primary" data-loading-text="Loading...">{% trans%}Delete{%endtrans%}</button>
+           <button type="submit" class="btn btn-primary btn-danger" data-loading-text="Loading...">{% trans%}Delete{%endtrans%}</button>
         </form>
     </li>
 </ul>
