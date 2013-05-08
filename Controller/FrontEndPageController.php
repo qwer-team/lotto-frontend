@@ -21,7 +21,7 @@ class FrontEndPageController extends Controller
      *         defaults={"id" = "1"})
      * @Template()
      */
-    public function indexAction(Request $request, $id = 1)
+    public function indexAction(Request $request ,$id = 1)
     {
 
         $token = $request->get("token");

@@ -840,7 +840,7 @@ ul.serv-list {
 	background: url("../images/solid.png") repeat-x 0 -47px ;
 	color: #FFF;
 }
-i.CAN, i.DEU, i.FRA, i.ITA, i.USA, i.UKR, i.GBR, i.TUR, i.ESP, i.RUS, i.HUN, i.HKG, i.GRC, i.EUS, i.BRA, i.BLR, i.AUS, i.IRL{
+i.canada, i.germaby, i.france, i.italy, i.usa{
 	display: block;
 	position: absolute;
 	width: 18px;
@@ -849,59 +849,20 @@ i.CAN, i.DEU, i.FRA, i.ITA, i.USA, i.UKR, i.GBR, i.TUR, i.ESP, i.RUS, i.HUN, i.H
 	left: -25px;
 	background: url(../images/flags.png);
 }
-i.CAN{
+i.canada{
 	background-position: 0 -234px;
 }
-i.DEU{
+i.germaby{
 	background-position: 0 -180px;
 }
-i.FRA{
+i.france{
 	background-position: 0 -198px;
 }
-i.ITA{
+i.italy{
 	background-position: 0 -108px;
 }
-i.USA{
+i.usa{
 	background-position: 0 0;
-}
-i.UKR{
-	background-position: 0 -18px;
-}
-i.GBR{
-	background-position: 0 -36px;
-}
-i.TUR{
-	background-position: 0 -54px;
-}
-i.ESP{
-	background-position: 0 -72px;
-}
-i.RUS{
-	background-position: 0 -90px;
-}
-i.HUN{
-	background-position: 0 -126px;
-}
-i.HKG{
-	background-position: 0 -144px;
-}
-i.GRC{
-	background-position: 0 -162px;
-}
-i.EUS{
-	background-position: 0 -216px;
-}
-i.BRA{
-	background-position: 0 -252px;
-}
-i.BLR{
-	background-position: 0 -270px;
-}
-i.AUS{
-	background-position: 0 -288px;
-}
-i.IRL{
-	background-position: 0 -306px;
 }
 .multiples-select thead td{
 	text-align: center;
