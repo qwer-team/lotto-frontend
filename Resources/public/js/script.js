@@ -13,7 +13,7 @@ $(document).ready(function(){
             PIE.attach(this);
         });
     }
-    
+      
 	$('#tirazh-1').selectbox();
 	$('.multiples-select td select').selectbox();
 	var instanceOne = new ImageFlow();
@@ -38,12 +38,14 @@ $(document).ready(function(){
 	}
 	$('#tabs').tabs();
         $('#tabs-multiples').on('change', '.multiples-select td select', function(){
+            
             var parent = $(this).parents("tr");
             
             var obj = parent.find(".stake_line");
             count(obj);
         });
         $('#tabs li').on('click', function(){ 
+            clearAll();
             emptyBalls();
             //$(".stake_line").each(calculateSumma);
             if($("#tabs-straight").attr('aria-hidden')=="false"){
@@ -74,15 +76,17 @@ $(document).ready(function(){
             
         });
         function clearAll(){
-            
 		$('.balls-g1.active').removeClass('active');
                 $('.ball-item').removeClass('active');
-                $('.ball-item').removeClass('selected');          
+                $('.ball-item').removeClass('selected');
                 for(i=0;i<8;i++){       
                     $("#betsSums_"+i+"").val("");
                     $("#betsSums_mult_"+i+"").val("");
                     $("#td_select_"+i+" select").text("");
-                    $("#td_select_"+i+"").find("a").text("")
+                    $("#td_select_"+i+"").find("a").text("");
+                    $("#tabs-multiples").find("[name=total_stake]").val("");
+                    $("#tabs-multiples").find(".count_bets").text("");
+                    $("#tabs-multiples").find("[name=posible_win]").val("");
                     for(j=0;j<8;j++){
                           if($("[param=bets_"+i+"_"+j+"]").children().length > 0){
                                 
@@ -91,6 +95,7 @@ $(document).ready(function(){
                           }
                     }
                 }
+                $(".lot-table .stake_line").trigger("keyup");
                 
                 //$(".stake_line").each(calculateSumma);
 		return false;
@@ -163,7 +168,6 @@ $(document).ready(function(){
 		return false;
 	});
        $(".balls-g1").on("click",function(){
-           
           hideMessage();
           var arr = [];
           var cnt = $(this).attr("param");
@@ -245,10 +249,26 @@ $(document).ready(function(){
           });
       });
      $("#cntDrawLottery").on("click", function(){
-           $(".lot-table .stake_line:first").trigger("keyup");
+           $(".lot-table .stake_line").trigger("keyup");
       });
-        $(".stake_line").on("keyup", calculateSumma );        
-        
+        $(".stake_line").on("keyup", calculateSumma ); 
+        $(".stake_line").keydown(function(event) {
+            // Allow: backspace, delete, tab, escape, and enter
+            if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || 
+                 // Allow: Ctrl+A
+                (event.keyCode == 65 && event.ctrlKey === true) || 
+                 // Allow: home, end, left, right
+                (event.keyCode >= 35 && event.keyCode <= 39)) {
+                     // let it happen, don't do anything
+                     return;
+            }
+            else {
+                // Ensure that it is a number and stop the keypress
+                if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105) && event.keyCode!=190) {
+                    event.preventDefault(); 
+                }   
+            }
+        }); 
         $("#lottoform").on("click", function(){
           if(token == '') { alert("Зарегистрируйся"); return;}  
           if($("#tabs-straight").attr('aria-hidden')!="false"){
@@ -273,14 +293,13 @@ function makeBats(mult){
     for(i=0;i<8;i++){
         var arr = {};
         for(j=0;j<8;j++){
-            console.log("#"+mult+"bets_"+i+"_"+j+"");
             if($("#"+mult+"bets_"+i+"_"+j+"").children().length > 0){
                 arr[j] = $("#"+mult+"bets_"+i+"_"+j+"").find('a').text();
             }           
         }
         if(mult == "mult_"){
             betType = $("#td_select_"+i+"").find('select').val();
-        } else betType = 2;
+        } else betType = 4;
         summa = $("#betsSums_"+mult+""+i+"").val();
         if(betType && summa){
             rawBets[i] = {
@@ -296,13 +315,13 @@ function makeBats(mult){
           
     body["_token"] = formToken;
     body["tokenStr"] = token;
-    body["lottoTime"] = 1;
+    body["lottoType"] = lottoTypeId;
     body["withBonus"] = withBonus;
     body["drawNum"] = drawNum;
     body["rawBets"] = rawBets;
     $.ajax({
         type: "POST",
-        url: "http://lotto/lottodoc/betreq",
+        url: "/lottodoc/betreq",
         data: {
             body : body
         },
@@ -545,8 +564,7 @@ function BetTypeSelect(plus){
                                 type: "POST",
                                 url: link+"/"+count,
                                 dataType: "html",
-                                success: function(data){ 
-                                    console.log("ajax");
+                                success: function(data){
                                     select.parent('td').html(data);
                                     $('.multiples-select td select').selectbox();
                                     
@@ -585,9 +603,9 @@ function count(obj){
                 var name = withBonus == 1 ? "b"+i+"b" : "b"+i;
               var formula = formula.replace('%'+i+'%',$("input[name="+name+"]").val());
             }
-           
-            var count_bets = (!isNaN(countBet) ) ? 
+            var count_bets = (!isNaN(countBet) && !isNaN(summa) ) ? 
                       countBet : "";
+            
             var total_stake = (!isNaN(countBet*summa) ) ? 
                       countBet*summa : "";
             var posible_win = (!isNaN(parseFloat(parseInt(eval(formula))*summa).toFixed(2)) ) ? 

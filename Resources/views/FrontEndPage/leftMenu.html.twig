@@ -1,48 +1,48 @@
 {% block menu %}
 			<div class="left-sidebar"><!-- left-sidebar -->
 				<div class="serv-bl">
-					<h2><span>Сервисы</span></h2>
+					<h2><span>{{"left_menu.services"|trans}}</span></h2>
 					<ul class="serv-list">
-						<li class="">
+						<!--<li class="">
 							<a href="#" title="О нас">
-								<span>О нас</span>
+								<span>{{"left_menu.about"|trans}}</span>
 							</a>
 						</li>
 						<li class="sub">
 							<a href="#" title="Правила">
-								<span>Правила</span>
+								<span>{{"left_menu.rules"|trans}}</span>
 							</a>
 							<ul>
 								<li class="">
 									<a href="#" title="Правила приема ставок">
-										<span>Правила приема ставок</span>
+										<span>{{"left_menu.rules betting"|trans}}</span>
 									</a>
 								</li>
 							</ul>
 						</li>
 						<li class="sub">
 							<a href="#" title="Помощь">
-								<span>Помощь</span>
+								<span>{{"left_menu.help"|trans}}</span>
 							</a>
 							<ul>
 								<li class="">
 									<a href="#" title="Регистрация">
-										<span>Регистрация</span>
+										<span>{{"left_menu.registration"|trans}}</span>
 									</a>
 								</li>
 								<li class="">
 									<a href="#)" title="Счет">
-										<span>Счет</span>
+										<span>{{"left_menu.score"|trans}}</span>
 									</a>
 								</li>
 								<li class="">
 									<a href="#" title="Безопасность">
-										<span>Безопасность</span>
+										<span>{{"left_menu.safety"|trans}}</span>
 									</a>
 								</li>
 								<li class="">
 									<a href="#" title="Платежи">
-										<span>Платежи</span>
+										<span>{{"left_menu.payments"|trans}}</span>
 									</a>
 								</li>
 								<li class="">
@@ -52,42 +52,42 @@
 								</li>
 								<li class="">
 									<a href="#" title="Калькулятор систем">
-										<span>Калькулятор систем</span>
+										<span>{{"left_menu.calculator systems"|trans}}</span>
 									</a>
 								</li>
 							</ul>
 						</li>
 						<li class="sub">
 							<a href="#" title="Методы платежей">
-								<span>Методы платежей</span>
+								<span>{{"left_menu.methods of payment"|trans}}</span>
 							</a>
 							<ul>
 								<li class="">
 									<a href="#" title="Депозиты">
-										<span>Депозиты</span>
+										<span>{{"left_menu.deposits"|trans}}</span>
 									</a>
 								</li>
 								<li class="">
 									<a href="#" title="Снятие">
-										<span>Снятие</span>
+										<span>{{"left_menu.removal"|trans}}</span>
 									</a>
 								</li>
 							</ul>
-						</li>
+						</li>-->
 						<li class="sub">
 							<a href="#" title="Методы платежей">
-								<span>Лотереи</span>
+								<span>{{"left_menu.lottery"|trans}}</span>
 							</a>
-							<ul>
+							<ul id="leftMenuCountry">
                                                         {% for country in countries %}
-                                                                <li class="sub">
+                                                                <li class="sub" >
 									<a href="#" title="Депозиты">
-										<span><i class="{{ country.title|lower }}"></i>{{ country.name }}</span>
+										<span><i class="{{ country.title|upper }}"></i>{{ country.name }}</span>
 									</a>
 									<ul>
                                                                         {% for type in country.lottoTypes %}
-										<li>
-											<a href="/{{ type.id }}?token={{ app.request.session.get('token') }}"><span>{{ type.title }}</span></a>
+										<li id="startLotto_{{ type.id }}">
+											<a href="/{{ type.id }}?token={{ app.request.session.get('token') }}"><span>{{ type.translate(locale).title }}</span></a>
 										</li>
                                                                          {% endfor %}
 									</ul>
@@ -96,40 +96,40 @@
 							</ul>
 						</li>
                                                 <li class="">
-							<a href="/hello/lotto/bundle/fullres" title="Результаты">
-								<span>Результаты</span>
+							<a href="{{ path('fullres') }}" title="Результаты">
+								<span>{{"left_menu.results"|trans}}</span>
 							</a>
 						</li>
                                                 <li class="">
-							<a href="/hello/lotto/bundle/schedule" title="Расписание">
-								<span>Расписание</span>
+							<a href="{{ path('schedule') }}" title="Расписание">
+								<span>{{"left_menu.schedule"|trans}}</span>
 							</a>
 						</li>
-						<li class="">
+						<!--<li class="">
 							<a href="#" title="Контакты">
-								<span>Контакты</span>
+								<span>{{"left_menu.contacts"|trans}}</span>
 							</a>
 						</li>
 						<li class="">
 							<a href="#" title="Лицензия">
-								<span>Лицензия</span>
+								<span>{{"left_menu.license"|trans}}</span>
 							</a>
 						</li>
 						<li class="">
 							<a href="#" title="Работа">
-								<span>Работа</span>
+								<span>{{"left_menu.work"|trans}}</span>
 							</a>
 						</li>
 						<li class="">
 							<a href="#" title="Партнерская программа">
-								<span>Партнерская программа</span>
+								<span>{{"left_menu.affiliate program"|trans}}</span>
 							</a>
 						</li>
 						<li class="">
 							<a href="#" title="Аффилиэйт программа">
 								<span>Аффилиэйт программа</span>
 							</a>
-						</li>
+						</li>-->
 					</ul>
 					<div class="down"></div>
 				</div>

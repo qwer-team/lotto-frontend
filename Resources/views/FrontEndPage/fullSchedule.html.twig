@@ -7,8 +7,8 @@
 						<div class="banner">
                                                     <img src="{{ asset( "bundles/qwerlottofrontend/content/banner.png") }}" alt="">
 							<div class="banner-text">
-								<div>РАСПИСАНИЕ ТИРАЖЕЙ</div>
-								<div>не пропусти свою лотерею</div>
+								<div>{{ "full_shcedule.schedule"|trans }}</div>
+								<div>{{ "full_shcedule.schedule_descr"|trans }}</div>
 							</div>
 						</div>
 						<p>
@@ -21,14 +21,14 @@
 							<table class="schedule">
 								<thead>
 									<tr>
-										<td colspan="2">Страна / Лотерея</td>
-										<td>Пн</td>
-										<td>Вт</td>
-										<td>Ср</td>
-										<td>Чт</td>
-										<td>Пт</td>
-										<td>Сб</td>
-										<td>Вс</td>
+										<td colspan="2">{{ "full_shcedule.country"|trans }}</td>
+										<td>{{ "full_shcedule.mon"|trans }}</td>
+										<td>{{ "full_shcedule.tue"|trans }}</td>
+										<td>{{ "full_shcedule.wed"|trans }}</td>
+										<td>{{ "full_shcedule.thu"|trans }}</td>
+										<td>{{ "full_shcedule.fri"|trans }}</td>
+										<td>{{ "full_shcedule.sut"|trans }}</td>
+										<td>{{ "full_shcedule.sun"|trans }}</td>
 									</tr>
 								</thead>
                                                                 
@@ -39,15 +39,13 @@
 									<tr>
                                                                             {% if foo %}
 										<td rowspan="{{ country.lottoTypes | length }}"> 
-											<a class="country" href="#">
-												<img src="content/canada.png" width="18" height="18" alt="">
-												<span>{{ country.name }}</span>
-											</a> 
+											
+                                                                                    <span><i style="margin-left:45%;position:static;"class="{{ country.title|upper }}"></i>{{ country.name }}</span>
 										</td>
                                                                                 {% set foo = 0 %}
                                                                             {% endif %}
                                                                                 
-										<td>{{ type.title }}</td>
+                                                                                <td><a href="{{ path('index_lotto', {'id': type.id}) }}?token={{ app.request.session.get('token') }}">{{ type.translate(locale).title }}</a></td>
                                                                                 {% for i in range(1,7) %}
                                                                                  <td>
                                                                                     {% for time in type.lottoTimes %}

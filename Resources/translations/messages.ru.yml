@@ -3,12 +3,6 @@ Left: Осталось
 days: %days% дней
 hours: %hours% часов
 minutes: %minutes% минут
-invalid:
-   parameter:
-      token: Token parameter is not valid!
-items:
-   result:
-      empty: Couldn't get items!
 Previous: Предыдущая
 Next: Следующая
 Create a new entry: Создать новую запись
@@ -21,3 +15,80 @@ edit: изменить
 Edit password: Изменить пароль
 Close: Закрыть
 Save changes: Сохранить
+left_menu:
+    services: Сервисы
+    about: О нас
+    rules: Правила
+    rules betting: Правила приема ставок
+    help: Помощь
+    registration: Регистрация
+    score: Счет
+    safety: Безопасность
+    payments: Платежи
+    calculator systems: Калькулятор систем
+    methods of payment: Методы платежей
+    deposits: Депозиты
+    removal: Снятие
+    lottery: Лотереи
+    results: Результаты
+    schedule: Расписание
+    contacts: Контакты
+    license: Лицензия
+    work: Работа
+    affiliate program: Партнерская программа
+Monday: Понедельник
+Tuesday: Вторник
+Wednesday: Среда
+Thursday: Четверг
+Friday: Пятница
+Saturday: Суббота
+Sunday: Воскресенье
+next_lotto_draws:
+    full schedule: Полное расписание
+last_results:
+    view more details: Посмотреть более подробно
+    results of previous editions: Результаты прошлых тиражей
+index:
+    minimize: Свернуть
+lotto_page:
+    with bonus ball: С учетом бонусного шара
+    without bonus ball: Без учета бонусного шара
+    clear all: Очистить
+    select your balls: Выберите шары
+    straight bets: Одиночные ставки
+    multiples: Мульти
+    line: Линия
+    selections: Выбор
+    stake: Ставка
+    posible win: Возможный выигрыш
+    lucky dips: Случайные шары
+    bets: Ставки
+    bet type: Тип ставки
+    total stake: Кол-во ставок
+    for the next: В течение следующих
+    draws: Тираж(а)
+    make a bet: Сделать ставку
+    choose: Выберите %number1% число, получить %number2% правильное
+full_results:
+    name: Название
+    date: Дата / Время
+    result balls: Выпавшие шары
+    bonus balls: Дополнительные шары
+full_shcedule:
+    schedule: РАСПИСАНИЕ ТИРАЖЕЙ
+    schedule_descr: не пропусти свою лотерею
+    country: Страна / Лотерея
+    mon: Пн
+    tue: ВТ
+    wed: Ср
+    thu: Чт
+    fri: Пт
+    sut: Сб
+    sun: Вс
+Monday_lotto_draws: Тиражи понедельника
+Tuesday_lotto_draws: Тиражи вторника
+Wednesday_lotto_draws: Тиражи среды
+Thursday_lotto_draws: Тиражи четверга
+Friday_lotto_draws: Тиражи пятницы
+Saturday_lotto_draws: Тиражи субботы
+Sunday_lotto_draws: Тиражи воскресенья

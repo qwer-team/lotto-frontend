@@ -35,7 +35,19 @@ Credits:    This script is based on Michael L. Perrys Cover flow in Javascript [
 
 /* ImageFlow constructor */
 function ImageFlow ()
-{
+{    
+        if(typeof startLottoId == 'undefined'){
+           startLottoId = "";
+        }
+        if(startLottoId !=""){
+            strId = $("#startId_"+startLottoId+"").attr("index");
+            $("#startLotto_"+startLottoId+"").parent().css("display","block"); 
+            $("#startLotto_"+startLottoId+"").find("a").attr("class", "opened");
+            $("#startLotto_"+startLottoId+"").parent().parent().find("a:first").attr("class", "opened");
+            $("#leftMenuCountry").css("display","block");
+        }else {
+            strId = $("#startId_1").attr("index");
+        }
 	/* Setting option defaults */
 	this.defaults =
 	{
@@ -70,7 +82,7 @@ function ImageFlow ()
 		slideshow:          false,          /* Toggle slideshow */
 		slideshowSpeed:     1500,           /* Time between slides in ms */
 		slideshowAutoplay:  false,          /* Toggle automatic slideshow play on startup */
-		startID:            1,              /* Image ID to begin with */
+		startID:            strId,              /* Image ID to begin with */
 		glideToStartID:     true,           /* Toggle glide animation to start ID */
 		startAnimation:     false,          /* Animate images moving in from the right on startup */
 		xStep:              150             /* Step width on the x-axis in px */
@@ -104,6 +116,7 @@ function ImageFlow ()
 				this.imagesDiv = document.getElementById(my.ImageFlowID+'_images');
 				this.captionDiv = document.getElementById(my.ImageFlowID+'_caption');
 				this.navigationDiv = document.getElementById(my.ImageFlowID+'_navigation');
+                                
 				this.scrollbarDiv = document.getElementById(my.ImageFlowID+'_scrollbar');
 				this.sliderDiv = document.getElementById(my.ImageFlowID+'_slider');
 				this.buttonNextDiv = document.getElementById(my.ImageFlowID+'_next');
@@ -120,6 +133,9 @@ function ImageFlow ()
 				this.busy = false;
 
 				/* Set height of the ImageFlow container and center the loading bar */
+                                
+                                //this.navigationDiv.attributes.textContent = "margin-top:80px;";
+                                this.navigationDiv.style.marginTop = "80px";
 				var width = this.ImageFlowDiv.offsetWidth;
 				var height = Math.round(width / my.aspectRatio);
 				document.getElementById(my.ImageFlowID+'_loading_txt').style.paddingTop = ((height * 0.5) -22) + 'px';

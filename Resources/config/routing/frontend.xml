@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="schedule" pattern="/shcedule">
+        <default key="_controller">QwerLottoFrontendBundle:FrontEndPage:fullSchedule</default>
+    </route>
+
+    <route id="index_lotto" pattern="/{id}">
+        <default key="_controller">QwerLottoFrontendBundle:FrontEndPage:index</default>
+        <default key="id" >1</default>
+        <requirement key="id">\d+</requirement>
+    </route>
+
+     <route id="fullres" pattern="/fullres/{page}">
+        <default key="_controller">QwerLottoFrontendBundle:FrontEndPage:fullResults</default>
+        <default key="page" >1</default>
+        <requirement key="page">\d+</requirement>
+    </route>
+    
+    <route id="reload_select" pattern="/changeSelectData/{count}">
+        <default key="_controller">QwerLottoFrontendBundle:FrontEndPage:BetType</default>
+        <default key="count" >0</default>
+    </route>
+
+    <route id="lotto_page" pattern="/lotto/{id}">
+        <default key="_controller">QwerLottoFrontendBundle:FrontEndPage:LottoPage</default>
+        <default key="id" >1</default>
+    </route>
+
+</routes>

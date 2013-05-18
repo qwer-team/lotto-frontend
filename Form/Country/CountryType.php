@@ -13,7 +13,7 @@ class CountryType extends AbstractType
         $builder
             ->add('name')
             ->add('title')
-            ->add('image', 'file')
+            ->add('image', 'file', array("required" => false))
         ;
     }
 

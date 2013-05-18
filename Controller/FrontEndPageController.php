@@ -15,13 +15,7 @@ use Qwer\LottoDocumentsBundle\Entity\Request\Body;
 class FrontEndPageController extends Controller
 {
 
-    /**
-     * @Route("/{id}", name="index_lotto",
-     *         requirements={"id" = "\d+"},
-     *         defaults={"id" = "1"})
-     * @Template()
-     */
-    public function indexAction(Request $request ,$id = 1)
+    public function indexAction(Request $request, $id = 1)
     {
 
         $token = $request->get("token");
@@ -34,74 +28,67 @@ class FrontEndPageController extends Controller
                 ->findAllOrderedByName();
         $timeExpire = $em->getRepository('QwerLottoBundle:Draw')
                 ->getNearestDraws();
+        $url = $request->getPathInfo();
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:index.html.twig', array(
                     'lottery' => $lottery,
                     'timeExpire' => $timeExpire,
                     'message' => $message,
                     'id' => $id,
-        ));
+                    'index' => ($url == "/"),
+                ));
     }
 
-    public function leftMenuAction()
+    public function leftMenuAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $countries = $em->getRepository('QwerLottoFrontendBundle:Country')
                 ->findAllOrderedByName();
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:leftMenu.html.twig', array(
                     'countries' => $countries,
-        ));
+                    'locale' => $request->getLocale(),
+                ));
     }
 
-    public function nextLottoDrawsAction()
+    public function nextLottoDrawsAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $nextDraws = $em->getRepository('QwerLottoBundle:Draw')
                 ->findNextLottoDraws(4);
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:nextLottoDraws.html.twig', array(
                     'nextDraws' => $nextDraws,
-        ));
+                    'locale' => $request->getLocale(),
+                ));
     }
 
-    /**
-     * @Route("/hello/lotto/bundle/schedule")
-     * @Template()
-     */
-    public function fullScheduleAction()
+    public function fullScheduleAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $countries = $em->getRepository('QwerLottoFrontendBundle:Country')
                 ->getFullSchedule();
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:fullSchedule.html.twig', array(
                     'countries' => $countries,
-        ));
+                    'locale' => $request->getLocale(),
+                ));
     }
 
-    public function lastResultsAction()
+    public function lastResultsAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $lastResults = $em->getRepository('QwerLottoBundle:Result')
                 ->getLastResults(4);
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:lastResults.html.twig', array(
                     'lastResults' => $lastResults,
-        ));
+                    'locale' => $request->getLocale(),
+                ));
     }
 
-    /**
-     * @Route("/hello/lotto/bundle/fullres/{page}",
-     *         name="fullres",
-     *         requirements={"page" = "\d+"},
-     *         defaults={"page" = "1"}
-     * )
-     * @Template()
-     * @param int $page
-     */
-    public function fullResultsAction($page)
+    public function fullResultsAction(Request $request, $page)
     {
         $em = $this->getDoctrine()->getManager();
         $adapter = $em->getRepository('QwerLottoBundle:Result')
                 ->getFullResults();
         $pagerfanta = new Pagerfanta($adapter);
-        $pagerfanta->setMaxPerPage(1);
+        $pagerfanta->setMaxPerPage(10);
         $pagerfanta->setCurrentPage($page);
         $currentPageResults = $pagerfanta->getCurrentPageResults();
 
@@ -109,16 +96,21 @@ class FrontEndPageController extends Controller
         $routeGenerator = array($this, 'routeGenerator');
 
         $view = new TwitterBootstrapView();
-        $html = $view->render($pagerfanta, $routeGenerator, array(
-            "prev_message" => "&laquo;",
-            "next_message" => "&raquo;",
-            "css_active_class" => " ",
-            "css_disabled_class" => " "
-        ));
+        $html = "";
+        if($pagerfanta->count() > 10)
+        {
+            $html = $view->render($pagerfanta, $routeGenerator, array(
+                "prev_message" => "&laquo;",
+                "next_message" => "&raquo;",
+                "css_active_class" => " ",
+                "css_disabled_class" => " "
+                    ));
+        }
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:fullResults.html.twig', array(
                     'fullResults' => $currentPageResults,
-                    'paginator' => $html
-        ));
+                    'paginator' => $html,
+                    'locale' => $request->getLocale(),
+                ));
     }
 
     public function routeGenerator($page)
@@ -126,20 +118,14 @@ class FrontEndPageController extends Controller
         return $this->generateUrl("fullres", array("page" => $page));
     }
 
-    /**
-     * @Route("/changeSelectData/{count}",
-     *         name="reload_select" ,
-     *         defaults={"count" = 0})
-     * @Template()
-     */
     public function BetTypeAction($count)
     {
         $name = $this->container->get("frontend.nametype_service");
         $type = $name->getNameType($count);
 
-        return array(
-            'betType' => $type
-        );
+        return $this->render('QwerLottoFrontendBundle:FrontEndPage:BetType.html.twig', array(
+                    'betType' => $type
+                ));
     }
 
     public function FormulaBlockAction()
@@ -148,16 +134,10 @@ class FrontEndPageController extends Controller
         $rateFormules = $em->getRepository("QwerLottoFrontendBundle:RateFormula")->findAll();
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:FormulaBlock.html.twig', array(
                     'formules' => $rateFormules,
-        ));
+                ));
     }
 
-    /**
-     * @Route("/lotto/{id}",
-     *         name="lotto_page" ,
-     *         defaults={"id" = 1})
-     * @Template()
-     */
-    public function LottoPageAction($id = 1)
+    public function LottoPageAction(Request $request, $index, $id = 1)
     {
         $body = new Body();
         $form = $this->createForm(new BodyType, $body);
@@ -165,11 +145,12 @@ class FrontEndPageController extends Controller
 
         $currentLotto = $em->getRepository('QwerLottoBundle:Type')->find($id);
         //$rate = $em->getRepository('QwerLottoBundle:Type')->findOneBy($client);
-
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:LottoPage.html.twig', array(
                     'lotto' => $currentLotto,
                     'form' => $form->createView(),
-        ));
+                    'index' => $index,
+                    'locale' => $request->getLocale(),
+                ));
     }
 
 }

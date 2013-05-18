@@ -4,19 +4,20 @@
                                         <div class="block-header">
                                                 <div class="title-left">
                                                         {%set nextDay = (nextDraws|first).date.format("l")%}
-                                                        <h2>{{ nextDay|trans }} Lotto Draws</h2>
-                                                        <a href="/hello/lotto/bundle/schedule">Full Schedule »</a>
+                                                        {% set nextDrawsLabel = (nextDay~'_'~ 'lotto_draws')%}
+                                                        <h2>{{ nextDrawsLabel | trans}}</h2>
+                                                        <a href="{{ path('schedule') }}">{{ "next_lotto_draws.full schedule"|trans }} »</a>
                                                 </div>
                                                 <i></i>
                                         </div>
                                         <div class="block-cotent">
                                                 <ul>
                                                 {% for nextDraw in nextDraws %}
-                                                        <li>({{ nextDraw.date|date("H:i") }})  <b>{{ nextDraw.title }}</b> ({{ nextDraw.name }})</li>
+                                                        <li>({{ nextDraw.date|date("H:i") }})  <a href="{{ path('index_lotto', {'id': nextDraw.lottoTime.LottoType.id}) }}?token={{ app.request.session.get('token') }}"><b>{{ nextDraw.lottoTime.LottoType.translate(locale).title }}</b></a> ({{ nextDraw.lottoTime.LottoType.country.name }})</li>
                                                 {% endfor %}
                                                 </ul>
                                                 <div class="day">
-                                                        {{ nextDay|trans }}
+                                                        {{ nextDay|trans }}    
                                                 </div>
                                         </div>
                                 </div>

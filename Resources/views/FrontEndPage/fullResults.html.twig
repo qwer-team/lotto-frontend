@@ -4,86 +4,27 @@
 <div class="main-col"><!-- main-col -->
 				<div class="top">
 					<div class="col-content">
-						{#<h2 class="message-title">Ваша ставка принята! Желаем удачи!</h2>
-						<div class="you-rate">
-							<table class="you-rate-table">
-								<thead>
-                                                                  
-									<tr>
-										<td>№ Ставки</td>
-										<td>Дата ставки</td>
-										<td>Шары</td>
-										<td>Назв.Дата/Время тиража</td>
-										<td>Сумма</td>
-										<td>Выигрыш</td>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>123</td>
-										<td>12.12.2012   21:00</td>
-										<td>2,5,7</td>
-										<td>Lotto +1 (12.12.2012   19:45)</td>
-										<td>15 грн.</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>123</td>
-										<td>12.12.2012   21:00</td>
-										<td>2,5,7</td>
-										<td>Lotto +1 (12.12.2012   19:45)</td>
-										<td>15 грн.</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>123</td>
-										<td>12.12.2012   21:00</td>
-										<td>2,5,7</td>
-										<td>Lotto +1 (12.12.2012   19:45)</td>
-										<td>15 грн.</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>123</td>
-										<td>12.12.2012   21:00</td>
-										<td>2,5,7</td>
-										<td>Lotto +1 (12.12.2012   19:45)</td>
-										<td>15 грн.</td>
-										<td>0</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>#}
 						<div class="results-wrap">
-							{#<div class="results-title">
-								<div>Результаты тиражей</div>
-								<div><span>Ирландия</span> лото 6 из 45</div>
-								<img src="{{ asset( "bundles/qwerlottofrontend/content/fl.png") }}" alt="">
-							</div>#}
 							<div class="results-tabble-wrap">
 								<table class="results-tabble">
 									<thead>
 										<tr>
-											<td>Название</td>
-											<td>Дата / Время</td>
-											<td>Выпавшие шары</td>
-											<td>Дополнительные шары</td>
+											<td>{{ "full_results.name"|trans }}</td>
+											<td>{{ "full_results.date"|trans }}</td>
+											<td>{{ "full_results.result balls"|trans }}</td>
+											<td>{{ "full_results.bonus balls"|trans }}</td>
 										</tr>
 									</thead>
 									<tbody>
                                                                         {% for res in fullResults %}
 										<tr>
-											<td>{{ res.lottoDraw.lottoTime.title }}</td>
-											<td>{{ res.lottoDraw.date|date }}</td>
+											<td>{{ res.lottoDraw.lottoTime.lottoType.translate(locale).title }}</td>
+											<td>{{ res.updated|date }}</td>
 											<td>
 												<div class="ball-line-wrap">
                                                                                                 {% for ball in res.result %}
 							    					<div class="ball-item-line">{{ ball }}</div>
                                                                                                 {% endfor %}
-							    					{#<div class="ball-item-line">2</div>
-							    					<div class="ball-item-line">3</div>
-							    					<div class="ball-item-line">4</div>
-							    					<div class="ball-item-line">5</div>#}
 							    				</div>
 											</td>
 											<td>
@@ -98,14 +39,7 @@
 									</tbody>
 								</table>
 							</div>
-                                                        <div class="pagination">
-                                                            <ul>
-                                                                <li class="prev  "><a href="#">&laquo;</a></li>
-                                                                <li class=" "><a href="/hello/lotto/bundle/fullres">1</a></li>
-                                                                <li><a href="/hello/lotto/bundle/fullres/2">2</a></li>
-                                                                <li class="next"><a href="/hello/lotto/bundle/fullres/2">&raquo;</a></li>
-                                                            </ul>
-                                                        </div>
+                                                        
                                                         {{ paginator|raw }}
                                                         
 						</div>

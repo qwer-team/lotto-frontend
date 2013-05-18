@@ -21,11 +21,11 @@
                         {% block slider %}
                                 <div class="slide-block">
                                         <div class="slide-controll">
-                                                <span>Свернуть</span>
+                                                <span>{{ "index.minimize"|trans }}</span>
                                                 <a href="#"></a>
                                         </div>
                                         <div class="gallery-wrap">
-                                        <ul id="carousel-icons">
+                                        <!--<ul id="carousel-icons">
                                                 <li class="view-label">
                                                         Change View
                                                 </li>
@@ -38,11 +38,11 @@
                                                 <li>
                                                         <a href="#" class="scrollicon listview" title="Text List View"></a>
                                                 </li>
-                                        </ul>
+                                        </ul>-->
                                         <div id="flag_slider" class="imageflow">
                                             {% for lotto in lottery %}
                                                 {% if vich_uploader_asset(lotto, 'image') %}
-                                                    <img src="{{ vich_uploader_asset(lotto, 'image') }}"  longdesc="URL_{{ loop.index }}" width="205" height="210"
+                                                    <img src="{{ vich_uploader_asset(lotto, 'image') }}" id="startId_{{ lotto.id }}" index="{{ loop.index }}"  longdesc="{{ path('index_lotto', {'id': lotto.id}) }}?token={{ app.request.session.get('token') }}" width="205" height="210"
                                                          alt="
                                                         {% trans %}Left{% endtrans %}
                                                         {% if timeExpire[lotto.id].d > 0 %}
@@ -54,7 +54,7 @@
                                                         {% trans with {'%minutes%': timeExpire[lotto.id].i} %}minutes{% endtrans %}
                                                     "/>
                                                 {% else %}
-                                                    <img src="{{ vich_uploader_asset(lotto.country, 'image') }}"  longdesc="URL_{{ loop.index }}" width="205" height="210" alt="{{ timeExpire[lotto.id]|date }}"/>
+                                                    <img src="{{ vich_uploader_asset(lotto.country, 'image') }}"  longdesc="{{ path('index_lotto', {'id': lotto.id}) }}" width="205" height="210" alt="{{ timeExpire[lotto.id]|date }}"/>
                                                 {% endif %}    
                                                 {#<img src="{{ asset( "bundles/qwerlottofrontendcontent/flag1.png") }}" lotto="{{ lotto.title }}" longdesc="URL_1" width="205" height="210" alt="Осталось: 5 day 2 hour: 1 min" />#}
                                             {% endfor %}
@@ -62,7 +62,7 @@
                                         </div>
                                 </div>
                                {% endblock %}
-                              {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:LottoPage', { 'id': id })) }}
+                              {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:LottoPage', { 'id': id, 'index': index })) }}
                         </div>
                     </div>
 {% endblock %}
