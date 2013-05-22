@@ -370,7 +370,7 @@ a#clear-all{
 	border: 1px #d6dade solid;
 	border-radius: 2px;
 	padding: 2px 5px;
-	width: 50px;
+	width: 94px;
 	text-align: right;
 }
 .straight-table td input[readonly="readonly"],
@@ -909,4 +909,13 @@ i.IRL{
 .ui-tabs .ui-tabs-panel{
 	padding: 1em 8px;
 }.choice{width: 220px;}.schedule tbody td a{color: #FFFFFF;}
-
+.schedule-wrap  .schedule .dotw {
+    background: url(../images/act_day.png);
+	width: 70px;
+	height: 15px;
+}
+.schedule-wrap  .schedule .dotw_top {
+    background: url(../images/block-title-green.png) repeat-x scroll left top;
+	width: 70px;
+	height: 44px;
+}
