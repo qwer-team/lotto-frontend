@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Qwer\LottoFrontendBundle\Entity\CountryTranslation" table="lotto_country_translation">
+        <many-to-one field="translatable" target-entity="Qwer\LottoFrontendBundle\Entity\Country">
+            <join-column name="translatable_id" on-delete="CASCADE" />
+        </many-to-one>
+        <indexes>
+            <index columns="locale,translatable_id" name="country_translation_lookup_idx" />
+        </indexes>
+        <unique-constraints>
+            <unique-constraint columns="locale,translatable_id,property" name="country_translation_unique_idx" />
+        </unique-constraints>
+    </entity>
+</doctrine-mapping>

@@ -5,13 +5,30 @@
 				<div class="top">
 					<div class="col-content">
 						<div class="results-wrap">
+                                                    <div class="dates-filter"><!-- dates-filter -->
+                                                        <form action="{{path('filter_update')}}" method="POST">
+									<span>Укажите период</span>
+									<div class="start-date">
+                                                                            {{form_widget(filterForm.start)}}
+									</div>
+									<div class="finish-date">
+										{{form_widget(filterForm.end)}}
+									</div>
+									<div class="date-subm">
+										<input type="submit" value="Фильтровать">
+									</div>
+									<div class="clear"></div>
+                                                                        {{form_rest(filterForm)}}
+								</form>
+							</div><!-- .dates-filter -->
+							<div class="clear"></div>
 							<div class="results-tabble-wrap">
 								<table class="results-tabble">
 									<thead>
 										<tr>
 											<td>{{ "full_results.name"|trans }}</td>
 											<td>{{ "full_results.date"|trans }}</td>
-											<td>{{ "full_results.result balls"|trans }}</td>
+											<td class="numbal">{{ "full_results.result balls"|trans }}</td>
 											<td>{{ "full_results.bonus balls"|trans }}</td>
 										</tr>
 									</thead>
@@ -19,7 +36,7 @@
                                                                         {% for res in fullResults %}
 										<tr>
 											<td>{{ res.lottoDraw.lottoTime.lottoType.translate(locale).title }}</td>
-											<td>{{ res.updated|date }}</td>
+											<td>{{ res.lottoDraw|date("Y-m-d H:i:s") }}</td>
 											<td>
 												<div class="ball-line-wrap">
                                                                                                 {% for ball in res.result %}

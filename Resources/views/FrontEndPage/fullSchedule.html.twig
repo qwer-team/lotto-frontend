@@ -21,14 +21,15 @@
 							<table class="schedule">
 								<thead>
 									<tr>
+                                                                                {% set nowDate = "now"|date("w")  %}
 										<td colspan="2">{{ "full_shcedule.country"|trans }}</td>
-										<td>{{ "full_shcedule.mon"|trans }}</td>
-										<td>{{ "full_shcedule.tue"|trans }}</td>
-										<td>{{ "full_shcedule.wed"|trans }}</td>
-										<td>{{ "full_shcedule.thu"|trans }}</td>
-										<td>{{ "full_shcedule.fri"|trans }}</td>
-										<td>{{ "full_shcedule.sut"|trans }}</td>
-										<td>{{ "full_shcedule.sun"|trans }}</td>
+										<td {% if 1 == nowDate %} class="dotw_top"{% endif %}>{{ "full_shcedule.mon"|trans }}</td>
+										<td {% if 2 == nowDate %} class="dotw_top"{% endif %}>{{ "full_shcedule.tue"|trans }}</td>
+										<td {% if 3 == nowDate %} class="dotw_top"{% endif %}>{{ "full_shcedule.wed"|trans }}</td>
+										<td {% if 4 == nowDate %} class="dotw_top"{% endif %}>{{ "full_shcedule.thu"|trans }}</td>
+										<td {% if 5 == nowDate %} class="dotw_top"{% endif %}>{{ "full_shcedule.fri"|trans }}</td>
+										<td {% if 6 == nowDate %} class="dotw_top"{% endif %}>{{ "full_shcedule.sut"|trans }}</td>
+										<td {% if 7 == nowDate %} class="dotw_top"{% endif %}>{{ "full_shcedule.sun"|trans }}</td>
 									</tr>
 								</thead>
                                                                 
@@ -40,14 +41,14 @@
                                                                             {% if foo %}
 										<td rowspan="{{ country.lottoTypes | length }}"> 
 											
-                                                                                    <span><i style="margin-left:45%;position:static;"class="{{ country.title|upper }}"></i>{{ country.name }}</span>
+                                                                                    <span><i style="margin-left:45%;position:static;"class="{{ country.code|upper }}"></i>{{ country.translate(locale).title }}</span>
 										</td>
                                                                                 {% set foo = 0 %}
                                                                             {% endif %}
                                                                                 
                                                                                 <td><a href="{{ path('index_lotto', {'id': type.id}) }}?token={{ app.request.session.get('token') }}">{{ type.translate(locale).title }}</a></td>
                                                                                 {% for i in range(1,7) %}
-                                                                                 <td>
+                                                                                <td {% if i == nowDate %} class="dotw"{% endif %}>
                                                                                     {% for time in type.lottoTimes %}
                                                                                         {% if i in time.days %}
                                                                                             {{time.time|date("H:i")}}<br>

@@ -13,7 +13,7 @@
                                         <div class="block-cotent">
                                                 <ul>
                                                 {% for nextDraw in nextDraws %}
-                                                        <li>({{ nextDraw.date|date("H:i") }})  <a href="{{ path('index_lotto', {'id': nextDraw.lottoTime.LottoType.id}) }}?token={{ app.request.session.get('token') }}"><b>{{ nextDraw.lottoTime.LottoType.translate(locale).title }}</b></a> ({{ nextDraw.lottoTime.LottoType.country.name }})</li>
+                                                        <li>({{ nextDraw.date|date("H:i") }})  <a href="{{ path('index_lotto', {'id': nextDraw.lottoTime.LottoType.id}) }}?token={{ app.request.session.get('token') }}"><b>{{ nextDraw.lottoTime.LottoType.translate(locale).title }}</b></a> ({{ nextDraw.lottoTime.LottoType.country.translate(locale).title }})</li>
                                                 {% endfor %}
                                                 </ul>
                                                 <div class="day">

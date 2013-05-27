@@ -48,7 +48,7 @@ class CountryController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Country();
-        $form = $this->createForm(new CountryType(), $entity);
+        $form = $this->createForm($this->get('qwer_lotto.form.country.type'), $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -72,7 +72,7 @@ class CountryController extends Controller
     public function newAction()
     {
         $entity = new Country();
-        $form   = $this->createForm(new CountryType(), $entity);
+        $form   = $this->createForm($this->get('qwer_lotto.form.country.type'), $entity);
 
         return $this->render('QwerLottoFrontendBundle:Country\Country:new.html.twig', array(
             'entity' => $entity,
@@ -115,7 +115,7 @@ class CountryController extends Controller
             throw $this->createNotFoundException('Unable to find Country entity.');
         }
 
-        $editForm = $this->createForm(new CountryType(), $entity);
+        $editForm = $this->createForm($this->get('qwer_lotto.form.country.type'), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('QwerLottoFrontendBundle:Country\Country:edit.html.twig', array(
@@ -140,7 +140,7 @@ class CountryController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new CountryType(), $entity);
+        $editForm = $this->createForm($this->get('qwer_lotto.form.country.type'), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {

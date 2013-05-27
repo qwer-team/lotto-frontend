@@ -16,8 +16,11 @@
 	<script src="{{ asset( "bundles/qwerlottofrontend/js/imageflow.packed.js") }}"></script>
         <script src="{{ asset( "bundles/qwerlottofrontend/js/imageflow.js") }}"></script>
 	<script src="{{ asset( "bundles/qwerlottofrontend/js/jquery-ui-1.10.2.custom.min.js") }}"></script>
-	<script src="{{ asset( "bundles/qwerlottofrontend/js/jquery.selectbox-0.2.js") }}"></script>
-	<script src="{{ asset( "bundles/qwerlottofrontend/js/script.js") }}"></script>
+        <script src="{{ asset( "bundles/qwerlottofrontend/js/jquery.ui.datepicker.js") }}"></script>
+	<script src="{{ asset( "bundles/qwerlottofrontend/js/jquery.ui.datepicker-ru.js") }}"></script>	
+	<script src="{{ asset( "bundles/qwerlottofrontend/js/jquery-ui-timepicker-addon.js") }}"></script>
+        <script src="{{ asset( "bundles/qwerlottofrontend/js/jquery.selectbox-0.2.js") }}"></script>
+        <script src="{{ asset( "bundles/qwerlottofrontend/js/script.js") }}"></script>
      {% endblock %}
 </head>
 
@@ -29,7 +32,7 @@
 	<div id="container">
 		<div class="main-container"><!-- main-container -->
                     
-                        {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:leftMenu')) }}
+                        {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:leftMenu', {'_locale' : locale})) }}
                     
 			<div class="main-col"><!-- main-col -->
                             {% block content %}

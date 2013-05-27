@@ -34,20 +34,9 @@ Credits:    This script is based on Michael L. Perrys Cover flow in Javascript [
 */
 
 /* ImageFlow constructor */
-function ImageFlow ()
+function ImageFlow (startId)
 {    
-        if(typeof startLottoId == 'undefined'){
-           startLottoId = "";
-        }
-        if(startLottoId !=""){
-            strId = $("#startId_"+startLottoId+"").attr("index");
-            $("#startLotto_"+startLottoId+"").parent().css("display","block"); 
-            $("#startLotto_"+startLottoId+"").find("a").attr("class", "opened");
-            $("#startLotto_"+startLottoId+"").parent().parent().find("a:first").attr("class", "opened");
-            $("#leftMenuCountry").css("display","block");
-        }else {
-            strId = $("#startId_1").attr("index");
-        }
+        
 	/* Setting option defaults */
 	this.defaults =
 	{
@@ -82,7 +71,7 @@ function ImageFlow ()
 		slideshow:          false,          /* Toggle slideshow */
 		slideshowSpeed:     1500,           /* Time between slides in ms */
 		slideshowAutoplay:  false,          /* Toggle automatic slideshow play on startup */
-		startID:            strId,              /* Image ID to begin with */
+		startID:            startId,              /* Image ID to begin with */
 		glideToStartID:     true,           /* Toggle glide animation to start ID */
 		startAnimation:     false,          /* Animate images moving in from the right on startup */
 		xStep:              150             /* Step width on the x-axis in px */

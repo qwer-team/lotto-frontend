@@ -10,7 +10,7 @@
 
     <route id="index_lotto" pattern="/{id}">
         <default key="_controller">QwerLottoFrontendBundle:FrontEndPage:index</default>
-        <default key="id" >1</default>
+        <default key="id" >3</default>
         <requirement key="id">\d+</requirement>
     </route>
 
@@ -28,6 +28,15 @@
     <route id="lotto_page" pattern="/lotto/{id}">
         <default key="_controller">QwerLottoFrontendBundle:FrontEndPage:LottoPage</default>
         <default key="id" >1</default>
+    </route>
+    
+    <route id="filter_update" pattern="/result_filter_update">
+        <default key="_controller">QwerLottoFrontendBundle:FrontEndPage:updateResultFilter</default>
+        <requirement key="_method">post</requirement>
+    </route>
+    
+    <route id="bet_coupon" pattern="/betcoupon" methods="POST">
+        <default key="_controller">QwerLottoFrontendBundle:FrontEndPage:betCouponRequest</default>
     </route>
 
 </routes>

@@ -5,14 +5,21 @@ namespace Qwer\LottoFrontendBundle\Form\Country;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Qwer\LottoBundle\Form\ResourceType;
 
-class CountryType extends AbstractType
+class CountryType extends ResourceType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $langs = $this->languageService->getLanguages();
+        foreach ($langs as $lang) {
+            $translation = $lang . "Translation.";
+            $builder
+            ->add($translation . 'title')
+            ;
+        }
         $builder
-            ->add('name')
-            ->add('title')
+            ->add('code')
             ->add('image', 'file', array("required" => false))
         ;
     }

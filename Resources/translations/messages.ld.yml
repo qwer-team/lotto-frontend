@@ -1,8 +1,8 @@
 ## YAML Template.
 Left: Осталось
-days: "дней:%days%"
-hours: "часов:%hours%"
-minutes: "минут:%minutes%"
+days: %days% дней
+hours: %hours% часов
+minutes: %minutes% минут
 Previous: Предыдущая
 Next: Следующая
 Create a new entry: Создать новую запись
@@ -17,7 +17,6 @@ Close: Закрыть
 Save changes: Сохранить
 left_menu:
     services: Сервисы
-    lotto: Лотереи
     about: О нас
     rules: Правила
     rules betting: Правила приема ставок
@@ -30,7 +29,7 @@ left_menu:
     methods of payment: Методы платежей
     deposits: Депозиты
     removal: Снятие
-    lottery: Лотереи
+    lottery: Lottto
     results: Результаты
     schedule: Расписание
     contacts: Контакты
@@ -56,7 +55,7 @@ lotto_page:
     without bonus ball: Без учета бонусного шара
     clear all: Очистить
     select your balls: Выберите шары
-    straight bets: Одиночные ставки
+    straight bets: Vassa
     multiples: Мульти
     line: Линия
     selections: Выбор
@@ -105,5 +104,3 @@ bet:
     Canadian: Канадка
     Four-folds: 4 фолд
     Five-folds: 5 фолд
-    
-    

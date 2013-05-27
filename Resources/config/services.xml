@@ -20,6 +20,7 @@
                 <argument type="service" id="translator"/>
             </call>
         </service>
+        <service id="qwer_lotto.form.country.type" class="Qwer\LottoFrontendBundle\Form\Country\CountryType" parent="qwer_lotto.form.type.resource" public="true" scope="request" />
     </services>
   
 </container>

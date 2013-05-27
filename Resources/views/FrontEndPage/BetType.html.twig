@@ -1,6 +1,7 @@
 <input type="hidden" class="kvas" value="{{ betType[0].id }}" >
 <select name="" id="">
     {% for type in betType %}
-     <option value="{{ type.id }}">{{ type.name }}</option>
+     {% set betLabel = ('bet'~'.'~ type.name)%}
+     <option value="{{ type.id }}">{{ betLabel|trans }}</option>
     {% endfor %}
 </select>

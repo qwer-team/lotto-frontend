@@ -6,11 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Qwer\LottoBundle\Entity\Resource;
 
 /**
  * @Vich\Uploadable
  */
-class Country
+class Country extends Resource
 {
 
     /**
@@ -21,7 +22,7 @@ class Country
     /**
      * @var string
      */
-    protected $name;
+    protected $code;
     
     /**
      * @var string
@@ -50,6 +51,11 @@ class Country
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     protected $lottoTypes;
+    
+     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    protected $translations;
 
     /**
      * Get id
@@ -61,28 +67,16 @@ class Country
         return $this->id;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Country
-     */
-    public function setName($name)
+    public function getCode()
     {
-        $this->name = $name;
-
-        return $this;
+        return $this->code;
     }
 
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
+    public function setCode($code)
     {
-        return $this->name;
+        $this->code = $code;
     }
+
     
     public function getTitle()
     {
@@ -116,7 +110,7 @@ class Country
 
     public function __toString()
     {
-        return $this->name;
+        return $this->title;
     }
     
     public function getLottoTypes()

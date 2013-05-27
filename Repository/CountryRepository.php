@@ -14,7 +14,7 @@ class CountryRepository extends EntityRepository
         $qb = $this->createQueryBuilder("country");
         $qb->select("country, types");
         $qb->innerJoin("country.lottoTypes", "types")
-           ->orderBy("country.name");
+           ->orderBy("country.title");
           
         
 
@@ -28,7 +28,7 @@ class CountryRepository extends EntityRepository
         $qb->select("country, types, times");
         $qb->innerJoin("country.lottoTypes", "types")
            ->innerJoin("types.lottoTimes", "times")
-           ->orderBy("country.name");
+           ->orderBy("country.title");
           
         
 

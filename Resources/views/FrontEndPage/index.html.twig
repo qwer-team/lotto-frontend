@@ -44,6 +44,7 @@
                                                 {% if vich_uploader_asset(lotto, 'image') %}
                                                     <img src="{{ vich_uploader_asset(lotto, 'image') }}" id="startId_{{ lotto.id }}" index="{{ loop.index }}"  longdesc="{{ path('index_lotto', {'id': lotto.id}) }}?token={{ app.request.session.get('token') }}" width="205" height="210"
                                                          alt="
+                                                        {{ lotto.country.translate(locale).title }}/{{ lotto.translate(locale).title }}
                                                         {% trans %}Left{% endtrans %}
                                                         {% if timeExpire[lotto.id].d > 0 %}
                                                             {% trans with {'%days%': timeExpire[lotto.id].d} %}days{% endtrans %}
@@ -54,7 +55,16 @@
                                                         {% trans with {'%minutes%': timeExpire[lotto.id].i} %}minutes{% endtrans %}
                                                     "/>
                                                 {% else %}
-                                                    <img src="{{ vich_uploader_asset(lotto.country, 'image') }}"  longdesc="{{ path('index_lotto', {'id': lotto.id}) }}" width="205" height="210" alt="{{ timeExpire[lotto.id]|date }}"/>
+                                                    <img src="{{ vich_uploader_asset(lotto.country, 'image') }}" index="{{ loop.index }}"  longdesc="{{ path('index_lotto', {'id': lotto.id}) }}?token={{ app.request.session.get('token') }}" width="205" height="210"  alt="
+                                                        {% trans %}Left{% endtrans %}
+                                                        {% if timeExpire[lotto.id].d > 0 %}
+                                                            {% trans with {'%days%': timeExpire[lotto.id].d} %}days{% endtrans %}
+                                                        {% endif %}
+                                                        {% if timeExpire[lotto.id].h > 0 %}
+                                                            {% trans with {'%hours%': timeExpire[lotto.id].h} %}hours{% endtrans %}
+                                                        {% endif %}
+                                                        {% trans with {'%minutes%': timeExpire[lotto.id].i} %}minutes{% endtrans %}
+                                                    "/>/>
                                                 {% endif %}    
                                                 {#<img src="{{ asset( "bundles/qwerlottofrontendcontent/flag1.png") }}" lotto="{{ lotto.title }}" longdesc="URL_1" width="205" height="210" alt="Осталось: 5 day 2 hour: 1 min" />#}
                                             {% endfor %}

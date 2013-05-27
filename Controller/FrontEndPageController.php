@@ -11,15 +11,17 @@ use Pagerfanta\View\TwitterBootstrapView;
 use Symfony\Component\HttpFoundation\Request;
 use Qwer\LottoDocumentsBundle\Form\BodyType;
 use Qwer\LottoDocumentsBundle\Entity\Request\Body;
+use Qwer\LottoFrontendBundle\Entity\Filter\ResultFilter;
+use Qwer\LottoFrontendBundle\Form\Filter\ResultFilterType;
 
 class FrontEndPageController extends Controller
 {
 
-    public function indexAction(Request $request, $id = 1)
+    public function indexAction(Request $request, $id = 3)
     {
-
         $token = $request->get("token");
         $session = $request->getSession();
+        
         $session->set("token", $token);
         $tr = $this->get('translator');
         $message = $tr->trans('time.parameter');
@@ -29,23 +31,26 @@ class FrontEndPageController extends Controller
         $timeExpire = $em->getRepository('QwerLottoBundle:Draw')
                 ->getNearestDraws();
         $url = $request->getPathInfo();
+        $locale = $this->getRequest()->getLocale();
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:index.html.twig', array(
                     'lottery' => $lottery,
                     'timeExpire' => $timeExpire,
                     'message' => $message,
                     'id' => $id,
                     'index' => ($url == "/"),
+                    'locale' => $locale
                 ));
     }
 
-    public function leftMenuAction(Request $request)
+    public function leftMenuAction(Request $request, $_locale)
     {
         $em = $this->getDoctrine()->getManager();
         $countries = $em->getRepository('QwerLottoFrontendBundle:Country')
                 ->findAllOrderedByName();
+        //$this->getRequest()->setLocale($locale);
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:leftMenu.html.twig', array(
                     'countries' => $countries,
-                    'locale' => $request->getLocale(),
+                    'locale' => $_locale,
                 ));
     }
 
@@ -84,9 +89,10 @@ class FrontEndPageController extends Controller
 
     public function fullResultsAction(Request $request, $page)
     {
+        $filter = $this->getResultFilter();
         $em = $this->getDoctrine()->getManager();
         $adapter = $em->getRepository('QwerLottoBundle:Result')
-                ->getFullResults();
+                ->getFullResults($filter);
         $pagerfanta = new Pagerfanta($adapter);
         $pagerfanta->setMaxPerPage(10);
         $pagerfanta->setCurrentPage($page);
@@ -106,13 +112,41 @@ class FrontEndPageController extends Controller
                 "css_disabled_class" => " "
                     ));
         }
+        $filterForm = $this->createForm(new ResultFilterType(), $filter);
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:fullResults.html.twig', array(
                     'fullResults' => $currentPageResults,
                     'paginator' => $html,
                     'locale' => $request->getLocale(),
+                    'filterForm' => $filterForm->createView(),
                 ));
     }
 
+    
+    public function updateResultFilterAction(Request $request){
+        $filter = $this->getResultFilter();
+        $filterForm = $this->createForm(new ResultFilterType(), $filter);
+        $filterForm->bindRequest($request);
+        if($filterForm->isValid()){
+            $request->getSession()->set('result_filter', $filter);
+        }
+        
+        return $this->redirect($this->generateUrl('fullres'));
+    }
+
+    
+
+    private function getResultFilter(){
+        $session = $this->getRequest()->getSession();
+        if(!$session->has("result_filter")){
+            $filter = new ResultFilter();
+            $session->set("result_filter", $filter);
+        } else {
+            $filter = $session->get("result_filter");
+        }
+        return $filter;
+    }
+    
+    
     public function routeGenerator($page)
     {
         return $this->generateUrl("fullres", array("page" => $page));
@@ -128,6 +162,18 @@ class FrontEndPageController extends Controller
                 ));
     }
 
+     public function betCouponRequestAction(Request $request){
+        $em = $this->getDoctrine()->getManager(); 
+        $this->repo = $em->getRepository('QwerLottoDocumentsBundle:Bet');
+        $betIds = $request->get("ids");
+        $bets = $this->repo->getBetsByIds($betIds);
+        
+        return $this->render('QwerLottoFrontendBundle:FrontEndPage:BetCoupon.html.twig', array(
+                     'entities' => $bets,
+                 ));
+    }
+    
+    
     public function FormulaBlockAction()
     {
         $em = $this->container->get('doctrine');
@@ -137,7 +183,7 @@ class FrontEndPageController extends Controller
                 ));
     }
 
-    public function LottoPageAction(Request $request, $index, $id = 1)
+    public function LottoPageAction(Request $request, $index, $id = 3)
     {
         $body = new Body();
         $form = $this->createForm(new BodyType, $body);

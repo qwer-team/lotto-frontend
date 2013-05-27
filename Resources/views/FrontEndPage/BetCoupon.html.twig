@@ -1,0 +1,39 @@
+<div class="rates">
+    <h1>Подравляем!</h1>
+    <h2>Ваше ставка принята.</h2>
+    
+    <table border="1" class="records_list table table-bordered">
+        <thead>
+            <tr>              
+                <th>Дата тиража</th>
+                <th>Лотерея</th>
+                <th>Тип ставки</th>
+                <th>Шары</th>
+                <th>Сумма</th>
+                <th class="twin">Возможный выигрыш</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{% if entity.lottoDraw.date %}{{ entity.lottoDraw.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.lottoDraw.lottoTime.lottoType.title }}</td>
+                <td>{{ entity.betType.name }}</td>
+                <td><div class="ball-line-wrap">
+                    {% for ball in entity.balls %}
+		    <div class="ball-item-line-coup">{{ ball }}</div>
+                    {% endfor %}</td>
+                <!--<td>{% for ball in entity.balls %}<span>{{ball}},</span>{% endfor %}</td>-->
+                <td>{{ entity.summa1|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.getPossibleWin() }}</td>
+               
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="contopl">
+    <a href="#" onClick="window.location.reload()">Продолжить играть</a>
+    </div>
+</div>
+   

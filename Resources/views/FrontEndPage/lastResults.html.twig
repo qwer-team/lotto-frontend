@@ -10,7 +10,7 @@
 							<div class="block-cotent">
 								<ul>
                                                                 {% for lastResult in lastResults %}
-                                                                    <li>({{ lastResult.lottoDraw.date|date("H:i") }})  <a href="{{ path('index_lotto', {'id': lastResult.lottoDraw.lottoTime.lottoType.id}) }}?token={{ app.request.session.get('token') }}"><b>{{ lastResult.lottoDraw.lottoTime.lottoType.translate(locale).title }}</b></a> ({{ lastResult.lottoDraw.lottoTime.lottoType.country.name }})</li>
+                                                                    <li>({{ lastResult.lottoDraw.date|date("H:i") }})  <a href="{{ path('index_lotto', {'id': lastResult.lottoDraw.lottoTime.lottoType.id}) }}?token={{ app.request.session.get('token') }}"><b>{{ lastResult.lottoDraw.lottoTime.lottoType.translate(locale).title }}</b></a> ({{ lastResult.lottoDraw.lottoTime.lottoType.country.translate(locale).title }})</li>
                                                                 {% endfor %}
 								</ul>
 							</div>
