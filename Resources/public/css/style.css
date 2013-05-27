@@ -494,6 +494,12 @@ a#clear-all{
     padding: 4px;
     width: 117px;
 }
+.betInput{
+    border: 1px solid #DCDCDC;
+    border-radius: 2px 2px 2px 2px;
+    width: 80px;
+    background-color: #FFF;
+}
 .tx-fl{
 	overflow: hidden;
 	float: left;

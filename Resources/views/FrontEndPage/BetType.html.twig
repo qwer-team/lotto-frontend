@@ -1,7 +1,7 @@
-<input type="hidden" class="kvas" value="{{ betType[0].id }}" >
-<select name="" id="">
+
+<select class="betInput" name="" id="">
     {% for type in betType %}
      {% set betLabel = ('bet'~'.'~ type.name)%}
-     <option value="{{ type.id }}">{{ betLabel|trans }}</option>
+     <option {% if type.code == 'single'%}selected='selected'{% endif %} value="{{ type.id }}">{{ betLabel|trans }}</option>
     {% endfor %}
 </select>

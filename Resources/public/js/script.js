@@ -39,7 +39,7 @@ $(document).ready(function(){
 	});
         
     $('#tirazh-1').selectbox();
-    $('.multiples-select td select').selectbox();
+    //$('.multiples-select td select').selectbox();
     //imageflow constructor
         
     if(typeof startLotto == 'undefined'){
@@ -332,17 +332,22 @@ $(document).ready(function(){
             }   
         }
     }); 
+    var formBlocked = false;
     $("#lottoform").on("click", function(){
         if(token == '') {
             alert("Зарегистрируйся");
             return;
         }  
+        if(formBlocked){
+           return; 
+        } else {
+            formBlocked = true;
+        }
         if($("#tabs-straight").attr('aria-hidden')!="false"){
             makeBats("mult_");
         } else {
             makeBats("");
         }
-          
     });
     
     $("#returnLotto").on("click", function(){
@@ -412,6 +417,7 @@ function makeBats(mult){
                 //alert("Ставка прошла");
                 $('#clear-all').trigger("click");
             }
+            formBlocked = false; 
         }
     });
 }
@@ -670,7 +676,7 @@ function BetTypeSelect(plus){
             }   
         }
         if(count < total){
-            $(this).find(".kvas").attr("value", 13);
+            $(this).find(".betInput").attr("value", 13);
             ths.find(".count_bets").text("");
             ths.find(".stake_line").val("");
             ths.find(".total_stake").val("");
@@ -681,7 +687,7 @@ function BetTypeSelect(plus){
         $.each(selects, function(i, v){
             v.parent('td').html(bettypeHtml[count]);
         });
-        $('.multiples-select td select').selectbox();
+       // $('.multiples-select td select').selectbox();
     } else {
         $.ajax({
             type: "POST",
@@ -692,7 +698,7 @@ function BetTypeSelect(plus){
                     v.parent('td').html(data);
                 });
                 bettypeHtml[count] = data;
-                $('.multiples-select td select').selectbox();
+                //$('.multiples-select td select').selectbox();
 
             }
       
@@ -702,7 +708,7 @@ function BetTypeSelect(plus){
 function count(obj){
     
     var tr = obj.parents("tr");
-    var select = tr.find("td input.kvas");
+    var select = tr.find(".betInput option:selected");
     var cntDraw = parseInt($("#cntDrawLottery option:selected").val());
     var table=$(".multiples-select");
     var sum=0;
