@@ -347,6 +347,7 @@ a#clear-all{
 #tabs.ui-tabs .ui-tabs-nav .ui-state-default a{
 	color: #FFF;
 }
+.count_bets {text-align: center;}
 .straight-table {
 	border-collapse: collapse;
 }
