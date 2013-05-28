@@ -1,3 +1,4 @@
+var formBlocked = false;
 $(document).ready(function(){
 	if (window.PIE) {
         PIE.attach($('#flag_slider'));
@@ -319,13 +320,14 @@ $(document).ready(function(){
             }   
         }
     }); 
-    var formBlocked = false;
+    
     $("#lottoform").on("click", function(){
         if(token == '') {
             alert("Зарегистрируйся");
             return;
         }  
         if(formBlocked){
+            console.log('fail')
            return; 
         } else {
             formBlocked = true;
@@ -366,7 +368,7 @@ function makeBats(mult){
             }           
         }
         if(mult == "mult_"){
-            betType = $("#td_select_"+i+" select").find("[selected='selected']").val();
+            betType = $("#td_select_"+i+" .betInput").find(":selected").val();
         } else betType = 4;
         summa = $("#betsSums_"+mult+""+i+"").val();
         if(betType && summa){
@@ -404,6 +406,9 @@ function makeBats(mult){
                 //alert("Ставка прошла");
                 $('#clear-all').trigger("click");
             }
+            formBlocked = false; 
+        },
+        fail: function(data){
             formBlocked = false; 
         }
     });
