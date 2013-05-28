@@ -292,12 +292,6 @@ a#clear-all{
 .balls-container{
 	overflow: hidden;
 	padding: 4px 0 0 6px;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
 }
 .balls-container .ball-item{
 	width: 26px;
@@ -310,12 +304,6 @@ a#clear-all{
 	font-weight: bold;
 	float: left;
 	cursor: pointer;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
 }
 .balls-container .ball-item.active{
 	background-position: top left;
@@ -834,7 +822,7 @@ ul.serv-list {
 	height: 25px;
 	line-height: 24px;
 	overflow: hidden;
-	padding-left: 30px;
+	padding-left: 10px;
 	text-decoration: none;
 }
 .serv-list ul {
@@ -1081,6 +1069,7 @@ i.ZAF{
         width: 17px;
         cursor: default;
 }
+
 .serv-list .sub .serv-list-serv{
         height: 34px;
         padding-left: 0px;
@@ -1090,4 +1079,7 @@ i.ZAF{
 }
 .serv-list .sub .serv-list-servis{
         background: url("../images/solid-top-green12.png") no-repeat scroll -10px 0 transparent;
+}
+.draw_date{
+        width: 115px;
 }
