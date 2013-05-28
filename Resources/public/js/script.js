@@ -212,7 +212,9 @@ $(document).ready(function(){
     }
     
     $('li.sub > a').on('click',function(){
-        $(this).toggleClass('opened');
+        if(!$(this).hasClass('serv-list-serv')){
+            $(this).toggleClass('opened');
+        }
         $(this).next('ul').slideToggle(500);
         return false;
     });

@@ -91,21 +91,22 @@
 								</li>
                                                                 {% endfor %}
 							
-						<li class="sub">
-							<a href="#" id="lotto_list">
-								<span>{{"left_menu.services"|trans}}</span>
+                                                <li name="serv" class="sub">
+							<a href="#" class="serv-list-serv" id="lotto_list">
+								<h2><span class="serv-list-servis">{{"left_menu.services"|trans}}</span></h2>
 							</a>
 							<ul >
                                                                 <li class="">
-                                                                <a href="{{ path('fullres') }}" >
+                                                                <a href="{{ path('fullres', {'_locale' : locale}) }}" >
                                                                         <span>{{"left_menu.results"|trans}}</span>
                                                                 </a>
                                                                 </li>
                                                                 <li class="">
-                                                                        <a href="{{ path('schedule') }}" >
+                                                                        <a href="{{ path('schedule', {'_locale' : locale}) }}" >
                                                                                 <span>{{"left_menu.schedule"|trans}}</span>
                                                                         </a>
                                                                 </li>
+                                                               
 							</ul>
 						</li>
                                                

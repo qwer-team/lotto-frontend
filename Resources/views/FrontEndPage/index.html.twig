@@ -15,7 +15,7 @@
     </style>
     <div class="top">
         <div>
-        {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:FormulaBlock')) }}
+        {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:FormulaBlock', {'_locale' : locale})) }}
         </div>
         <div class="col-content">
                         {% block slider %}
@@ -72,7 +72,7 @@
                                         </div>
                                 </div>
                                {% endblock %}
-                              {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:LottoPage', { 'id': id, 'index': index })) }}
+                              {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:LottoPage', { 'id': id, 'index': index, '_locale': locale })) }}
                         </div>
                     </div>
 {% endblock %}

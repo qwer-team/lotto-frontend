@@ -1,0 +1,109 @@
+## YAML Template.
+Left: It remains
+days: "days:%days%"
+hours: "hours:%hours%"
+minutes: "minutes:%minutes%"
+Previous: Previous
+Next: Next
+Create a new entry: Create new account
+Back to the list: Back to Top
+Delete: Delete
+Edit: Edit
+Create: Create
+show: show
+edit: edit
+Edit password: Edit password
+Close: Close
+Save changes: Save
+left_menu:
+    services: Services
+    lotto: lottery
+    about: About Us
+    rules: Rules
+    rules betting: Rules method of rates
+    help: Help
+    registration: Registration
+    score: Score
+    safety: Security
+    payments: Payments
+    calculator systems: Calculator systems
+    methods of payment: Methods of payment
+    deposits: Deposits
+    removal: Removal
+    lottery: Lottery
+    results: Results
+    schedule: Schedule
+    contacts: Contacts
+    license: License
+    work: Work
+    affiliate program: Affiliate program
+Monday: Monday
+Tuesday: Tuesday
+Wednesday: Wednesday
+Thursday: Thursday
+Friday: Friday
+Saturday: Saturday
+Sunday: Sunday
+next_lotto_draws:
+    full schedule: Full Schedule
+last_results:
+    view more details: View more details
+    results of previous editions: results of previous editions
+index:
+    minimize: roll up
+lotto_page:
+    with bonus ball: With ball bonus
+    without bonus ball: Excluding the bonus ball
+    clear all: Clean all
+    select your balls: Select the balls
+    straight bets: Single bets
+    multiples: Multiple
+    line: Line
+    selections: Choice
+    stake: Stake
+    posible win: Possible win
+    lucky dips: Random balls
+    bets: Bets
+    bet type: Bet type
+    total stake: Total bets
+    for the next: During the next
+    draws: Draw(s)
+    make a bet: Place bet
+    choose: Select %number1% number %number2% to get the correct
+full_results:
+    name: Name
+    date: Date / Time
+    result balls: Result balls
+    bonus balls: Additional balls
+full_shcedule:
+    schedule: SCHEDULE CIRCULATIONS
+    schedule_descr: do not miss your lottery
+    country: Country / Lottery
+    mon: Mon
+    tue: Tue
+    wed: Wed
+    thu: Thu
+    fri: Fri
+    sut: Sut
+    sun: Sun
+Monday_lotto_draws: Circulations Monday
+Tuesday_lotto_draws: Circulations Tuesday
+Wednesday_lotto_draws: Circulations Wednesday
+Thursday_lotto_draws: Circulations Thursday
+Friday_lotto_draws: Circulations Friday
+Saturday_lotto_draws: Circulations Saturday
+Sunday_lotto_draws: Circulations Sunday
+bet:
+    Singles: Single
+    Doubles: Double
+    Trebles: Treble
+    Trixie: Trixie
+    Patent: Patent
+    Yankee: Yankee
+    Lucky: Lucky
+    Accumulator: Accumulator
+    Canadian: Canadian
+    Four-folds: 4 fold
+    Five-folds: 5 fold
+    
+    

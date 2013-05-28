@@ -54,40 +54,40 @@ class FrontEndPageController extends Controller
                 ));
     }
 
-    public function nextLottoDrawsAction(Request $request)
+    public function nextLottoDrawsAction(Request $request, $_locale)
     {
         $em = $this->getDoctrine()->getManager();
         $nextDraws = $em->getRepository('QwerLottoBundle:Draw')
                 ->findNextLottoDraws(4);
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:nextLottoDraws.html.twig', array(
                     'nextDraws' => $nextDraws,
-                    'locale' => $request->getLocale(),
+                    'locale' => $_locale,
                 ));
     }
 
-    public function fullScheduleAction(Request $request)
+    public function fullScheduleAction(Request $request, $_locale)
     {
         $em = $this->getDoctrine()->getManager();
         $countries = $em->getRepository('QwerLottoFrontendBundle:Country')
                 ->getFullSchedule();
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:fullSchedule.html.twig', array(
                     'countries' => $countries,
-                    'locale' => $request->getLocale(),
+                    'locale' => $_locale,
                 ));
     }
 
-    public function lastResultsAction(Request $request)
+    public function lastResultsAction(Request $request, $_locale)
     {
         $em = $this->getDoctrine()->getManager();
         $lastResults = $em->getRepository('QwerLottoBundle:Result')
                 ->getLastResults(4);
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:lastResults.html.twig', array(
                     'lastResults' => $lastResults,
-                    'locale' => $request->getLocale(),
+                    'locale' => $_locale,
                 ));
     }
 
-    public function fullResultsAction(Request $request, $page)
+    public function fullResultsAction(Request $request, $page, $_locale)
     {
         $filter = $this->getResultFilter();
         $em = $this->getDoctrine()->getManager();
@@ -116,7 +116,7 @@ class FrontEndPageController extends Controller
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:fullResults.html.twig', array(
                     'fullResults' => $currentPageResults,
                     'paginator' => $html,
-                    'locale' => $request->getLocale(),
+                    'locale' => $_locale,
                     'filterForm' => $filterForm->createView(),
                 ));
     }
@@ -174,16 +174,17 @@ class FrontEndPageController extends Controller
     }
     
     
-    public function FormulaBlockAction()
+    public function FormulaBlockAction($_locale)
     {
         $em = $this->container->get('doctrine');
         $rateFormules = $em->getRepository("QwerLottoFrontendBundle:RateFormula")->findAll();
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:FormulaBlock.html.twig', array(
                     'formules' => $rateFormules,
+                    'locale' => $_locale,
                 ));
     }
 
-    public function LottoPageAction(Request $request, $index, $id = 3)
+    public function LottoPageAction(Request $request, $index, $id = 3, $_locale)
     {
         $body = new Body();
         $form = $this->createForm(new BodyType, $body);
@@ -195,7 +196,7 @@ class FrontEndPageController extends Controller
                     'lotto' => $currentLotto,
                     'form' => $form->createView(),
                     'index' => $index,
-                    'locale' => $request->getLocale(),
+                    'locale' => $_locale,
                 ));
     }
 

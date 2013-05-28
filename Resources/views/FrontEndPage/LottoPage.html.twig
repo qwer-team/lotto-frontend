@@ -1,6 +1,6 @@
 
-                               {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:nextLottoDraws')) }}
-                               {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:lastResults')) }}
+                               {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:nextLottoDraws', {'_locale' : locale})) }}
+                               {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:lastResults', {'_locale' : locale})) }}
 
 <div class="clear"></div>
 {% block lottery %}
