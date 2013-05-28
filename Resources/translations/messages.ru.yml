@@ -37,6 +37,8 @@ left_menu:
     license: Лицензия
     work: Работа
     affiliate program: Партнерская программа
+    how_to_play: Как играть
+    about_lotto: О лото
 Monday: Понедельник
 Tuesday: Вторник
 Wednesday: Среда
@@ -105,5 +107,6 @@ bet:
     Canadian: Канадка
     Four-folds: 4 фолд
     Five-folds: 5 фолд
-    
+how_to_play: '<div><h1>как играть</h1></div>'
+about_lotto: '<div><h1>о лото</h1></div>'  
     

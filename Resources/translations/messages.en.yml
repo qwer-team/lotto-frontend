@@ -37,6 +37,8 @@ left_menu:
     license: License
     work: Work
     affiliate program: Affiliate program
+    how_to_play: How to play
+    about_lotto: About lotto
 Monday: Monday
 Tuesday: Tuesday
 Wednesday: Wednesday
@@ -105,5 +107,6 @@ bet:
     Canadian: Canadian
     Four-folds: 4 fold
     Five-folds: 5 fold
-    
+how_to_play: '<div><h1>how to play</h1></div>'
+about_lotto: '<div><h1>about</h1></div>'  
     

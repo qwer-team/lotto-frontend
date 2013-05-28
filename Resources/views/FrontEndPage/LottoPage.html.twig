@@ -77,7 +77,7 @@
                     </div>
                     <div class="block-content">
                         <div class="balls-container" id="lottery_balls"><!-- balls-container -->
-                                                                            {% for v in range(1, lotto.drawBalls) %}
+                                                                            {% for v in range(1, lotto.tottalBalls) %}
                                 <a class="ball-item ball" id="ball-{{ v }}" ball = '{{ v }}'>{{ v }}</a>
                                                                             {% endfor %}
                             </div><!-- .balls-container -->

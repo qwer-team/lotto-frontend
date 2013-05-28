@@ -199,5 +199,19 @@ class FrontEndPageController extends Controller
                     'locale' => $_locale,
                 ));
     }
+    
+    public function howToPlayAction($_locale)
+    {
+        return $this->render('QwerLottoFrontendBundle:FrontEndPage:howToPlay.html.twig', array(
+            'locale' => $_locale,
+        ));
+    }
+    
+     public function aboutLottoAction($_locale)
+    {
+        return $this->render('QwerLottoFrontendBundle:FrontEndPage:aboutLotto.html.twig', array(
+            'locale' => $_locale,
+        ));
+    }
 
 }

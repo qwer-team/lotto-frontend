@@ -38,5 +38,12 @@
     <route id="bet_coupon" pattern="/betcoupon" methods="POST">
         <default key="_controller">QwerLottoFrontendBundle:FrontEndPage:betCouponRequest</default>
     </route>
+    
+    <route id="lotto_play" pattern="/how_to_play">
+        <default key="_controller">QwerLottoFrontendBundle:FrontEndPage:howToPlay</default>
+    </route>
+    <route id="about_lotto" pattern="/about_lotto">
+        <default key="_controller">QwerLottoFrontendBundle:FrontEndPage:aboutLotto</default>
+    </route>
 
 </routes>

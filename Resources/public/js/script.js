@@ -240,6 +240,7 @@ $(document).ready(function(){
         if($("#tabs-straight").attr('aria-hidden')!="false"){ 
             clearAll();
         }
+        //clearAll();
         /*if(!active){
                 $('.balls-g1.active').removeClass('active');
                 $(this).addClass('active');
