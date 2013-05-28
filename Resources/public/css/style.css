@@ -1069,3 +1069,17 @@ i.ZAF{
         width: 17px;
         cursor: default;
 }
+
+.serv-list .sub .serv-list-serv{
+        height: 34px;
+        padding-left: 0px;
+}
+.serv-list .sub .serv-list-serv h2{
+        padding-right: 0px;
+}
+.serv-list .sub .serv-list-servis{
+        background: url("../images/solid-top-green12.png") no-repeat scroll -10px 0 transparent;
+}
+.draw_date{
+        width: 115px;
+}
