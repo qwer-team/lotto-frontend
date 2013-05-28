@@ -7,7 +7,7 @@
 						<div class="results-wrap">
                                                     <div class="dates-filter"><!-- dates-filter -->
                                                         <form action="{{path('filter_update')}}" method="POST">
-									<span>Укажите период</span>
+									<span>{{ "full_results.period"|trans }}</span>
 									<div class="start-date">
                                                                             {{form_widget(filterForm.start)}}
 									</div>
@@ -15,7 +15,7 @@
 										{{form_widget(filterForm.end)}}
 									</div>
 									<div class="date-subm">
-										<input type="submit" value="Фильтровать">
+										<input type="submit" value="{{ "full_results.filter"|trans }}">
 									</div>
 									<div class="clear"></div>
                                                                         {{form_rest(filterForm)}}

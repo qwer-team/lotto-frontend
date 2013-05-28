@@ -8,35 +8,7 @@ $(document).ready(function(){
         $('.title').each(function() {
             PIE.attach(this);
         });
-    }
-	
-	
-
-        
-	/* new */
-	$('.start_dater').datetimepicker({
-		timeOnlyTitle: 'Выберите время',
-		timeText: 'Время',
-		hourText: 'Часы',
-		minuteText: 'Минуты',
-		secondText: 'Секунды',
-		currentText: 'Теперь',
-		closeText: 'Закрыть',
-		dateFormat: 'yy-mm-dd',
-		timeFormat: 'HH:mm'
-                
-	});
-	$('.finish_dater').datetimepicker({
-		timeOnlyTitle: 'Выберите время',
-		timeText: 'Время',
-		hourText: 'Часы',
-		minuteText: 'Минуты',
-		secondText: 'Секунды',
-		currentText: 'Теперь',
-		closeText: 'Закрыть',
-		timeFormat: 'HH:mm',
-                dateFormat: 'yy-mm-dd'
-	});
+    } 
         
     $('#tirazh-1').selectbox();
     //$('.multiples-select td select').selectbox();
@@ -193,13 +165,13 @@ $(document).ready(function(){
         
     $('.slide-controll a').on('click', function(){
         if(!$(this).hasClass('close')){
-            $(this).prev('span').html('Развернуть');
+            $(this).prev('span').html(expand);
             $(this).addClass('close');
             $(this).parents('.slide-block').animate({
                 height: 40
             }, 600);
         }else{
-            $(this).prev('span').html('Свернуть');
+            $(this).prev('span').html(minimize);
             $(this).removeClass('close');
             $(this).parents('.slide-block').animate({
                 height: 382
@@ -220,7 +192,17 @@ $(document).ready(function(){
     });
    
     
-   
+    function clearBetsLine(value){
+        $('.ball-item').removeClass('active');
+        $('.ball-item').removeClass('selected');
+        for(j=0;j<5;j++){
+                if($("[param=bets_"+value+"_"+j+"]").children().length > 0){
+                                
+                    $("[param=bets_"+value+"_"+j+"]").removeClass("active");
+                    $("[param=bets_"+value+"_"+j+"]").find('a').remove();
+                }
+            }
+    }
     
     $('.balls-g1').hover(
         function () {
@@ -239,6 +221,8 @@ $(document).ready(function(){
         //var active = $(this).hasClass('active');
         if($("#tabs-straight").attr('aria-hidden')!="false"){ 
             clearAll();
+        } else{
+            clearBetsLine($(".lot-table input[name=selectionLine]:checked").val());
         }
         //clearAll();
         /*if(!active){

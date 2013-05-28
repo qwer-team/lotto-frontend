@@ -91,28 +91,32 @@
 								</li>
                                                                 {% endfor %}
 							
-                                                <li name="serv" class="sub">
+                                                <li name="serv" class="sub" atata="{{ menu }}">
 							<a href="#" class="serv-list-serv" id="lotto_list">
 								<h2><span class="serv-list-servis">{{"left_menu.services"|trans}}</span></h2>
 							</a>
-							<ul >
+                                                        <ul 
+                                                            {% if menu != '' %}
+                                                            style="display: block"
+                                                            {% endif %}
+                                                            >
                                                                 <li class="">
-                                                                <a href="{{ path('fullres', {'_locale' : locale}) }}" >
+                                                                <a href="{{ path('fullres', {'_locale' : locale}) }}" {% if menu == 'fullResults' %}class="opened"{% endif %}>
                                                                         <span>{{"left_menu.results"|trans}}</span>
                                                                 </a>
                                                                 </li>
                                                                 <li class="">
-                                                                        <a href="{{ path('schedule', {'_locale' : locale}) }}" >
+                                                                        <a href="{{ path('schedule', {'_locale' : locale}) }}" {% if menu == 'fullSchedule' %}class="opened"{% endif %}>
                                                                                 <span>{{"left_menu.schedule"|trans}}</span>
                                                                         </a>
                                                                 </li>
                                                                 <li class="">
-                                                                        <a href="{{ path('lotto_play', {'_locale' : locale}) }}" >
+                                                                        <a href="{{ path('lotto_play', {'_locale' : locale}) }}" {% if menu == 'howToPlay' %}class="opened"{% endif %}>
                                                                                 <span>{{"left_menu.how_to_play"|trans}}</span>
                                                                         </a>
                                                                 </li>
                                                                 <li class="">
-                                                                        <a href="{{ path('about_lotto', {'_locale' : locale}) }}" >
+                                                                        <a href="{{ path('about_lotto', {'_locale' : locale}) }}" {% if menu == 'aboutLotto' %}class="opened"{% endif %}>
                                                                                 <span>{{"left_menu.about_lotto"|trans}}</span>
                                                                         </a>
                                                                 </li>
