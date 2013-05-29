@@ -17,10 +17,30 @@
         <script src="{{ asset( "bundles/qwerlottofrontend/js/imageflow.js") }}"></script>
 	<script src="{{ asset( "bundles/qwerlottofrontend/js/jquery-ui-1.10.2.custom.min.js") }}"></script>
         <script src="{{ asset( "bundles/qwerlottofrontend/js/jquery.ui.datepicker.js") }}"></script>
-	<script src="{{ asset( "bundles/qwerlottofrontend/js/jquery.ui.datepicker-ru.js") }}"></script>	
+	<script src="{{ asset( "bundles/qwerlottofrontend/js/jquery.ui.datepicker-"~locale~".js") }}"></script>	
 	<script src="{{ asset( "bundles/qwerlottofrontend/js/jquery-ui-timepicker-addon.js") }}"></script>
         <script src="{{ asset( "bundles/qwerlottofrontend/js/jquery.selectbox-0.2.js") }}"></script>
         <script src="{{ asset( "bundles/qwerlottofrontend/js/script.js") }}"></script>
+        <script>
+                $(document).ready(function(){
+                    
+	/* new */
+	$('.start_dater, .finish_dater').datetimepicker({
+		timeOnlyTitle: '{{ 'date_picker.time_only_title'|trans}}',
+		timeText: '{{ 'date_picker.time_text'|trans}}',
+		hourText: '{{ 'date_picker.hour_text'|trans}}',
+		minuteText: '{{ 'date_picker.minute_text'|trans}}',
+		secondText: '{{ 'date_picker.second_text'|trans}}',
+		currentText: '{{ 'date_picker.current_text'|trans}}',
+		closeText: '{{ 'date_picker.close_text'|trans}}',
+		dateFormat: 'yy-mm-dd',
+		timeFormat: 'HH:mm'
+                
+	});
+                });
+                expand = '{{ "index.expand"|trans }}';
+                minimize = '{{ "index.minimize"|trans }}';
+        </script>
      {% endblock %}
 </head>
 
@@ -32,7 +52,7 @@
 	<div id="container">
 		<div class="main-container"><!-- main-container -->
                     
-                        {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:leftMenu', {'_locale' : locale})) }}
+                        {{ render(controller('QwerLottoFrontendBundle:FrontEndPage:leftMenu', {'_locale' : locale, 'menu': menu})) }}
                     
 			<div class="main-col"><!-- main-col -->
                             {% block content %}

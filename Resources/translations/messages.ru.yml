@@ -53,6 +53,7 @@ last_results:
     results of previous editions: Результаты прошлых тиражей
 index:
     minimize: Свернуть
+    expand: Развернуть
 lotto_page:
     with bonus ball: С учетом бонусного шара
     without bonus ball: Без учета бонусного шара
@@ -77,9 +78,11 @@ full_results:
     date: Дата / Время
     result balls: Выпавшие шары
     bonus balls: Дополнительные шары
+    period: Укажите период
+    filter: Фильтровать
 full_shcedule:
     schedule: РАСПИСАНИЕ ТИРАЖЕЙ
-    schedule_descr: не пропусти свою лотерею
+    schedule_descr: не пропусти свою лотерею!
     country: Страна / Лотерея
     mon: Пн
     tue: ВТ
@@ -116,6 +119,14 @@ bet:
     Canadian: Канадка
     Four-folds: 4 фолд
     Five-folds: 5 фолд
-how_to_play: '<div><h1>как играть</h1></div>'
-about_lotto: '<div><h1>о лото</h1></div>'  
+how_to_play: '<div><h1>Олололопыщь пыщь</h1></div>'
+about_lotto: '<div><h1>о лото</h1></div>'
+date_picker:
+    time_only_title: Выберите время
+    time_text: Время
+    hour_text: Часы
+    minute_text: Минуты
+    second_text: Секунды
+    current_text: Теперь
+    close_text: Закрыть
     

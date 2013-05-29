@@ -53,6 +53,7 @@ last_results:
     results of previous editions: results of previous editions
 index:
     minimize: roll up
+    expand: expand
 lotto_page:
     with bonus ball: With ball bonus
     without bonus ball: Excluding the bonus ball
@@ -77,6 +78,8 @@ full_results:
     date: Date / Time
     result balls: Result balls
     bonus balls: Additional balls
+    period: Period
+    filter: Filter
 full_shcedule:
     schedule: SCHEDULE CIRCULATIONS
     schedule_descr: do not miss your lottery
@@ -108,5 +111,12 @@ bet:
     Four-folds: 4 fold
     Five-folds: 5 fold
 how_to_play: '<div><h1>how to play</h1></div>'
-about_lotto: '<div><h1>about</h1></div>'  
-    
+about_lotto: '<div><h1>about</h1></div>'
+date_picker:
+    time_only_title: Otata
+    time_text: Time
+    hour_text: Часы
+    minute_text: Минуты
+    second_text: Секунды
+    current_text: Теперь
+    close_text: Закрыть

@@ -38,11 +38,12 @@ class FrontEndPageController extends Controller
                     'message' => $message,
                     'id' => $id,
                     'index' => ($url == "/"),
-                    'locale' => $locale
+                    'locale' => $locale,
+                    'menu' => '',
                 ));
     }
 
-    public function leftMenuAction(Request $request, $_locale)
+    public function leftMenuAction(Request $request, $_locale, $menu)
     {
         $em = $this->getDoctrine()->getManager();
         $countries = $em->getRepository('QwerLottoFrontendBundle:Country')
@@ -51,6 +52,7 @@ class FrontEndPageController extends Controller
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:leftMenu.html.twig', array(
                     'countries' => $countries,
                     'locale' => $_locale,
+                    'menu' => $menu,
                 ));
     }
 
@@ -73,6 +75,7 @@ class FrontEndPageController extends Controller
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:fullSchedule.html.twig', array(
                     'countries' => $countries,
                     'locale' => $_locale,
+                    'menu' => 'fullSchedule',
                 ));
     }
 
@@ -118,6 +121,7 @@ class FrontEndPageController extends Controller
                     'paginator' => $html,
                     'locale' => $_locale,
                     'filterForm' => $filterForm->createView(),
+                    'menu' => 'fullResults',
                 ));
     }
 
@@ -204,6 +208,7 @@ class FrontEndPageController extends Controller
     {
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:howToPlay.html.twig', array(
             'locale' => $_locale,
+            'menu' => 'howToPlay',
         ));
     }
     
@@ -211,6 +216,7 @@ class FrontEndPageController extends Controller
     {
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:aboutLotto.html.twig', array(
             'locale' => $_locale,
+            'menu' => 'aboutLotto',
         ));
     }
 
