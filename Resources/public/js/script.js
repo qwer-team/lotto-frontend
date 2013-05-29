@@ -391,7 +391,7 @@ function makeBats(mult){
     body["rawBets"] = rawBets;
     $.ajax({
         type: "POST",
-        url: "/lottodoc/betreq",
+        url: "/lottodoc/"+locale+"/betreq",
         data: {
             body : body
         },

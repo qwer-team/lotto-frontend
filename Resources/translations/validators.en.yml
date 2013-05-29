@@ -1,0 +1,7 @@
+limit:
+  message:
+    minimum: minbet %number1%
+    static: Максимальный выиграш не больше %number1%
+    cumulative: Превышен накопительный лимит выбраным шарам.
+    funds: no money no honey.
+    balls: Balls
