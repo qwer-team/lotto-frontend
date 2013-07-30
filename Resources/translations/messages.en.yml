@@ -73,6 +73,7 @@ lotto_page:
     draws: Draw(s)
     make a bet: Place bet
     choose: Select %number1% number %number2% to get the correct
+    popup: No free cells
 full_results:
     name: Name
     date: Date / Time
