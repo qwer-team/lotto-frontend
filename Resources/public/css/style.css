@@ -448,7 +448,7 @@ a#clear-all{
 .slide-block{
 	position: relative;
 	overflow: hidden;
-	height: 382px;
+	height: 150px; /*--------*/
 	padding-top: 26px;
 	border-radius: 0 0 6px 6px;
 	margin: 0 6px;
