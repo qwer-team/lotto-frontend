@@ -65,7 +65,7 @@ lotto_page:
     selections: Выбор
     stake: Ставка
     posible win: Возможный выигрыш
-    lucky dips: Случайные шары
+    lucky dips: Случайный выбор
     bets: Ставки
     bet type: Тип ставки
     total stake: Сумма ставок
@@ -73,6 +73,7 @@ lotto_page:
     draws: Тираж(а)
     make a bet: Сделать ставку
     choose: Выберите %number1% число, получить %number2% правильное
+    popup: Нет свободных ячеек
 full_results:
     name: Название
     date: Дата / Время
