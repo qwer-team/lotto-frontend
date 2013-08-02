@@ -42,7 +42,7 @@
                                         <div id="flag_slider" class="imageflow">
                                             {% for lotto in lottery %}
                                                 {% if vich_uploader_asset(lotto, 'image') %}
-                                                    <img src="{{ vich_uploader_asset(lotto, 'image') }}" id="startId_{{ lotto.id }}" index="{{ loop.index }}"  longdesc="{{ path('index_lotto', {'id': lotto.id}) }}?token={{ app.request.session.get('token') }}" width="65" height="60"
+                                                    <img src="{{ vich_uploader_asset(lotto, 'image') }}" id="startId_{{ lotto.id }}" index="{{ loop.index }}"  longdesc="{{ path('index_lotto', {'id': lotto.id}) }}?token={{ app.request.session.get('token') }}" width="45" height="60"
                                                          alt="
                                                         {{ lotto.country.translate(locale).title }}/{{ lotto.translate(locale).title }}
                                                         {% trans %}Left{% endtrans %}
@@ -55,7 +55,7 @@
                                                         {% trans with {'%minutes%': timeExpire[lotto.id].i} %}minutes{% endtrans %}
                                                     "/>
                                                 {% else %}
-                                                    <img src="{{ vich_uploader_asset(lotto.country, 'image') }}" index="{{ loop.index }}"  longdesc="{{ path('index_lotto', {'id': lotto.id}) }}?token={{ app.request.session.get('token') }}" width="65" height="60"  alt="
+                                                    <img src="{{ vich_uploader_asset(lotto.country, 'image') }}" index="{{ loop.index }}"  longdesc="{{ path('index_lotto', {'id': lotto.id}) }}?token={{ app.request.session.get('token') }}" width="45" height="60"  alt="
                                                         {% trans %}Left{% endtrans %}
                                                         {% if timeExpire[lotto.id-1].d > 0 %}
                                                             {% trans with {'%days%': timeExpire[lotto.id].d} %}days{% endtrans %}

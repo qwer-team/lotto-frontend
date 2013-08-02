@@ -1084,3 +1084,16 @@ i.ZAF{
 .draw_date{
         width: 115px;
 }
+.ball-item {
+ -moz-user-select: none;
+ -khtml-user-select: none;
+ user-select: none;
+
+}
+h3{
+	font-size: 14px;
+	/*border-bottom: 1px #000 solid;*/
+        margin: 5px 10px 5px 10px;
+	padding-left: 15px;
+        color:#444444;
+}
