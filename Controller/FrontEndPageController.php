@@ -196,7 +196,7 @@ class FrontEndPageController extends Controller
 
         $currentLotto = $em->getRepository('QwerLottoBundle:Type')->find($id);
         //$rate = $em->getRepository('QwerLottoBundle:Type')->findOneBy($client);
-       return $this->render('QwerLottoFrontendBundle:FrontEndPage:LottoPages.html.twig', array(
+       return $this->render('QwerLottoFrontendBundle:FrontEndPage:LottoPlace.html.twig', array(
                     'lotto' => $currentLotto,
                     'form' => $form->createView(),
                     'index' => $index,
