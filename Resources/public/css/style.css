@@ -957,6 +957,7 @@ i.ZAF{
 .ui-timepicker-rtl{ direction: rtl; }
 .ui-timepicker-rtl dl { text-align: right; }
 .ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+/*
 .ui-datepicker-next .ui-icon,
 .ui-datepicker-prev .ui-icon{
 	background: url(../images/calendar-control.png);
@@ -973,6 +974,7 @@ i.ZAF{
 .ui-datepicker-prev .ui-icon{
 	background-position: top right;
 }
+*/
 .dates-filter{
 	float: left;
 	border-radius: 4px;
