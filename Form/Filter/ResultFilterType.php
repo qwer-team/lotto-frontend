@@ -13,7 +13,7 @@ class ResultFilterType extends AbstractType
     {
         $startParams = array(
                 'widget' => 'single_text',
-                'format' => 'YYYY-MM-dd HH:mm',
+                'format' => 'YYYY-MM-dd',
                 //'date_format' => 'dd.MM.YYYY / hh:mm',
                 'attr' => array(
                     'class' => 'start_dater'
@@ -21,7 +21,7 @@ class ResultFilterType extends AbstractType
         );
         $endParams = array(
              'widget' => 'single_text',
-                'format' => 'YYYY-MM-dd HH:mm',
+                'format' => 'YYYY-MM-dd',
                 //'date_format' => 'dd.MM.YYYY / hh:mm',
                 'attr' => array(
                     'class' => 'finish_dater'

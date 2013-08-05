@@ -65,19 +65,20 @@ lotto_page:
     selections: Выбор
     stake: Ставка
     posible win: Возможный выигрыш
-    lucky dips: Случайные шары
+    lucky dips:  Мне повезёт!
     bets: Ставки
     bet type: Тип ставки
-    total stake: Сумма ставок
+    total stake: Всего
     for the next: В течение следующих
     draws: Тираж(а)
     make a bet: Сделать ставку
-    choose: Выберите %number1% число, получить %number2% правильное
+    choose: Выберите и угадайте %number1% номер Выплата %number2%
+    popup: Нет свободных ячеек
 full_results:
-    name: Название
-    date: Дата / Время
+    name: Лотерея
+    date: Дата/Время
     result balls: Выпавшие шары
-    bonus balls: Дополнительные шары
+    bonus balls: Бонусные шары
     period: Укажите период
     filter: Фильтровать
 full_shcedule:
@@ -121,4 +122,7 @@ date_picker:
     second_text: Секунды
     current_text: Теперь
     close_text: Закрыть
-    
+lotto_steps:
+  step1: Шаг 1. Вы хотите играть с учетом бонусного шара или не учитывая его?
+  step2: Шаг 2. Выберите от 1 до 5 шаров в каждой линии.
+  step3: Шаг 3. Выберите количество тиражей, сумму ставки и сделайте ставку.

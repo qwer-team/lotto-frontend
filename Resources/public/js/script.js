@@ -1,6 +1,6 @@
 var formBlocked = false;
 $(document).ready(function(){
-	if (window.PIE) {
+    if (window.PIE) {
         PIE.attach($('#flag_slider'));
         PIE.attach($('.slide-controll a'));
         $('.block-header').each(function() {
@@ -24,7 +24,7 @@ $(document).ready(function(){
         $("#startLotto_"+startLotto+"").parent().css("display","block");
         $("#startLotto_"+startLotto+"").parent().parent().find("a:first").attr("class", "opened");
         $("#openLotto_"+startLotto+"").attr("class", "opened");
-        //$("#leftMenuCountry").css("display","block");
+    //$("#leftMenuCountry").css("display","block");
     } else {
         startId = 1;
     }
@@ -35,7 +35,7 @@ $(document).ready(function(){
     });
     
     if($('.ir-lotery').length){
-         $('[name=add]').addClass('dis');
+        $('[name=add]').addClass('dis');
         $('.ir-lotery .block .title').on('click', function(){
                         
             var parent = $(this).parents('.block');                     
@@ -169,13 +169,13 @@ $(document).ready(function(){
             $(this).prev('span').html(expand);
             $(this).addClass('close');
             $(this).parents('.slide-block').animate({
-                height: 40
+                height: 0
             }, 600);
         }else{
             $(this).prev('span').html(minimize);
             $(this).removeClass('close');
             $(this).parents('.slide-block').animate({
-                height: 382
+                height: 150
             }, 600);
         }
         return false;
@@ -197,12 +197,12 @@ $(document).ready(function(){
         $('.ball-item').removeClass('active');
         $('.ball-item').removeClass('selected');
         for(j=0;j<5;j++){
-                if($("[param=bets_"+value+"_"+j+"]").children().length > 0){
+            if($("[param=bets_"+value+"_"+j+"]").children().length > 0){
                                 
-                    $("[param=bets_"+value+"_"+j+"]").removeClass("active");
-                    $("[param=bets_"+value+"_"+j+"]").find('a').remove();
-                }
+                $("[param=bets_"+value+"_"+j+"]").removeClass("active");
+                $("[param=bets_"+value+"_"+j+"]").find('a').remove();
             }
+        }
     }
     
     $('.balls-g1').hover(
@@ -328,7 +328,7 @@ $(document).ready(function(){
         }  
         if(formBlocked){
             console.log('fail')
-           return; 
+            return; 
         } else {
             formBlocked = true;
         }
@@ -340,11 +340,11 @@ $(document).ready(function(){
     });
     
     $("#returnLotto").on("click", function(){
-         lottoBlock = $(".rates"); 
-         couponBlock = $("#coupon");
-         couponBlock.hide();
-         couponBlock.html("");
-         lottoBlock.show();
+        lottoBlock = $(".rates"); 
+        couponBlock = $("#coupon");
+        couponBlock.hide();
+        couponBlock.html("");
+        lottoBlock.show();
     });
       
 });
@@ -418,21 +418,21 @@ function ajaxReq(ids){
     lottoBlock = $(".rates"); 
     couponBlock = $("#coupon");
     bonusBlock = $("#withbonus");
-         $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: {
-                        ids : ids
-                    },
-                    dataType: "html",
-                    success: function(data){
-                        couponBlock.html(data);
-                        lottoBlock.hide();
-                        bonusBlock.hide();
-                        couponBlock.show();
-                    }
-                });
-    }
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+            ids : ids
+        },
+        dataType: "html",
+        success: function(data){
+            couponBlock.html(data);
+            lottoBlock.hide();
+            bonusBlock.hide();
+            couponBlock.show();
+        }
+    });
+}
 
 
 
@@ -525,7 +525,14 @@ function makeMultiples(obj){
         obj.removeClass("selected");
                 
         obj.removeClass("active");
-        $("#showErrorLottery").empty().html("<p>Нет свободного места в ячейке!</p>").show(); 
+        $( "#dialog-message" ).dialog({
+            modal: true,
+            buttons: {
+                Ok: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
         return;
     }
 }
@@ -560,7 +567,14 @@ function straighrBet(obj){
             obj.removeClass("selected"); 
                 
             obj.removeClass("active");
-            $("#showErrorLottery").empty().html("<p>Нет свободного места в ячейке!</p>").show(); 
+            $( "#dialog-message" ).dialog({
+                modal: true,
+                buttons: {
+                    Ok: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });
             return;
         }
         var rowBall = par_obj.find(".circle:empty:first");
@@ -679,7 +693,7 @@ function BetTypeSelect(plus){
         $.each(selects, function(i, v){
             v.parent('td').html(bettypeHtml[count]);
         });
-       // $('.multiples-select td select').selectbox();
+    // $('.multiples-select td select').selectbox();
     } else {
         $.ajax({
             type: "POST",
@@ -690,7 +704,7 @@ function BetTypeSelect(plus){
                     v.parent('td').html(data);
                 });
                 bettypeHtml[count] = data;
-                //$('.multiples-select td select').selectbox();
+            //$('.multiples-select td select').selectbox();
 
             }
       

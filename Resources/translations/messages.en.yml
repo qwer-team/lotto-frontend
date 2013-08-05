@@ -49,14 +49,14 @@ Sunday: Sunday
 next_lotto_draws:
     full schedule: Full Schedule
 last_results:
-    view more details: View more details
-    results of previous editions: results of previous editions
+    view more details: See details
+    results of previous editions: Results
 index:
-    minimize: roll up
-    expand: expand
+    minimize: Minimise
+    expand: Expand
 lotto_page:
-    with bonus ball: With ball bonus
-    without bonus ball: Excluding the bonus ball
+    with bonus ball: Include the bonus ball
+    without bonus ball: Without the bonus ball
     clear all: Clean all
     select your balls: Select the balls
     straight bets: Single bets
@@ -65,19 +65,20 @@ lotto_page:
     selections: Choice
     stake: Stake
     posible win: Possible win
-    lucky dips: Random balls
+    lucky dips: Lucky dip!
     bets: Bets
     bet type: Bet type
-    total stake: Total bets
-    for the next: During the next
+    total stake: Total stake
+    for the next: For the next draws
     draws: Draw(s)
     make a bet: Place bet
-    choose: Select %number1% number %number2% to get the correct
+    choose: Choose %number1% number, get %number2% correct Payout
+    popup: No free cells
 full_results:
-    name: Name
-    date: Date / Time
-    result balls: Result balls
-    bonus balls: Additional balls
+    name: Lottery
+    date: Date/Time
+    result balls: Main draw
+    bonus balls: Bonus balls
     period: Period
     filter: Filter
 full_shcedule:
@@ -92,13 +93,13 @@ full_shcedule:
     sut: Sut
     sun: Sun
     schedule_txt: '<p>All the world`s biggest lottery on our site. Now, in order to play in the New York area lottery to go to America - not necessarily! You just need to make a forecast loss of balls, and specifying the desired bet amount. More information about betting on the lottery you can find in the section .«<a href="/en/how_to_play">How to Play</a>».</p><p>Having counted only 10 UAH, you have the chance to become the proud owner of more than one thousand 000 UAH! To do this, you need to correctly predict the loss of five balls in the lottery, as French Joker + (5/49), Euromillions or USA New York Lottery.</p><p>We invite all who wish to carry on betting sweepstakes runs the world`s most popular lotteries!!</p>'
-Monday_lotto_draws: Circulations Monday
-Tuesday_lotto_draws: Circulations Tuesday
-Wednesday_lotto_draws: Circulations Wednesday
-Thursday_lotto_draws: Circulations Thursday
-Friday_lotto_draws: Circulations Friday
-Saturday_lotto_draws: Circulations Saturday
-Sunday_lotto_draws: Circulations Sunday
+Monday_lotto_draws: Monday draws
+Tuesday_lotto_draws: Tuesday draws
+Wednesday_lotto_draws: Wednesday draws
+Thursday_lotto_draws: Thursday draws
+Friday_lotto_draws: Friday draws
+Saturday_lotto_draws: Saturday draws
+Sunday_lotto_draws: Sunday draws
 bet:
     Singles: Single
     Doubles: Double
@@ -120,4 +121,9 @@ date_picker:
     minute_text: Минуты
     second_text: Секунды
     current_text: Теперь
-    close_text: Закрыть
+    close_text: Закрыть    
+lotto_steps:
+  step1: Step 1. Do you whant play whith bonus ball or without?
+  step2: Step 2. Select from 1 to 5 balls in each lines.
+  step3: Step 3. Select number of plays, sum rate and stake.
+    

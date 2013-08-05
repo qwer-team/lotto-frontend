@@ -161,7 +161,7 @@ h2{
 }
 .ir-lotery .block .block-header{
 	position: relative;
-	height: 44px;
+	height: 28px;
 	background: url(../images/block-title-green.png);
 	border-radius: 4px 4px 0 0;
 }
@@ -170,8 +170,8 @@ h2{
 }
 .ir-lotery .block .block-header .title{
 	color: #FFF;
-	font-size: 16px;
-	padding-top: 12px;
+	font-size: 14px;
+	padding-top: 2px;
 	cursor: pointer;
 	padding-left: 15px;
 }
@@ -198,10 +198,10 @@ h2{
 .ir-lotery .block ul li{
 	list-style: none;
 	border-bottom: 1px #FFF solid;
-	padding: 6px 15px;
-	font-size: 13px;
+	padding: 2px 15px;
+	font-size: 11px;
 	background: #f9f9f9 url(../images/loto-line.png) left bottom repeat-x;
-	height: 32px;
+	height: 13px;
 }
 .rates{
 	margin: 10px 6px 0 6px;
@@ -220,7 +220,7 @@ h2{
 	display: block;
 }
 .blue-block .title{
-	height: 45px;
+	height: 25px;
 	background: url(../images/block-title-blue.png) top left repeat-x;
 	border-radius: 4px 4px 0 0;
 	position: relative;
@@ -232,9 +232,9 @@ h2{
 	border-radius: 0 0 4px 4px;
 }
 .blue-block .title div{
-	padding: 14px 0 0 20px;
+	padding: 5px 0 0 20px;
 	color: #FFF;
-	font-size: 16px;
+	font-size: 12px;
 	font-weight: bold;
 }
 #lucky-dips{
@@ -335,10 +335,10 @@ a#clear-all{
 	font-weight: bold;
 }
 #tabs.ui-tabs .ui-tabs-nav li a{
-	padding: 13px 5px;
+	padding: 5px 5px;
 	width: 130px;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 12px;
 	text-align: center;
 }
 #tabs.ui-tabs .ui-tabs-nav .ui-state-default{
@@ -449,7 +449,7 @@ a#clear-all{
 .slide-block{
 	position: relative;
 	overflow: hidden;
-	height: 382px;
+	height: 150px; /*--------*/
 	padding-top: 26px;
 	border-radius: 0 0 6px 6px;
 	margin: 0 6px;
@@ -951,6 +951,7 @@ i.ZAF{
 .ui-timepicker-rtl{ direction: rtl; }
 .ui-timepicker-rtl dl { text-align: right; }
 .ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+/*
 .ui-datepicker-next .ui-icon,
 .ui-datepicker-prev .ui-icon{
 	background: url(../images/calendar-control.png);
@@ -967,6 +968,7 @@ i.ZAF{
 .ui-datepicker-prev .ui-icon{
 	background-position: top right;
 }
+*/
 .dates-filter{
 	float: left;
 	border-radius: 4px;
@@ -1084,4 +1086,17 @@ i.ZAF{
 }
 .draw_date{
         width: 115px;
+}
+.ball-item {
+ -moz-user-select: none;
+ -khtml-user-select: none;
+ user-select: none;
+
+}
+h3{
+	font-size: 14px;
+	/*border-bottom: 1px #000 solid;*/
+        margin: 5px 10px 5px 10px;
+	padding-left: 15px;
+        color:#444444;
 }
