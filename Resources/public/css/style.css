@@ -43,11 +43,7 @@ h2{
 	padding-top: 40px;
 }
 .main-col .col-content {
-<<<<<<< HEAD
 	-moz-user-select: -moz-none;
-=======
-    -moz-user-select: -moz-none;
->>>>>>> ddfc02490ee9f15192776506b5d2e41b56f9b094
 	background: url(../images/center.png)  50% 0 repeat-y;
 	padding-bottom: 50px;
 }
