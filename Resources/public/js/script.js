@@ -419,7 +419,7 @@ function makeBats(mult){
               return;  
                 
                 //$("#showErrorLottery").empty().html(error).show(); 
-            } else {
+            } if(data.result != 'fail') {
                 ids = data.ids;
                 ajaxReq(ids);
                 //alert("Ставка прошла");
