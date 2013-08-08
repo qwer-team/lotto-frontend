@@ -408,25 +408,23 @@ function makeBats(mult){
             if(data.result == 'fail'){
                 error = data.errorMessage;
             
-            $( "#showErrorLottery" ).dialog({
-                modal: true,
-                buttons: {
-                    Ok: function() {
-                        $( this ).dialog( "close" );
-                    }
-                }
-            }); 
-              return;  
+//            $( "#login" ).dialog({
+//            modal: true,
+//            buttons: {
+//                Ok: function() {
+//                    $( this ).dialog( "close" );
+//                }
+//            }
+//        }); 
                 
-                //$("#showErrorLottery").empty().html(error).show(); 
-            } if(data.result != 'fail') {
+                
+                $("#showErrorLottery").empty().html(error).show(); 
+            } else {
                 ids = data.ids;
                 ajaxReq(ids);
                 //alert("Ставка прошла");
                 $('#clear-all').trigger("click");
-                return;
             }
-            
             formBlocked = false; 
         },
         fail: function(data){
