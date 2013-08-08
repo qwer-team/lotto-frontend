@@ -169,13 +169,13 @@ $(document).ready(function(){
             $(this).prev('span').html(expand);
             $(this).addClass('close');
             $(this).parents('.slide-block').animate({
-                height: 40
+                height: 0
             }, 600);
         }else{
             $(this).prev('span').html(minimize);
             $(this).removeClass('close');
             $(this).parents('.slide-block').animate({
-                height: 382
+                height: 150
             }, 600);
         }
         return false;

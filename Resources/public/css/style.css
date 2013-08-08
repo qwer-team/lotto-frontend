@@ -43,6 +43,7 @@ h2{
 	padding-top: 40px;
 }
 .main-col .col-content {
+	-moz-user-select: -moz-none;
 	background: url(../images/center.png)  50% 0 repeat-y;
 	padding-bottom: 50px;
 }
@@ -226,6 +227,12 @@ h2{
 	*zoom: 1;
 }
 .blue-block .block-content{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: moz-none;
+	-ms-user-select: none;
+	user-select: none;
 	border: 1px #2145a3 solid;
 	border-top: 0;
 	border-radius: 0 0 4px 4px;
@@ -448,7 +455,7 @@ a#clear-all{
 .slide-block{
 	position: relative;
 	overflow: hidden;
-	height: 382px;
+	height: 150px; /*--------*/
 	padding-top: 26px;
 	border-radius: 0 0 6px 6px;
 	margin: 0 6px;
@@ -950,6 +957,7 @@ i.ZAF{
 .ui-timepicker-rtl{ direction: rtl; }
 .ui-timepicker-rtl dl { text-align: right; }
 .ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+/*
 .ui-datepicker-next .ui-icon,
 .ui-datepicker-prev .ui-icon{
 	background: url(../images/calendar-control.png);
@@ -966,6 +974,7 @@ i.ZAF{
 .ui-datepicker-prev .ui-icon{
 	background-position: top right;
 }
+*/
 .dates-filter{
 	float: left;
 	border-radius: 4px;
@@ -1083,4 +1092,17 @@ i.ZAF{
 }
 .draw_date{
         width: 115px;
+}
+.ball-item {
+ -moz-user-select: none;
+ -khtml-user-select: none;
+ user-select: none;
+
+}
+h3{
+	font-size: 14px;
+	/*border-bottom: 1px #000 solid;*/
+        margin: 5px 10px 5px 10px;
+	padding-left: 15px;
+        color:#444444;
 }

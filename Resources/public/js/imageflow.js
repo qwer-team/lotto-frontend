@@ -41,7 +41,7 @@ function ImageFlow (startId)
 	this.defaults =
 	{
 		animationSpeed:     50,             /* Animation speed in ms */
-		aspectRatio:        1.964,          /* Aspect ratio of the ImageFlow container (width divided by height) */
+		aspectRatio:        5,          /* Aspect ratio of the ImageFlow container (width divided by height) */
 		buttons:            false,          /* Toggle navigation buttons */
 		captions:           true,           /* Toggle captions */
 		circular:           false,          /* Toggle circular rotation */
@@ -51,8 +51,8 @@ function ImageFlow (startId)
 		imageFocusMax:      4,              /* Max number of images on each side of the focussed one */
 		imagePath:          '',             /* Path to the images relative to the reflect_.php script */
 		imageScaling:       true,           /* Toggle image scaling */ 
-		imagesHeight:       0.67,           /* Height of the images div container in percent */
-		imagesM:            1.0,            /* Multiplicator for all images in percent */
+		imagesHeight:       0.9,              /* Height of the images div container in percent */
+		imagesM:            1,            /* Multiplicator for all images in percent */
 		onClick:            function() { document.location = this.url; },   /* Onclick behaviour */
 		opacity:            false,          /* Toggle image opacity */
 		opacityArray:       [10,8,6,4,2],   /* Image opacity (range: 0 to 10) first value is for the focussed image */
@@ -61,7 +61,7 @@ function ImageFlow (startId)
 		preloadImages:      true,           /* Toggles loading bar (false: requires img attributes height and width) */
 		reflections:        true,           /* Toggle reflections */
 		reflectionGET:      '',             /* Pass variables via the GET method to the reflect_.php script */
-		reflectionP:        0.5,            /* Height of the reflection in percent of the source image */
+		reflectionP:        0.1,            /* Height of the reflection in percent of the source image */
 		reflectionPNG:      false,          /* Toggle reflect2.php or reflect3.php */
 		reflectPath:        '',             /* Path to the reflect_.php script */
 		scrollbarP:         0.6,            /* Width of the scrollbar in percent */
@@ -124,7 +124,7 @@ function ImageFlow (startId)
 				/* Set height of the ImageFlow container and center the loading bar */
                                 
                                 //this.navigationDiv.attributes.textContent = "margin-top:80px;";
-                                this.navigationDiv.style.marginTop = "80px";
+                                this.navigationDiv.style.marginTop = "-10px";
 				var width = this.ImageFlowDiv.offsetWidth;
 				var height = Math.round(width / my.aspectRatio);
 				document.getElementById(my.ImageFlowID+'_loading_txt').style.paddingTop = ((height * 0.5) -22) + 'px';
@@ -387,7 +387,7 @@ function ImageFlow (startId)
 	{
 		/* Cache global variables */
 		this.imagesDivWidth = my.imagesDiv.offsetWidth+my.imagesDiv.offsetLeft;
-		this.maxHeight = Math.round(my.imagesDivWidth / my.aspectRatio);
+		this.maxHeight =Math.round(my.imagesDivWidth / my.aspectRatio);
 		this.maxFocus = my.imageFocusMax * my.xStep;
 		this.size = my.imagesDivWidth * 0.5;
 		this.sliderWidth = my.sliderWidth * 0.5;
