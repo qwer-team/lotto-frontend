@@ -408,7 +408,7 @@ function makeBats(mult){
             if(data.result == 'fail'){
                 error = data.errorMessage;
             
-            $( "#showErrorLottery" ).dialog({
+            $( "#warning" ).dialog({
             modal: true,
             buttons: {
                 Ok: function() {
@@ -418,7 +418,7 @@ function makeBats(mult){
         }); 
                 
                 
-            $("#warning").empty().html(error).show(); 
+            $("#showErrorLottery").empty().html(error).show(); 
             } else {
                 ids = data.ids;
                 ajaxReq(ids);
