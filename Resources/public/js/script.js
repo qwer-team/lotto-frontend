@@ -416,7 +416,7 @@ function makeBats(mult){
                     }
                 }
             }); 
-                
+              return;  
                 
                 //$("#showErrorLottery").empty().html(error).show(); 
             } else {
