@@ -408,17 +408,17 @@ function makeBats(mult){
             if(data.result == 'fail'){
                 error = data.errorMessage;
             
-//            $( "#showErrorLottery" ).dialog({
-//            modal: true,
-//            buttons: {
-//                Ok: function() {
-//                    $( this ).dialog( "close" );
-//                }
-//            }
-//        }); 
+            $( "#showErrorLottery" ).dialog({
+                modal: true,
+                buttons: {
+                    Ok: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            }); 
                 
                 
-                $("#showErrorLottery").empty().html(error).show(); 
+                //$("#showErrorLottery").empty().html(error).show(); 
             } else {
                 ids = data.ids;
                 ajaxReq(ids);
