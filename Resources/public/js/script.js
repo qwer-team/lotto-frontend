@@ -424,7 +424,9 @@ function makeBats(mult){
                 ajaxReq(ids);
                 //alert("Ставка прошла");
                 $('#clear-all').trigger("click");
+                return;
             }
+            
             formBlocked = false; 
         },
         fail: function(data){
