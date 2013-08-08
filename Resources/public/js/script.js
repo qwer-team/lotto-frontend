@@ -323,7 +323,17 @@ $(document).ready(function(){
     
     $("#lottoform").on("click", function(){
         if(token == '') {
-            alert("Зарегистрируйся");
+            //alert("Зарегистрируйся");
+            $( "#login" ).dialog({
+            modal: true,
+            buttons: {
+                Ok: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+            
+            
             return;
         }  
         if(formBlocked){
