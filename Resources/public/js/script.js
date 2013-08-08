@@ -331,10 +331,8 @@ $(document).ready(function(){
                     $( this ).dialog( "close" );
                 }
             }
-        });
-            
-            
-            return;
+        }); 
+        return;
         }  
         if(formBlocked){
             console.log('fail')
@@ -409,7 +407,18 @@ function makeBats(mult){
         success: function(data){      
             if(data.result == 'fail'){
                 error = data.errorMessage;
-                $("#showErrorLottery").empty().html(error).show(); 
+            
+            $( "#showErrorLottery" ).dialog({
+                modal: true,
+                buttons: {
+                    Ok: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            }); 
+                
+                
+                //$("#showErrorLottery").empty().html(error).show(); 
             } else {
                 ids = data.ids;
                 ajaxReq(ids);
