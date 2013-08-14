@@ -46,6 +46,7 @@ h2{
 	-moz-user-select: -moz-none;
 	background: url(../images/center.png)  50% 0 repeat-y;
 	padding-bottom: 50px;
+
 }
 .main-col .bottom{
 	background: url(../images/down.png) 50% 100% no-repeat;
@@ -55,12 +56,12 @@ h2{
 }
 .block-loto{
 	width: 372px;
-	padding-top: 47px;
+	padding-top: 25px;
 	position: relative;
 }
 .block-loto .block-header{
 	width: 100%;
-	height: 56px;
+	height: 25px;
 	border-radius: 4px 4px 0 0;
 	position: absolute;
 	top: 0;
@@ -71,6 +72,12 @@ h2{
 	border: 1px #313a87 solid;
 	border-top: 0;
 	border-radius: 0 0 4px 4px;
+	-webkit-touch-callout: none;
+    	-webkit-user-select: none;
+    	-khtml-user-select: none;
+    	-moz-user-select: -moz-none;
+    	-ms-user-select: none;
+    	user-select: none;
 }
 .block-loto.block-blue .block-header{
 	background: url(../images/block-title-blue.png);
@@ -96,7 +103,7 @@ h2{
 .block-loto .title-left h2{
 	font-size: 15px;
 	color: #FFF;
-	padding: 7px 0 0 20px;
+	padding: 4px 0 0 20px;
 	border: 0;
 	margin: 0;
 }
@@ -139,7 +146,7 @@ h2{
 	font-weight: bold;
 	color: #114fb5;
 	position: absolute;
-	top: 85px;
+	top: 60px;
 	right: 10px;
 	-moz-transform: scale(1) rotate(-30deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
 	-webkit-transform: scale(1) rotate(-30deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
@@ -227,12 +234,6 @@ h2{
 	*zoom: 1;
 }
 .blue-block .block-content{
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: moz-none;
-	-ms-user-select: none;
-	user-select: none;
 	border: 1px #2145a3 solid;
 	border-top: 0;
 	border-radius: 0 0 4px 4px;
@@ -751,7 +752,7 @@ h2.message-title{
 }
 p{
 	font-size: 13px;
-	text-indent: 20px;
+	text-indent: 35px;
 	padding-bottom: 15px;
 	margin: 0 25px;
 	text-align: justify;

@@ -73,7 +73,7 @@ lotto_page:
     draws: Draw(s)
     make a bet: Place bet
     choose: Choose %number1% number, get %number2% correct Payout
-    popup: No free cells
+    popup: The maximum number of balls that can be picked is 5!
 full_results:
     name: Lottery
     date: Date/Time
