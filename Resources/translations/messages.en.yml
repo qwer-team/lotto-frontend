@@ -72,7 +72,7 @@ lotto_page:
     for the next: For the next draws
     draws: Draw(s)
     make a bet: Place bet
-    choose: Choose %number1% number, get %number2% correct Payout
+    choose: Choose %number1% number, get correct Payout =
     popup: The maximum number of balls that can be picked is 5!
 full_results:
     name: Lottery

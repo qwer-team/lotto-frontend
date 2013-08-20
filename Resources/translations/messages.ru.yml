@@ -72,7 +72,7 @@ lotto_page:
     for the next: В течение следующих
     draws: Тираж(а)
     make a bet: Сделать ставку
-    choose: Выберите и угадайте %number1% номер Выплата %number2%
+    choose: Выберите и угадайте %number1% номер Выплата =
     popup: Вы можете выбрать не более 5 шаров в каждой линии!
 full_results:
     name: Лотерея
