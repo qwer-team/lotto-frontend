@@ -5,8 +5,7 @@
                                                 <div class="title-left">
                                                         {%set nextDay = (nextDraws|first).date.format("l")%}
                                                         {% set nextDrawsLabel = (nextDay~'_'~ 'lotto_draws')%}
-                                                        <h2>{{ nextDrawsLabel | trans}}</h2>
-                                                        <a href="{{ path('schedule') }}">{{ "next_lotto_draws.full schedule"|trans }} »</a>
+                                                        <h2>{{ nextDrawsLabel | trans}} <a href="{{ path('schedule') }}">{{ "next_lotto_draws.full schedule"|trans }} »</a></h2>
                                                 </div>
                                                 <i></i>
                                         </div>

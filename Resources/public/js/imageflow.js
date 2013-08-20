@@ -323,6 +323,7 @@ function ImageFlow (startId)
 			/* Only initialize navigation elements if there is more than one image */
 			if(my.max > 1)
 			{
+                           
 				/* Initialize mouse, touch and key support */
 				my.MouseWheel.init();
 				my.MouseDrag.init();
