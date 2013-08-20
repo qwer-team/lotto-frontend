@@ -1,18 +1,17 @@
 {% block result %}
-						<div class="loto-draws2 block-loto block-red">
-							<div class="block-header">
-								<div class="title-left">
-									<h2>{{ "last_results.results of previous editions"|trans }}</h2>
-									<a href="{{ path('fullres') }}">{{ "last_results.view more details"|trans }} »</a>
-								</div>
-								<i></i>
-							</div>
-							<div class="block-cotent">
-								<ul>
-                                                                {% for lastResult in lastResults %}
-                                                                    <li>({{ lastResult.lottoDraw.date|date("H:i") }})  <a href="{{ path('index_lotto', {'id': lastResult.lottoDraw.lottoTime.lottoType.id}) }}?token={{ app.request.session.get('token') }}"><b>{{ lastResult.lottoDraw.lottoTime.lottoType.translate(locale).title }}</b></a> ({{ lastResult.lottoDraw.lottoTime.lottoType.country.translate(locale).title }})</li>
-                                                                {% endfor %}
-								</ul>
-							</div>
-						</div>
+<div class="loto-draws2 block-loto block-red">
+    <div class="block-header">
+        <div class="title-left">
+            <h2><a href="{{ path('fullres') }}">{{ "last_results.results of previous editions"|trans }}</a></h2>
+        </div>
+        <i></i>
+    </div>
+    <div class="block-cotent">
+        <ul>
+             {% for lastResult in lastResults %}
+                <li>({{ lastResult.lottoDraw.date|date("H:i") }})  <a href="{{ path('index_lotto', {'id': lastResult.lottoDraw.lottoTime.lottoType.id}) }}?token={{ app.request.session.get('token') }}"><b>{{ lastResult.lottoDraw.lottoTime.lottoType.translate(locale).title }}</b></a> ({{ lastResult.lottoDraw.lottoTime.lottoType.country.translate(locale).title }})</li>
+             {% endfor %}
+                        </ul>
+                    </div>
+                </div>
 {% endblock %}
