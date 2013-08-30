@@ -32,7 +32,9 @@ class FrontEndPageController extends Controller
                 ->getNearestDraws();
         $url = $request->getPathInfo();
         $locale = $this->getRequest()->getLocale();
+        $currentLotto = $em->getRepository('QwerLottoBundle:Type')->find($id);
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:index.html.twig', array(
+                    'curLotto' => $currentLotto,
                     'lottery' => $lottery,
                     'timeExpire' => $timeExpire,
                     'message' => $message,

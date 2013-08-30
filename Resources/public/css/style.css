@@ -1238,7 +1238,12 @@ h3{
 	background: url(../images/BLR1.png);
 }
 .AUS1{
-	background: url(../images/AUS1.png);
+	background: url(../images/AUS1.png) no-repeat;
+        background-color: #22538b;
+	color: #000;
+	font-family: Arial;
+	font-size: 14px;
+	height: 100%;
 }
 .IRL1{
 	background: url(../images/IRL1.png);
