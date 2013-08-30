@@ -261,271 +261,84 @@ h2{
 	width: 434px;
 	margin-left: 5px;
 }
-.balls-3 .AUS, .BLR, .GBR, .DEU, .HKG, .GRC, .EUS, .IRL, .ESP, .CAN, .RUS, .USA, .TUR, .UKR, .FRA, .ZAF, .ITA, .BRA, .HUN, .balls-4 .AUS, .BLR, .GBR, .DEU, .HKG, .GRC, .EUS, .IRL, .ESP, .CAN, .RUS, .USA, .TUR, .UKR, .FRA, .ZAF, .ITA, .BRA, .HUN, .balls-5 .AUS, .BLR, .GBR, .DEU, .HKG, .GRC, .EUS, .IRL, .ESP, .CAN, .RUS, .USA, .TUR, .UKR, .FRA, .ZAF, .ITA, .BRA, .HUN{
+
+.block-content .balls-g1
+{background: url(../images/group-ball.png);}
+
+.balls-3, .balls-4 , .balls-5{
 	height: 42px;
 	float: left;
-	background: url(../images/group-ball.png);
 	margin-right: 12px;
 	margin-top: 6px;
 	margin-bottom: 5px;
 	cursor: pointer;
 }
-.balls-3 .AUS{
-	margin-left: 8px;
-	width: 51px;
-	background-position: 0 -55px;
-}
-.balls-3 .BLR{
-	margin-left: 8px;
-	width: 51px;
-	background-position: 0 -157px;
-}
-.balls-3 .GBR{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -1080px -157px;
-}
-.balls-3 .DEU{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -432px -157px;
-}
-.balls-3 .HKG{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -432px -261px;
-}
-.balls-3 .GRC{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -432px -157px;
-}
-.balls-3 .EUS{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -217px -157px;
-}
-.balls-3 .IRL{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -648px -157px;
-}
-.balls-3 .ESP{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -863px -260px;
-}
-.balls-3 .CAN{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -215px -54px;
-}
-.balls-3 .RUS{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -863px -54px;
-}
-.balls-3 .USA{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -1296px -54px;
-}
-.balls-3 .TUR{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -1080px -54px;
-}
-.balls-3 .UKR{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -1080px -260px;
-}
-.balls-3 .FRA{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -215px -260px;
-}
-.balls-3 .ZAF{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -865px -156px;
-}
-.balls-3 .ITA{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -648px -260px;
-}
-.balls-3 .BRA{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -0px -260px;
-}
-.balls-3 .HUN{
-	margin-left: 8px;
-	width: 51px;
-	background-position: -648px -55px;
-}
-.balls-3 .AUS, .BLR, .GBR, .DEU, .HKG, .GRC, .EUS, .IRL, .ESP, .CAN, .RUS, .USA, .TUR, .UKR, .FRA, .ZAF, .ITA, .BRA, .HUN.active{
-	background-position: top left;
-}
-.balls-4 .AUS{
-	width: 51px;
-	background-position: -67px -55px;
-}
-.balls-4 .BLR{
-	width: 51px;
-	background-position: -67px -157px;
-}
-.balls-4 .GBR{
-	width: 51px;
-	background-position: -1145px -157px;
-}
-.balls-4 .DEU{
-	width: 51px;
-	background-position: -499px -55px;
-}
-.balls-4 .HKG{
-	width: 51px;
-	background-position: -1145px -55px;
-}
-.balls-4 .GRC{
-	width: 51px;
-	background-position: -499px -157px;
-}
-.balls-4 .EUS{
-	width: 51px;
-	background-position: -283px -157px;
-}
-.balls-4 .IRL{
-	width: 51px;
-	background-position: -715px -157px;
-}
-.balls-4 .ESP{
-	width: 51px;
-	background-position: -931px -261px;
-}
-.balls-4 .CAN{
-	width: 51px;
-	background-position: -283px -55px;
-}
-.balls-4 .RUS{
-	width: 51px;
-	background-position: -930px -55px;
-}
-.balls-4 .USA{
-	width: 51px;
-	background-position: -1362px -55px;
-}
-.balls-4 .TUR{
-	width: 51px;
-	background-position: -1147px -55px;
-}
-.balls-4 .UKR{
-	width: 51px;
-	background-position: -1147px -260px;
-}
-.balls-4 .FRA{
-	width: 51px;
-	background-position: -283px -260px;
-}
-.balls-4 .ZAF{
-	width: 51px;
-	background-position: -930px -157px;
-}
-.balls-4 .ITA{
-	width: 51px;
-	background-position: -715px -261px;
-}
-.balls-4 .BRA{
-	width: 51px;
-	background-position: -67px -261px;
-}
-.balls-4 .HUN{
-	width: 51px;
-	background-position: -714px -55px;
-}
-.balls-4 .AUS, .BLR, .GBR, .DEU, .HKG, .GRC, .EUS, .IRL, .ESP, .CAN, .RUS, .USA, .TUR, .UKR, .FRA, .ZAF, .ITA, .BRA, .HUN.active{
-	background-position: -67px 0;
-}
-.balls-5 .AUS{
-	width: 76px;
-	background-position: -131px -54px;
-}
-.balls-5 .BLR{
-	width: 76px;
-	background-position: -131px -157px;
-}
-.balls-5 .GBR{
-	width: 76px;
-	background-position: -1210px -157px;
-}
-.balls-5 .DEU{
-	width: 76px;
-	background-position: -562px -55px;
-}
-.balls-5 .HKG{
-	width: 76px;
-	background-position: -562px -261px;
-}
-.balls-5 .GRC{
-	width: 76px;
-	background-position: -562px -157px;
-}
-.balls-5 .EUS{
-	width: 76px;
-	background-position: -346px -157px;
-}
-.balls-5 .IRL{
-	width: 76px;
-	background-position: -778px -157px;
-}
-.balls-5 .ESP{
-	width: 76px;
-	background-position: -994px -261px;
-}
-.balls-5 .CAN{
-	width: 76px;
-	background-position: -346px -55px;
-}
-.balls-5 .RUS{
-	width: 76px;
-	background-position: -995px -55px;
-}
-.balls-5 .USA{
-	width: 76px;
-	background-position: -1426px -55px;
-}
-.balls-5 .TUR{
-	width: 76px;
-	background-position: -1211px -55px;
-}
-.balls-5 .UKR{
-	width: 76px;
-	background-position: -1211px -261px;
-}
-.balls-5 .FRA{
-	width: 76px;
-	background-position: -347px -261px;
-}
-.balls-5 .ZAF{
-	width: 76px;
-	background-position: -995px -157px;
-}
-.balls-5 .ITA{
-	width: 76px;
-	background-position: -778px -260px;
-}
-.balls-5 .BRA{
-	width: 76px;
-	background-position: -130px -260px;
-}
-.balls-5 .HUN{
-	width: 76px;
-	background-position: -778px -55px;
-}
-.balls-5 .AUS, .BLR, .GBR, .DEU, .HKG, .GRC, .EUS, .IRL, .ESP, .CAN, .RUS, .USA, .TUR, .UKR, .FRA, .ZAF, .ITA, .BRA, .HUN.active{
-	background-position: top right;
-}
+.balls-3{margin-left: 8px; width: 51px;}
+.block-content .three_AUS{background-position: 0 -54px;}
+.block-content .three_BLR{background-position: 0 -156px;}
+.block-content .three_GBR{background-position: -1080px -156px;}
+.block-content .three_DEU{background-position: -432px -54px;}
+.block-content .three_HKG{background-position: -432px -260px;}
+.block-content .three_GRC{background-position: -432px -156px;}
+.block-content .three_EUS{background-position: -216px -156px;}
+.block-content .three_IRL{background-position: -648px -156px;}
+.block-content .three_ESP{background-position: -864px -260px;}
+.block-content .three_CAN{background-position: -216px -54px;}
+.block-content .three_RUS{background-position: -864px -54px;}
+.block-content .three_USA{background-position: -1296px -54px;}
+.block-content .three_TUR{background-position: -1080px -54px;}
+.block-content .three_UKR{background-position: -1080px -260px;}
+.block-content .three_FRA{background-position: -216px -260px;}
+.block-content .three_ZAF{background-position: -864px -156px;}
+.block-content .three_ITA{background-position: -648px -260px;}
+.block-content .three_BRA{background-position: 0 -260px;}
+.block-content .three_HUN{background-position: -648px -54px;}
+.balls-3.active{background-position: top left;}
+
+.balls-4{width: 51px;}
+.block-content .four_AUS{background-position: -67px -54px;}
+.block-content .four_BLR{background-position: -67px -156px;}
+.block-content .four_GBR{background-position: -1147px -156px;}
+.block-content .four_DEU{background-position: -499px -54px;}
+.block-content .four_HKG{background-position: -499px -260px;}
+.block-content .four_GRC{background-position: -499px -156px;}
+.block-content .four_EUS{background-position: -283px -156px;}
+.block-content .four_IRL{background-position: -715px -156px;}
+.block-content .four_ESP{background-position: -931px -260px;}
+.block-content .four_CAN{background-position: -283px -54px;}
+.block-content .four_RUS{background-position: -931px -54px;}
+.block-content .four_USA{background-position: -1363px -54px;}
+.block-content .four_TUR{background-position: -1147px -54px;}
+.block-content .four_UKR{background-position: -1147px -260px;}
+.block-content .four_FRA{background-position: -283px -260px;}
+.block-content .four_ZAF{background-position: -931px -156px;}
+.block-content .four_ITA{background-position: -715px -260px;}
+.block-content .four_BRA{background-position: -67px -261px;}
+.block-content .four_HUN{background-position: -715px -54px;}
+.balls-4.active{background-position: -67px 0;}
+
+.balls-5 {width: 76px;}
+.block-content .five_AUS{background-position: -131px -54px;}
+.block-content .five_BLR{background-position: -131px -156px;}
+.block-content .five_GBR{background-position: -1211px -156px;}
+.block-content .five_DEU{background-position: -563px -54px;}
+.block-content .five_HKG{background-position: -563px -260px;}
+.block-content .five_GRC{background-position: -563px -156px;}
+.block-content .five_EUS{background-position: -347px -156px;}
+.block-content .five_IRL{background-position: -779px -156px;}
+.block-content .five_ESP{background-position: -995px -260px;}
+.block-content .five_CAN{background-position: -347px -54px;}
+.block-content .five_RUS{background-position: -995px -54px;}
+.block-content .five_USA{background-position: -1427px -54px;}
+.block-content .five_TUR{background-position: -1211px -54px;}
+.block-content .five_UKR{background-position: -1211px -260px;}
+.block-content .five_FRA{background-position: -347px -260px;}
+.block-content .five_ZAF{background-position: -995px -156px;}
+.block-content .five_ITA{background-position: -779px -260px;}
+.block-content .five_BRA{background-position: -131px -260px;}
+.block-content .five_HUN{background-position: -779px -54px;}
+.balls-5.active{background-position: 0 -1px;}
+
 a.green-bt{
 	background: url(../images/bt-bg.png);
 	display: block;
@@ -543,10 +356,12 @@ a#clear-all{
 	overflow: hidden;
 	padding: 4px 0 0 6px;
 }
-.balls-container .ball-item .AUS{
+
+
+.balls-container .ball-item{
 	width: 26px;
 	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -28px right;
+	background: url(../images/balls.png);
 	text-align: center;
 	font-size: 11px;
 	color: #000;
@@ -555,224 +370,28 @@ a#clear-all{
 	float: left;
 	cursor: pointer;
 }
-.balls-container .ball-item .BLR{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -28px -30px;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .GBR{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -83px -223px;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .DEU{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -28px -193px;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .HKG{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -28px -255px;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .GRC{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -28px -223px;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .EUS{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -28px -127px;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .IRL{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -82px -31px;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .ESP{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -82px -159px;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .CAN{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -28px -96px;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .RUS{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -82px -96px;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .USA{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -136px 0;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .TUR{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -82px -191px;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .UKR{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -82px -254px;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .FRA{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -28px -159px;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .ZAF{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -82px -127px;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .ITA{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -82px -64px;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .BRA{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -28px -64px;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item .HUN{
-	width: 26px;
-	margin: 0 2px 2px 0;
-	background: url(../images/balls.png) -82px 0;
-	text-align: center;
-	font-size: 11px;
-	color: #000;
-	padding: 7px 0 6px 0;
-	font-weight: bold;
-	float: left;
-	cursor: pointer;
-}
-.balls-container .ball-item  .AUS, .BLR, .GBR, .DEU, .HKG, .GRC, .EUS, .IRL, .ESP, .CAN, .RUS, .USA, .TUR, .UKR, .FRA, .ZAF, .ITA, .BRA, .HUN.active{
+.balls-container .all_AUS{background-position: -28px 0;}
+.balls-container .all_BLR{background-position: -28px -32px;}
+.balls-container .all_GBR{background-position: -82px -224px;}
+.balls-container .all_DEU{background-position: -28px -192px;}
+.balls-container .all_HKG{background-position: -28px -256px;}
+.balls-container .all_GRC{background-position: -28px -224px;}
+.balls-container .all_EUS{background-position: -28px -128px;}
+.balls-container .all_IRL{background-position: -82px -32px;}
+.balls-container .all_ESP{background-position: -82px -160px;}
+.balls-container .all_CAN{background-position: -28px -96px;}
+.balls-container .all_RUS{background-position: -82px -96px;}
+.balls-container .all_USA{background-position: -136px 0;}
+.balls-container .all_TUR{background-position: -82px -191px;}
+.balls-container .all_UKR{background-position: -82px -254px;}
+.balls-container .all_FRA{background-position: -28px -160px;}
+.balls-container .all_ZAF{background-position: -82px -128px;}
+.balls-container .all_ITA{background-position: -82px -64px;}
+.balls-container .all_BRA{background-position: -28px -64px;}
+.balls-container .all_HUN{background-position: -82px 0;}
+.balls-container .ball-item.active{
 	background-position: top left;
+        color: #fff;
 }
 #tabs.ui-widget-content,
 #tabs .ui-widget-header{
@@ -1483,7 +1102,7 @@ i.ZAF{
 	background-position: -67px 0;
 }
 .balls-5:hover{
-	background-position: top right;
+	background-position: -131px 0;
 }
 /* betcoupon */
 .table-bordered{

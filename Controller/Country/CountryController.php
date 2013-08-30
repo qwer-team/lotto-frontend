@@ -114,9 +114,10 @@ class CountryController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Country entity.');
         }
-
+        
         $editForm = $this->createForm($this->get('qwer_lotto.form.country.type'), $entity);
         $deleteForm = $this->createDeleteForm($id);
+       
 
         return $this->render('QwerLottoFrontendBundle:Country\Country:edit.html.twig', array(
             'entity'      => $entity,
