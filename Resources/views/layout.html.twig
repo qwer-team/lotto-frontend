@@ -44,12 +44,13 @@
         </script>
      {% endblock %}
 </head>
-<body {% if curLotto is defined %}class="{{ curLotto.country.code|upper }}1"{% endif %}>
-    
-	<!--<div id="header">
+
+    <body>
+        <!--
+	<div id="header">
 		<img src="{{ asset( "bundles/qwerlottofrontend/images/header.png") }}" alt="">
-	</div>-->
-        
+	</div> -->
+       <div class="flags {% if curLotto is defined %} {{ curLotto.country.code|upper }}1{% endif %}"> </div> 
         
 	<div id="container">
 		<div class="main-container" ><!-- main-container -->

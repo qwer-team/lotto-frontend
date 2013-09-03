@@ -1184,160 +1184,70 @@ h3{
 	padding-left: 15px;
         color:#444444;
 }
-.message{
+.ui-dialog .ui-dialog-content p {
     font-size: 13px;
     padding-bottom: 15px;
     text-align: justify;
+    text-indent: 10px;
+    margin: 0px;
 }
 .CAN1{
-	background: url(../images/CAN1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/CAN1.png) no-repeat;
 }
 .DEU1{
-	background: url(../images/DEU1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/DEU1.png) no-repeat;
 }
 .FRA1{
-	background: url(../images/FRA1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/FRA1.png) no-repeat;
 }
 .ITA1{
-	background: url(../images/ITA1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/ITA1.png) no-repeat;
 }
 .USA1{
-	background: url(../images/USA1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/USA1.png) no-repeat;
 }
 .UKR1{
-	background: url(../images/UKR1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/UKR1.png) no-repeat;
 }
 .GBR1{
-	background: url(../images/GBR1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/GBR1.png) no-repeat;
 }
 .TUR1{
-	background: url(../images/TUR1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/TUR1.png) no-repeat;
 }
 .ESP1{
-	background: url(../images/ESP1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/ESP1.png) no-repeat;
 }
 .RUS1{
-	background: url(../images/RUS1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/RUS1.png) no-repeat;
 }
 .HUN1{
-	background: url(../images/HUN1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/HUN1.png) no-repeat;
 }
 .HKG1{
-	background: url(../images/HKG1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/HKG1.png) no-repeat;
 }
 .GRC1{
-	background: url(../images/GRC1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/GRC1.png) no-repeat;
 }
 .EUS1{
-	background: url(../images/EUS1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/EUS1.png) no-repeat;
 }
 .BRA1{
-	background: url(../images/BRA1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/BRA1.png) no-repeat;
 }
 .BLR1{
-	background: url(../images/BLR1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/BLR1.png) no-repeat;
 }
 .AUS1{
-	background: url(../images/AUS1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/AUS1.png) no-repeat;
 }
 .IRL1{
-	background: url(../images/IRL1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/IRL1.png) no-repeat;
 }
 .ZAF1{
-	background: url(../images/ZAF1.png) no-repeat 1200px 0 / 700px auto;
-        background-color: #22538b;
-	color: #000;
-	font-family: Arial;
-	font-size: 14px;
-	height: 100%;
+	background: url(../images/ZAF1.png) no-repeat;
 }
+
+.flags{position: absolute;left: 50%; top:0px; width: 50%;height: 100%; z-index: -2;}
+
