@@ -322,6 +322,7 @@ $(document).ready(function(){
     }); 
     
     $("#lottoform").on("click", function(){
+         console.log('start!!!')
         if(token == '') {
             //alert("Зарегистрируйся");
             $( "#login" ).dialog({
