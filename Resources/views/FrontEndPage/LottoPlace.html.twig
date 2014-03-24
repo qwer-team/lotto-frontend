@@ -10,8 +10,9 @@
     var lottoTypeId = '{{ lotto.id }}';
     </script>
     <h2>{{ lotto.country.translate(locale).title }} / {{ lotto.translate(locale).title }}</h2>
-    <h3> {{ "lotto_steps.step1"|trans }}</h3>
+    
     <div class="ir-lotery" id="withbonus">
+        <h3> {{ "lotto_steps.step1"|trans }}</h3>
         {% if (lotto.b1b != 0) and (lotto.b2b != 0) and (lotto.b3b != 0) and (lotto.b4b != 0) and (lotto.b5b != 0) %}
            {% set withoutBonus = 0 %} 
             
@@ -58,8 +59,9 @@
             </div>
         </div>
         <div id="coupon" style="display: none"></div>
-        <h3> {{ "lotto_steps.step2"|trans }}</h3>
+        
         <div class="rates"><!-- rates -->
+            <h3> {{ "lotto_steps.step2"|trans }}</h3>
             <div id="lucky-dips" class="blue-block">
                 <div class="title">
                     <div>{{ "lotto_page.lucky dips"|trans }}</div>

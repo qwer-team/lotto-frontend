@@ -322,7 +322,7 @@ $(document).ready(function(){
     }); 
     
     $("#lottoform").on("click", function(){
-         console.log('start!!!')
+         console.log('Bet start!!!')
         if(token == '') {
             //alert("Зарегистрируйся");
             $( "#login" ).dialog({
@@ -400,7 +400,7 @@ function makeBats(mult){
     body["rawBets"] = rawBets;
     $.ajax({
         type: "POST",
-        url: "/lottodoc/"+locale+"/betreq",
+        url: "/app_dev.php/lottodoc/"+locale+"/betreq",
         data: {
             body : body
         },
