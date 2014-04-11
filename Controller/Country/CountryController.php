@@ -32,7 +32,7 @@ class CountryController extends Controller
         $qb = $this->repo->createQueryBuilder("country");
         $paginator = $this->get("qwer.pagination");
         $url = $this->generateUrl("country");
-        $entities = $paginator->getIterator($qb, $url, $page, 10);
+        $entities = $paginator->getIterator($qb, $url, $page, 50);
         $html = $paginator->getHtml(); 
 
         return $this->render('QwerLottoFrontendBundle:Country\Country:index.html.twig', array(
