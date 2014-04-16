@@ -99,7 +99,7 @@ class FrontEndPageController extends Controller
         $adapter = $em->getRepository('QwerLottoBundle:Result')
                 ->getFullResults($filter);
         $pagerfanta = new Pagerfanta($adapter);
-        $pagerfanta->setMaxPerPage(10);
+        $pagerfanta->setMaxPerPage(20);
         $pagerfanta->setCurrentPage($page);
         $currentPageResults = $pagerfanta->getCurrentPageResults();
 
@@ -108,7 +108,7 @@ class FrontEndPageController extends Controller
 
         $view = new TwitterBootstrapView();
         $html = "";
-        if($pagerfanta->count() > 10)
+        if($pagerfanta->count() > 20)
         {
             $html = $view->render($pagerfanta, $routeGenerator, array(
                 "prev_message" => "&laquo;",
