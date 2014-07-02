@@ -28,7 +28,7 @@ class FrontEndPageController extends Controller
 
     public function indexAction(Request $request, $id = 3)
     {
-        $token = $request->get("token");
+        $tokenStr = $request->get("token");
       //  $tokenStr = "7il20ckksjh70ns8qght2stik2";//$request->get("token");
         $clientId = 1;
         if($tokenStr!="")  {
@@ -46,7 +46,7 @@ class FrontEndPageController extends Controller
             curl_close($ch);
             $response = json_decode($responseRaw);
          
-            print_r($response) ;
+       //     print_r($response) ;
     
     
         $this->em = $this->container->get("doctrine.orm.entity_manager");
