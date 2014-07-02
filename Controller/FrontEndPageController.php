@@ -47,11 +47,11 @@ class FrontEndPageController extends Controller
             curl_close($ch);
             $response = json_decode($responseRaw);
          
-       //     print_r($response) ;
+            print_r($response) ;
     
     
         $this->em = $this->container->get("doctrine.orm.entity_manager");
-        $token = $this->findToken(  $response->user_id );
+        $token = $this->findToken($response->user_id);
         if (!$token) {
           
         $class = $this->get('service_container')->getParameter('users.token_class');
@@ -103,7 +103,7 @@ class FrontEndPageController extends Controller
     }
     
     
-    private function findToken(  $externalId)
+    private function findToken($externalId)
     {
         $class = $this->get('service_container')->getParameter('users.token_class');
         $repo = $this->em->getRepository($class);
