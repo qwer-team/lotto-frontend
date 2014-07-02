@@ -30,6 +30,7 @@ class FrontEndPageController extends Controller
     {
         $tokenStr = $request->get("token");
       //  $tokenStr = "7il20ckksjh70ns8qght2stik2";//$request->get("token");
+    //    print($tokenStr."--");
         $clientId = 1;
         if($tokenStr!="")  {
  
