@@ -45,13 +45,13 @@ class FrontEndPageController extends Controller
             $responseRaw = curl_exec($ch);
             //echo  $responseRaw ;
             curl_close($ch);
-            $response = json_decode($responseRaw);
+            $resp = json_decode($responseRaw);
          
-            print_r($response) ;
+            print_r($resp) ;
     
     
         $this->em = $this->container->get("doctrine.orm.entity_manager");
-        $token = $this->findToken($response->user_id);
+        $token = $this->findToken($resp->user_id);
         if (!$token) {
           
         $class = $this->get('service_container')->getParameter('users.token_class');
@@ -62,11 +62,11 @@ class FrontEndPageController extends Controller
          $user = $uRepo->findOneById(1);
        
          $token->setUser($user);
-         $token->setExternalId($response->user_id);
+         $token->setExternalId($resp->user_id);
        
         
         $currencyRepo = $this->getCurrencyRepo();
-        $currency = $currencyRepo->findOneByCode($response->currency);
+        $currency = $currencyRepo->findOneByCode($resp->currency);
         $token->setCurrency($currency);
           
          }  
