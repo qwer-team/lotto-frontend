@@ -29,7 +29,7 @@ class FrontEndPageController extends Controller
     public function indexAction(Request $request, $id = 3)
     {
         $tokenStr = $request->get("token");
-      //  $tokenStr = "7il20ckksjh70ns8qght2stik2";//$request->get("token");
+       // $tokenStr = "77d1774mt2tov9fu2rhmto9f42";//$request->get("token");
     //    print($tokenStr."--");
         $clientId = 1;
         if($tokenStr!="")  {
