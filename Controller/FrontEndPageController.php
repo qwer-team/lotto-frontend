@@ -13,16 +13,72 @@ use Qwer\LottoDocumentsBundle\Form\BodyType;
 use Qwer\LottoDocumentsBundle\Entity\Request\Body;
 use Qwer\LottoFrontendBundle\Entity\Filter\ResultFilter;
 use Qwer\LottoFrontendBundle\Form\Filter\ResultFilterType;
+use Qwer\UserBundle\Entity\UserEx;
+use JMS\DiExtraBundle\Annotation as DI;
+
 
 class FrontEndPageController extends Controller
 {
+    /**
+     * @DI\Inject("doctrine.orm.entity_manager")
+     * @var \Doctrine\ORM\EntityManager 
+     */
+    private $em;
+
 
     public function indexAction(Request $request, $id = 3)
     {
         $token = $request->get("token");
+      //  $tokenStr = "7il20ckksjh70ns8qght2stik2";//$request->get("token");
+        $clientId = 1;
+        if($tokenStr!="")  {
+ 
+        $url="http://195.137.167.10/ferapont/lotto/ClientAuth";
+        
+         $ch = curl_init($url);
+            
+            
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, 'token='.$tokenStr );
+            $responseRaw = curl_exec($ch);
+            //echo  $responseRaw ;
+            curl_close($ch);
+            $response = json_decode($responseRaw);
+         
+            print_r($response) ;
+    
+    
+        $this->em = $this->container->get("doctrine.orm.entity_manager");
+        $token = $this->findToken(  $response->user_id );
+        if (!$token) {
+          
+        $class = $this->get('service_container')->getParameter('users.token_class');
+        $token = new $class();
+        
+        $namespace = "QwerLottoBundle:User";
+        $uRepo = $this->em->getRepository($namespace);
+         $user = $uRepo->findOneById(1);
+       
+         $token->setUser($user);
+         $token->setExternalId($response->user_id);
+       
+        
+        $currencyRepo = $this->getCurrencyRepo();
+        $currency = $currencyRepo->findOneByCode($response->currency);
+        $token->setCurrency($currency);
+          
+         }  
+          $token->updateExpireDate();  
+          $token->setToken($tokenStr);
+      //     print($token->getToken()." -- ");
+        $this->em->persist($token);
+          $this->em->flush();     
+            
         $session = $request->getSession();
         
-        $session->set("token", $token);
+        $session->set("token", $tokenStr);
+        }
         $tr = $this->get('translator');
         $message = $tr->trans('time.parameter');
         $em = $this->getDoctrine()->getManager();
@@ -44,7 +100,34 @@ class FrontEndPageController extends Controller
                     'menu' => '',
                 ));
     }
+    
+    
+    private function findToken(  $externalId)
+    {
+        $class = $this->get('service_container')->getParameter('users.token_class');
+        $repo = $this->em->getRepository($class);
 
+        $criteria = array(
+            
+            "externalId" => $externalId
+        );
+
+        $token = $repo->findOneBy($criteria);
+
+        return $token;
+    }
+
+   
+
+    private function getCurrencyRepo()
+    {
+        $namespace = "QwerLottoDocumentsBundle:Currency";
+        $curRepo = $this->em->getRepository($namespace);
+
+        return $curRepo;
+    }
+    
+    
     public function leftMenuAction(Request $request, $_locale, $menu)
     {
         $em = $this->getDoctrine()->getManager();
