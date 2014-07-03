@@ -47,7 +47,7 @@ class FrontEndPageController extends Controller
             curl_close($ch);
             $resp = json_decode($responseRaw);
          
-            print_r($resp) ;
+          //  print_r($resp) ;
     
     
         $this->em = $this->container->get("doctrine.orm.entity_manager");
