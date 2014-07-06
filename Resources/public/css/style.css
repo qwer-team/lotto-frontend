@@ -475,7 +475,7 @@ a#clear-all{
 	background: url(../images/ball-white.png);
 	cursor: default;
 }
-.ball-item-line.active,
+/*.ball-item-line.active,
 .results-tabble .ball-item-line{
 	height: 14px;
 	background: url(../images/balls.png) top left;
@@ -483,7 +483,7 @@ a#clear-all{
 	padding: 6px 0 6px 0;
 	font-weight: bold;
 	font-size: 11px;
-}
+} */
 #flag_slider{
 	background: #000;
 	width: 750px;
@@ -651,10 +651,11 @@ a#clear-all{
 	font-size: 14px;
 	background: url(../images/block-title-green.png) repeat-x;
 }
+/*url(../images/td-bg.png)*/
 .you-rate-table tbody td,
 .results-tabble tbody td,
 .schedule tbody td{
-	background: #f9f9f9 url(../images/td-bg.png);
+	background: #f9f9f9 ;
 	border-left: 1px #004b00 solid;
 	border-right: 1px #004b00 solid;
 	border-bottom: 1px #FFF solid;
@@ -712,9 +713,9 @@ a#clear-all{
 .results-wrap{
 	margin-top: 20px;
 }
-.results-tabble .ball-item-line{
+/* .results-tabble .ball-item-line{
 	background: url(../images/balls.png) top right;
-}
+} */
 h2.message-title{
 	border: 0;
 	font-size: 24px;

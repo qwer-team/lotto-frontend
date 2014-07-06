@@ -43,13 +43,15 @@ class FrontEndPageController extends Controller
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, 'token='.$tokenStr );
             $responseRaw = curl_exec($ch);
-            //echo  $responseRaw ;
+          //  echo  $responseRaw ;
+            
             curl_close($ch);
-            $resp = json_decode($responseRaw);
+         if($responseRaw=='{"result":"fail"}') {
+             $resp = json_decode($responseRaw);
          
-          //  print_r($resp) ;
+     //      print_r($resp) ;
     
-    
+     
         $this->em = $this->container->get("doctrine.orm.entity_manager");
         $token = $this->findToken($resp->user_id);
         if (!$token) {
@@ -80,6 +82,7 @@ class FrontEndPageController extends Controller
         
         $session->set("token", $tokenStr);
         }
+    }
         $tr = $this->get('translator');
         $message = $tr->trans('time.parameter');
         $em = $this->getDoctrine()->getManager();
