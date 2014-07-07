@@ -30,7 +30,7 @@ class FrontEndPageController extends Controller
     {
         $tokenStr = $request->get("token");
        // $tokenStr = "77d1774mt2tov9fu2rhmto9f42";//$request->get("token");
-     //  print($tokenStr."--");
+     //  print("request->get(`token`) = ". $tokenStr."<br/>");
         $clientId = 1;
         if($tokenStr!="")  {
  
@@ -43,10 +43,10 @@ class FrontEndPageController extends Controller
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, 'token='.$tokenStr );
             $responseRaw = curl_exec($ch);
-          //  echo  $responseRaw ;
+     //       echo  $responseRaw ;
             
             curl_close($ch);
-         if($responseRaw=='{"result":"fail"}') {
+         if($responseRaw!='{"result":"fail"}') {
              $resp = json_decode($responseRaw);
          
      //      print_r($resp) ;
@@ -81,6 +81,7 @@ class FrontEndPageController extends Controller
         $session = $request->getSession();
         
         $session->set("token", $tokenStr);
+        // print("session(`token`) = ". $session->get("token")."<br/>");
         }
     }
         $tr = $this->get('translator');
