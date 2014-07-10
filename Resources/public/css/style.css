@@ -475,7 +475,8 @@ a#clear-all{
 	background: url(../images/ball-white.png);
 	cursor: default;
 }
-/*.ball-item-line.active,
+/* */
+.ball-item-line .active,
 .results-tabble .ball-item-line{
 	height: 14px;
 	background: url(../images/balls.png) top left;
@@ -483,7 +484,7 @@ a#clear-all{
 	padding: 6px 0 6px 0;
 	font-weight: bold;
 	font-size: 11px;
-} */
+} 
 #flag_slider{
 	background: #000;
 	width: 750px;

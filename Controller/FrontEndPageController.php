@@ -46,8 +46,8 @@ class FrontEndPageController extends Controller
      //       echo  $responseRaw ;
             
             curl_close($ch);
-             $resp = json_decode($responseRaw);
-         if($resp->user_id!='fail') {
+            $resp  = json_decode($responseRaw);
+         if(property_exists($resp, 'user_id')  ) {
             
          
      //      print_r($resp) ;
