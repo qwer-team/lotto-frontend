@@ -476,7 +476,16 @@ a#clear-all{
 	cursor: default;
 }
 /* */
-.ball-item-line .active,
+.straight-table td .active 
+{
+	height: 14px;
+	background: url(../images/balls.png) top left;
+	color: #FFF;
+	padding: 6px 0 6px 0;
+	font-weight: bold;
+	font-size: 11px;
+}  
+ 
 .results-tabble .ball-item-line{
 	height: 14px;
 	background: url(../images/balls.png) top left;
