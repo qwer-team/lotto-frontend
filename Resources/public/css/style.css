@@ -476,7 +476,7 @@ a#clear-all{
 	cursor: default;
 }
 /* */
-.straight-table td .active 
+.straight-table td .active, #tabs-multiples td .active
 {
 	height: 14px;
 	background: url(../images/balls.png) top left;
