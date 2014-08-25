@@ -1091,7 +1091,7 @@ i.ZAF{
 	color: #000;
 	font-size: 13px;
 	padding: 6px 10px 4px;
-	width: 125px;
+	width: 85px;
 	background: #FFF url(../images/calendar-icon.png) 97% 59% no-repeat;
 }
 .dates-filter .date-subm input{
@@ -1261,4 +1261,6 @@ h3{
 }
 
 .flags{position: absolute;left: 50%; top:0px; width: 50%;height: 100%; z-index: -2;}
-
+.div-select {float: left; margin-right: 7px;}
+.loto-filter { background: #fff;    border: 0 none;    border-radius: 3px;    color: #000;    font-size: 13px;    padding: 6px 10px 4px;
+    width: 185px;}

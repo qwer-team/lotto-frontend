@@ -10,7 +10,7 @@
 
     <route id="index_lotto" pattern="/{id}">
         <default key="_controller">QwerLottoFrontendBundle:FrontEndPage:index</default>
-        <default key="id" >3</default>
+        <default key="id" >16</default>
         <requirement key="id">\d+</requirement>
     </route>
 

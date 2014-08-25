@@ -12,12 +12,15 @@ class ResultFilter
 
     private $start;
     private $end;
+    private $lottoType;
     
     public function __construct()
     {
         $this->start = new \DateTime;
         $this->start->sub(\DateInterval::createFromDateString("1 month"));
         $this->end = new \DateTime;
+        $this->lottoType = 0;
+    
     }
 
     public function getStart()
@@ -38,6 +41,16 @@ class ResultFilter
     public function setEnd($end)
     {
         $this->end = $end;
+    }
+    
+    public function getLottoType()
+    {
+        return $this->lottoType;
+    }
+
+    public function setLottoType($lottoType)
+    {
+        $this->lottoType = $lottoType;
     }
 
 }

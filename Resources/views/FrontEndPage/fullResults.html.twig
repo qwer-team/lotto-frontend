@@ -14,6 +14,9 @@
 									<div class="finish-date">
 										{{form_widget(filterForm.end)}}
 									</div>
+                                                                        <div class="div-select">
+                                                                            {{form_widget(filterForm.lottoType)}}
+                                                                        </div> 
 									<div class="date-subm">
 										<input type="submit" value="{{ "full_results.filter"|trans }}">
 									</div>
@@ -37,7 +40,7 @@
                                                                         {% for res in fullResults %}
 										<tr>
 											<td>{{ res.lottoDraw.lottoTime.lottoType.translate(locale).title }}</td>
-											<td>{{ res.lottoDraw|date("Y-m-d H:i:s") }}</td>
+											<td>{{ res.lottoDraw|date("Y-m-d H:i") }}</td>
 											<td>
 											<div class="ball-line-wrap">
                                                                                                 {% for ball in res.result %}

@@ -26,7 +26,7 @@ class FrontEndPageController extends Controller
     private $em;
 
 
-    public function indexAction(Request $request, $id = 3)
+    public function indexAction(Request $request, $id = 16)
     {
         $tokenStr = $request->get("token");
        // $tokenStr = "77d1774mt2tov9fu2rhmto9f42";//$request->get("token");
@@ -88,16 +88,19 @@ class FrontEndPageController extends Controller
         $tr = $this->get('translator');
         $message = $tr->trans('time.parameter');
         $em = $this->getDoctrine()->getManager();
-        $lottery = $em->getRepository('QwerLottoBundle:Type')
-                ->findAllOrderedByName();
+        $lottery = $em->getRepository('QwerLottoBundle:Type')->findAllOrderedByName();
+        $lotterySlider = $em->getRepository('QwerLottoBundle:Type')->findAllForSlider();
+        
         $timeExpire = $em->getRepository('QwerLottoBundle:Draw')
                 ->getNearestDraws();
         $url = $request->getPathInfo();
         $locale = $this->getRequest()->getLocale();
+        //print($locale);
         $currentLotto = $em->getRepository('QwerLottoBundle:Type')->find($id);
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:index.html.twig', array(
                     'curLotto' => $currentLotto,
                     'lottery' => $lottery,
+                    'lotterySlider' => $lotterySlider,
                     'timeExpire' => $timeExpire,
                     'message' => $message,
                     'id' => $id,
@@ -181,12 +184,21 @@ class FrontEndPageController extends Controller
                 ));
     }
 
-    public function fullResultsAction(Request $request, $page, $_locale)
+    public function fullResultsAction(Request $request,   $page, $_locale)
     {
+       // print($lottoType);
         $filter = $this->getResultFilter();
         $em = $this->getDoctrine()->getManager();
-        $adapter = $em->getRepository('QwerLottoBundle:Result')
-                ->getFullResults($filter);
+        // if($filter->getLottoType()==0 ){
+        $adapter = $em->getRepository('QwerLottoBundle:Result')->getFullResults($filter);
+        $types = $em->getRepository('QwerLottoBundle:Type')->findAll();
+        /* } else {
+            $adapter = $em->getRepository('QwerLottoBundle:Result')->getFullResults($filter);
+            
+        }
+        */
+         
+       $types= $em->getRepository('QwerLottoBundle:Type')->findAll();
         $pagerfanta = new Pagerfanta($adapter);
         $pagerfanta->setMaxPerPage(20);
         $pagerfanta->setCurrentPage($page);
@@ -206,7 +218,11 @@ class FrontEndPageController extends Controller
                 "css_disabled_class" => " "
                     ));
         }
-        $filterForm = $this->createForm(new ResultFilterType(), $filter);
+        $options =array('attr' => array('types' => $types));
+ 
+        $filterForm = $this->createForm(new ResultFilterType(), $filter, $options  );
+      
+        
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:fullResults.html.twig', array(
                     'fullResults' => $currentPageResults,
                     'paginator' => $html,
@@ -219,13 +235,21 @@ class FrontEndPageController extends Controller
     
     public function updateResultFilterAction(Request $request){
         $filter = $this->getResultFilter();
-        $filterForm = $this->createForm(new ResultFilterType(), $filter);
+        $em = $this->getDoctrine()->getManager();
+        $types = $em->getRepository('QwerLottoBundle:Type')->findAll();
+        $options =array('attr' => array('types' => $types));
+        
+        $filterForm = $this->createForm(new ResultFilterType(), $filter, $options );
         $filterForm->bindRequest($request);
         if($filterForm->isValid()){
             $request->getSession()->set('result_filter', $filter);
         }
-        
-        return $this->redirect($this->generateUrl('fullres'));
+        // if(empty($filter->getLottoType())) {
+            return $this->redirect($this->generateUrl('fullres'));
+        /* } else {
+            return $this->redirect($this->generateUrl('fullresType', array("lottoType" => 4)));
+            
+        } */
     }
 
     

@@ -1,6 +1,6 @@
 {% extends 'QwerLottoFrontendBundle::layout.html.twig' %}
 {% block javascript %}
-
+ 
 <script>
     var token = '{{ app.request.session.get('token') }}';
 </script>
@@ -40,7 +40,7 @@
                                                 </li>
                                         </ul>-->
                                         <div id="flag_slider" class="imageflow">
-                                            {% for lotto in lottery %}
+                                            {% for lotto in lotterySlider %}
                                                 {% if vich_uploader_asset(lotto, 'image') %}
                                                     <img src="{{ vich_uploader_asset(lotto, 'image') }}" id="startId_{{ lotto.id }}" index="{{ loop.index }}"  longdesc="{{ path('index_lotto', {'id': lotto.id}) }}?token={{ app.request.session.get('token') }}" width="45" height="60"
                                                          alt="
