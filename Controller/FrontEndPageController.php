@@ -43,7 +43,7 @@ class FrontEndPageController extends Controller
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, 'token='.$tokenStr );
             $responseRaw = curl_exec($ch);
-     //       echo  $responseRaw ;
+     //     echo  $responseRaw ;
             
             curl_close($ch);
             $resp  = json_decode($responseRaw);
