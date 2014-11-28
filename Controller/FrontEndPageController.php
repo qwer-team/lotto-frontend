@@ -72,7 +72,12 @@ class FrontEndPageController extends Controller
         $currency = $currencyRepo->findOneByCode($resp->currency);
         $token->setCurrency($currency);
           
-         }  
+         }   
+             // user can change his curreny
+         $currencyRepo = $this->getCurrencyRepo();
+        $currency = $currencyRepo->findOneByCode($resp->currency);
+        $token->setCurrency($currency);
+        
           $token->updateExpireDate();  
           $token->setToken($tokenStr);
       //     print($token->getToken()." -- ");
@@ -95,7 +100,12 @@ class FrontEndPageController extends Controller
                 ->getNearestDraws();
         $url = $request->getPathInfo();
         $locale = $this->getRequest()->getLocale();
-        //print($locale);
+      //  $this->getRequest()->request->set('locale', "en");
+   //     $this->getRequest()->setLocale( "en");
+        /*        $this->get('session')->setLocale(
+    $request->getPreferredLanguage(array('en', 'ru'))
+); */
+    //     $locale = $this->getRequest()->getLocale();
         $currentLotto = $em->getRepository('QwerLottoBundle:Type')->find($id);
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:index.html.twig', array(
                     'curLotto' => $currentLotto,
@@ -138,11 +148,20 @@ class FrontEndPageController extends Controller
     
     
     public function leftMenuAction(Request $request, $_locale, $menu)
-    {
+    {       
+        
+        //$translation_listener=new \Stof\DoctrineExtensionsBundle\Listener\TranslationListener;
+        //$translation_listener=new \Stof\DoctrineExtensionsBundle\EventListener\LocaleListener;
+    //$translation_listener->setTranslationFallback(false);
+        
+          $translatableListener = $this->get('stof_doctrine_extensions.listener.translatable');
+   $translatableListener->setTranslatableLocale($translatableListener->getDefaultLocale());
+   //$translatableListener->->setTranslationFallback(false);
+        
         $em = $this->getDoctrine()->getManager();
         $countries = $em->getRepository('QwerLottoFrontendBundle:Country')
                 ->findAllOrderedByName();
-        //$this->getRequest()->setLocale($locale);
+        $locale = $this->getRequest()->getLocale();
         return $this->render('QwerLottoFrontendBundle:FrontEndPage:leftMenu.html.twig', array(
                     'countries' => $countries,
                     'locale' => $_locale,
