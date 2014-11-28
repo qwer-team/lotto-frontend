@@ -4,4 +4,5 @@ limit:
     static: Top award can not exceed %number1%
     cumulative: Cumulative hit the limit!
     funds: The funds in your account is not enough! Enrich the bill please!
+    externalErr: There some internal Error. Bet was not created!
     balls: Your selected balls
