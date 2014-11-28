@@ -154,8 +154,8 @@ class FrontEndPageController extends Controller
         //$translation_listener=new \Stof\DoctrineExtensionsBundle\EventListener\LocaleListener;
     //$translation_listener->setTranslationFallback(false);
         
-          $translatableListener = $this->get('stof_doctrine_extensions.listener.translatable');
-   $translatableListener->setTranslatableLocale($translatableListener->getDefaultLocale());
+ //        $translatableListener = $this->get('stof_doctrine_extensions.listener.translatable');
+  // $translatableListener->setTranslatableLocale($translatableListener->getDefaultLocale());
    //$translatableListener->->setTranslationFallback(false);
         
         $em = $this->getDoctrine()->getManager();
