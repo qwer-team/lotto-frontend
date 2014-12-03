@@ -217,7 +217,7 @@ class FrontEndPageController extends Controller
         }
         */
          
-       $types= $em->getRepository('QwerLottoBundle:Type')->findAll();
+      // $types= $em->getRepository('QwerLottoBundle:Type')->findAll();
         $pagerfanta = new Pagerfanta($adapter);
         $pagerfanta->setMaxPerPage(20);
         $pagerfanta->setCurrentPage($page);

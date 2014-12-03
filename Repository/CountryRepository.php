@@ -27,6 +27,7 @@ class CountryRepository extends EntityRepository
         $qb = $this->createQueryBuilder("country");
         $qb->select("country, types, times");
         $qb->innerJoin("country.lottoTypes", "types")
+                ->Where("types.disable=0")
            ->innerJoin("types.lottoTimes", "times")
            ->orderBy("country.title");
           
