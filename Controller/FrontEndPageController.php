@@ -46,6 +46,8 @@ class FrontEndPageController extends Controller
      //     echo  $responseRaw ;
             
             curl_close($ch);
+if (!empty($responseRaw)) {
+         //   echo ($responseRaw);
             $resp  = json_decode($responseRaw);
          if(property_exists($resp, 'user_id')  ) {
             
@@ -89,6 +91,7 @@ class FrontEndPageController extends Controller
         $session->set("token", $tokenStr);
         // print("session(`token`) = ". $session->get("token")."<br/>");
         }
+}
     }
         $tr = $this->get('translator');
         $message = $tr->trans('time.parameter');
